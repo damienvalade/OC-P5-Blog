@@ -1,0 +1,40 @@
+{# **************** #}
+{# **** Layout **** #}
+{# **************** #}
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=" On peux voir mes super articles avec mon super portfolio !">
+    <meta name="author" content="Damien Valade">
+
+    <title>{% block titre %}{% endblock %} - Damien Valade</title>
+
+    <link rel="icon" href="img/logo/LogoFinalv5-3.png" type="image/gif" sizes="16x16">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="../htdocs/css/style.css" rel="stylesheet">
+    <link href="../htdocs/css/errors.css" rel="stylesheet">
+    <link href="../htdocs/css/CircularProgressBar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+{% include "/templates/navbar.twig" %}
+
+{% block main %} {% endblock %}
+
+{% include "/templates/footer.twig" %}
+
+
+
+<script src="../vendor/components/jquery/jquery.min.js"></script>
+<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+{% block script %}{% endblock %}
+
+</body>
+</html>

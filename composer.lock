@@ -1,0 +1,362 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "2b20f6e3c0bfb938dd40c4726cc6c5d0",
+    "packages": [
+        {
+            "name": "components/jquery",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "459648cda77875519c5da3ae1dd0ed5d170aa649"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/459648cda77875519c5da3ae1dd0ed5d170aa649",
+                "reference": "459648cda77875519c5da3ae1dd0ed5d170aa649",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JS Foundation and other contributors"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2018-03-04T13:23:48+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "backendtea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "tracy/tracy",
+            "version": "v2.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/tracy.git",
+                "reference": "9a6513089a836744e70af0910ad45f50e603dcf5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/9a6513089a836744e70af0910ad45f50e603dcf5",
+                "reference": "9a6513089a836744e70af0910ad45f50e603dcf5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-session": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/di": "^2.4 || ~3.0.0",
+                "nette/tester": "^2.2",
+                "nette/utils": "^2.4 || ^3.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "https://nette.org/donate": "Please support Tracy via a donation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src"
+                ],
+                "files": [
+                    "src/Tracy/shortcuts.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "😎 Tracy: the addictive tool to ease debugging PHP code for cool developers. Friendly design, logging, profiler, advanced features like debugging AJAX calls or CLI support. You will love it.",
+            "homepage": "https://tracy.nette.org",
+            "keywords": [
+                "Xdebug",
+                "debug",
+                "debugger",
+                "nette",
+                "profiler"
+            ],
+            "time": "2019-04-03T20:29:00+00:00"
+        },
+        {
+            "name": "twbs/bootstrap",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "8fa0d3010112dca5dd6dd501173415856001ba8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8fa0d3010112dca5dd6dd501173415856001ba8b",
+                "reference": "8fa0d3010112dca5dd6dd501173415856001ba8b",
+                "shasum": ""
+            },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "https://getbootstrap.com/",
+            "keywords": [
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "web"
+            ],
+            "time": "2019-02-13T16:01:40+00:00"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/91cc2594d3143761ce0399c1caffd0b500ffe5b9",
+                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2019-04-16T17:14:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

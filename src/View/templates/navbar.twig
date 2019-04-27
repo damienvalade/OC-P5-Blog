@@ -1,0 +1,41 @@
+{# **************** #}
+{# **** Navbar **** #}
+{# **************** #}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img style="width: 2rem;" src="../htdocs/img/logo/LogoFinalv5-3.png" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=public">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=public.articles">Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=public.contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=public.connexion">Connexion</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <img style="width: 2rem;" src="../htdocs/img/pp/perso.png" alt="">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="index.php?page=admin">Dashbord</a>
+                    <a class="dropdown-item" href="index.php?page=admin.settings">Settings</a>
+                    <a class="dropdown-item" href="index.php?page=index.deconnexion">Déconnexion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

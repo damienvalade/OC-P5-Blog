@@ -1,0 +1,22 @@
+{# **************** #}
+{# *** Error403 *** #}
+{# **************** #}
+
+{% extends "/templates/layout.twig" %}
+
+{% block titre %}Erreur 403{% endblock %}
+
+{% block main %}
+
+    <h1>Forbidden</h1>
+    <section class="error-container">
+        <span>4</span>
+        <span><span class="screen-reader-text">0</span></span>
+        <span>3</span>
+    </section>
+
+    <div class="d-flex justify-content-center bd-highlight mb-3">
+        <a class="btn btn-primary" href="index.php?page=public">Retourner home</a>
+    </div>
+
+{% endblock %}

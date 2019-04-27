@@ -1,0 +1,6 @@
+app/config.php
+htdocs/fonts/
+htdocs/img/
+htdocs/node_modules/
+vendor/
+.idea/

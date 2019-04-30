@@ -1,0 +1,102 @@
+{# **************** #}
+{# ***** Home ***** #}
+{# **************** #}
+
+{% extends "/templates/layout.twig" %}
+
+{% block titre %}Contact{% endblock %}
+
+
+{% block main %}
+
+    <!--Section: Contact v.2-->
+    <section class="container mt-5 mb-5 write-white">
+
+        <h2 class="text-center mb-5"><span class="underline">C</span>ontact</h2>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <!--Section heading-->
+
+                <!--Section description-->
+                <p class="text-justify pb-3">Si vous avez des missions freelance, ou si vous désirez un
+                    devis, n’hésitez pas à me contacter soit en utilisant le formulaire soit par téléphone, je serais
+                    heureux
+                    de vous répondre dans les plus brefs délais.</p>
+                <p class="fa-text"><i class="fa fa-map-marker"></i>Limoges - FRANCE</p>
+                <p class="fa-text"><i class="fa fa-phone"></i>06.69.38.18.55</p>
+                <p class="fa-text"><i class="fa fa-link"></i>portfolio.damienvalade.fr</p>
+                <p class="fa-text"><i class="fa fa-envelope-o"></i>damien@damienvalade.fr</p>
+            </div>
+
+            <div class="col-md-6">
+                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <div class="md-form mb-2">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nom*">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="md-form mb-2">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Email*">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input type="text" id="subject" name="subject" class="form-control"
+                                       placeholder="Sujet*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+
+                        <div class="col-md-12">
+
+                            <div class="md-form">
+                                <textarea type="text" id="message" name="message" rows="2"
+                                          class="form-control md-textarea" placeholder="Message*"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="text-justify col-md-12">
+                            En soumettant ce formulaire, j'accepte que mes informations soient utilisées
+                            exclusivement dans le cadre de ma demande et de la relation commerciale éthique
+                            et personnalisée qui pourrait en découler.
+                        </p>
+                    </div>
+
+                    <div class="form-check col-md-12">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Oui, j'accepte (obligatoire)</label>
+                    </div>
+
+                </form>
+
+                <div class="row col-md-12 mt-5 mb-5">
+                    <a class="btn btn-arrow-style btn-arrow" onclick="document.getElementById('contact-form').submit();">Send</a>
+                </div>
+                <div class="status"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

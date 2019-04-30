@@ -9,6 +9,107 @@
     color: #1fa67a;
 }
 
+.write-white{
+    color : white;
+}
+
+/****************************************************************
+ *
+ * Btn decoration
+ *
+*****************************************************************/
+
+.btn-arrow{
+    padding: .3em 1em;
+    border: 2px solid #1fa67a;
+    color : #1fa67a !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 20px;
+    font-weight: 500;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.btn-arrow:after{
+    margin-left: -1em;
+    opacity: 0;
+    text-shadow: none;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: none;
+    text-transform: none;
+    content: ">";
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+
+.btn-arrow:before{
+    margin-left: -1em;
+    opacity: 0;
+    text-shadow: none;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: none;
+    text-transform: none;
+    content: ">";
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.btn-arrow:hover{
+    border: 0px solid;
+    padding: .3em 2em .3em .7em;
+    float: right!important;
+}
+
+.btn-arrow:hover {
+    margin-left: -1em;
+    opacity: 1;
+    text-shadow: none;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: none;
+    text-transform: none;
+    content: ">";
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.btn-arrow:hover:after {
+    margin-left: 1rem;
+    opacity: 1;
+}
+
+/****************************************************************
+ *
+ * Icon decoration
+ *
+*****************************************************************/
+
+.fa-text > i{
+    padding-right: 1rem;
+    color : #1FA67A;
+    font-size: 1.2rem !important;
+}
+
+.fa-text{
+    font-size: 1.2rem !important;
+}
+
 /****************************************************************
  *
  * Iteam decoration

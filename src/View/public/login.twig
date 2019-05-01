@@ -1,5 +1,5 @@
 {# **************** #}
-{# ***** Home ***** #}
+{# **** login ***** #}
 {# **************** #}
 
 {% extends "/templates/layout.twig" %}
@@ -9,19 +9,19 @@
 
 {% block main %}
 
-    <form class="container">
-        <div class="row form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <form class="container mt-5">
+
+        <h2 class="text-center mb-5"><span class="underline">C</span>onnexion</h2>
+
+        <div class="row d-flex justify-content-center form-group">
+            <input type="email" class="form-control col-md-3" id="exampleInputEmail1" placeholder="Enter email">
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <div class="row d-flex justify-content-center form-group">
+            <input type="password" class="form-control col-md-3" id="exampleInputPassword1">
         </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <div class="row d-flex justify-content-center mt-5 mb-5">
+            <a class="btn btn-arrow-style btn-arrow" onclick="document.getElementById('contact-form').submit();">Send</a>
         </div>
-        <button type="submit" class="btn btn-primary">Connexion</button>
     </form>
 
 {% endblock %}

@@ -7,16 +7,17 @@
 {% block titre %}Erreur 403{% endblock %}
 
 {% block main %}
+    <section class="container mt-5 mb-5">
+        <h1>Forbidden</h1>
+        <section class="error-container">
+            <span>4</span>
+            <span><span class="screen-reader-text">0</span></span>
+            <span>3</span>
+        </section>
 
-    <h1>Forbidden</h1>
-    <section class="error-container">
-        <span>4</span>
-        <span><span class="screen-reader-text">0</span></span>
-        <span>3</span>
+        <div class="d-flex justify-content-center bd-highlight mb-3">
+            <a class="btn btn-primary" href="index.php?page=public">Retourner home</a>
+        </div>
     </section>
-
-    <div class="d-flex justify-content-center bd-highlight mb-3">
-        <a class="btn btn-primary" href="index.php?page=public">Retourner home</a>
-    </div>
 
 {% endblock %}

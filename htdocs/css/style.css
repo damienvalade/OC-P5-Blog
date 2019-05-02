@@ -1,5 +1,20 @@
 /****************************************************************
  *
+ * color decoration
+ *
+*****************************************************************/
+
+.emerald{
+    background-color: #1fa67a;
+}
+
+.white{
+    border: 2px solid white !important;
+    color : white !important;
+}
+
+/****************************************************************
+ *
  * Text decoration
  *
 *****************************************************************/
@@ -13,6 +28,24 @@
     color : white;
 }
 
+.name-style{
+    font-family: 'Rubik',Helvetica,Arial,Lucida,sans-serif;
+    text-transform: uppercase;
+    font-size: 45px;
+    color: #1fa67a;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+.status-style{
+    font-family: 'Karla',Helvetica,Arial,Lucida,sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 11.2px;
+    line-height: 2em;
+}
+
 /****************************************************************
  *
  * Btn decoration
@@ -22,7 +55,7 @@
 .btn-arrow{
     padding: .3em 1em;
     border: 2px solid #1fa67a;
-    color : #1fa67a !important;
+    color : #1fa67a;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -120,6 +153,14 @@
     color: #fff;
     background-color: #1fa67a;
     border-color: #1fa67a;
+}
+
+.radius-50 {
+    border-radius: 50%;
+}
+
+.icon-pp{
+    width: 2rem;
 }
 
 /****************************************************************

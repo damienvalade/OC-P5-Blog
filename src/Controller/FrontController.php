@@ -7,6 +7,7 @@ use TwigAdd\View\TwigAdd;
 class FrontController extends Controller
 {
 
+    protected $rootLoader;
     protected $route;
     protected $twig;
     protected $url;
@@ -59,10 +60,18 @@ class FrontController extends Controller
     public function execController()
     {
 
-        $this->controller = ucfirst(strtolower($this->type)) . 'Controller';
-        $this->controller = self::CONST_PATH . $this->controller;
+        $this->page = ucfirst(strtolower($this->page));
+        $this->type = ucfirst(strtolower($this->type));
 
-        if (!file_exists(__DIR__ . '/' . $this->type . 'Controller.php') || $this->page === '' ) {
+        $this->controller = $this->type . 'Controller';
+        $this->controller = self::CONST_PATH . $this->page .'Controller/'. $this->controller;
+
+        $this->rootLoader = __DIR__ . '/' . $this->page . 'Controller/' . $this->type. 'Controller.php';
+
+        var_dump($this->controller);
+        var_dump(!class_exists($this->controller));
+
+        if (!file_exists($this->rootLoader) || class_exists($this->controller) || $this->page === '' ) {
             exit($this->notfound());
         } else {
             $this->route = $this->page . '/' . $this->type . '.twig';

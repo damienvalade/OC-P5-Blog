@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use TwigAdd\View\TwigAdd;
+
 class FrontController extends Controller
 {
 
@@ -29,6 +31,9 @@ class FrontController extends Controller
         $twig = new \Twig\Environment($loader,[
             'cache' => false,
         ]);
+
+        $twig->addExtension(new \Twig_Extension_Debug());
+        $twig->addExtension(new TwigAdd());
 
         $this->twig = $twig;
     }

@@ -7,6 +7,7 @@ use TwigAdd\View\TwigAdd;
 class FrontController extends Controller
 {
 
+    protected $rootLoader;
     protected $route;
     protected $twig;
     protected $url;
@@ -59,14 +60,24 @@ class FrontController extends Controller
     public function execController()
     {
 
-        $this->controller = ucfirst(strtolower($this->type)) . 'Controller';
-        $this->controller = self::CONST_PATH . $this->controller;
+        $this->page = ucfirst(strtolower($this->page));
+        $this->type = ucfirst(strtolower($this->type));
 
-        if (!file_exists(__DIR__ . '/' . $this->type . 'Controller.php') || $this->page === '' ) {
+        $this->controller = $this->type . 'Controller';
+        $this->controller = self::CONST_PATH . $this->page .'Controller\\'. $this->controller;
+
+        $this->rootLoader = __DIR__ . '/' . $this->page . 'Controller/' . $this->type. 'Controller.php';
+
+        if(file_exists($this->rootLoader)){
+            if (!class_exists($this->controller) || $this->page === '' ) {
+                exit($this->notfound());
+            } else {
+                $this->route = $this->page . '/' . $this->type . '.twig';
+            }
+        }else{
             exit($this->notfound());
-        } else {
-            $this->route = $this->page . '/' . $this->type . '.twig';
         }
+
 
     }
 
@@ -77,10 +88,10 @@ class FrontController extends Controller
     }
 
 
-    public function run($fastrun = null)
+    public function run($fastRun = null)
     {
-        if(isset($fastrun)){
-            echo $this->twig->render($fastrun);
+        if(isset($fastRun)){
+            echo $this->twig->render($fastRun);
         }else {
             echo $this->twig->render($this->route);
         }

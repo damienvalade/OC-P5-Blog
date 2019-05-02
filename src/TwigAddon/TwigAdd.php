@@ -16,15 +16,15 @@ class TwigAdd extends AbstractExtension
     }
 
 
-    public function currentUrl(string $pageTry = null, array $params = [])
+    public function currentUrl(string $url = null, array $params = [])
     {
-        $pageCurrent = $_GET['page'];
+        $pageCurrent = isset($_GET['page']) ? $_GET['page'] : 'page';
 
-        if($pageCurrent === $pageTry)
+        if($pageCurrent === $url)
         {
             return ' active';
         }else{
-            return $pageCurrent . ' ' . $pageTry;
+            return $_GET['page'] . ' ' . $url;
         }
     }
 }

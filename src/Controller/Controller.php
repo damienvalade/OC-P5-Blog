@@ -27,4 +27,11 @@ class Controller
 
         $this->run('errors/404.twig');
     }
+
+    protected function serverError()
+    {
+        header('HTTP/1.0 500 Internal Server Error');
+
+        $this->run('errors/500.twig');
+    }
 }

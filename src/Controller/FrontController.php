@@ -5,6 +5,8 @@ namespace App\Controller;
 class FrontController extends Controller
 {
 
+    protected $route;
+    protected $twig;
     protected $url;
     protected $page;
     protected $type = 'Home';
@@ -16,7 +18,19 @@ class FrontController extends Controller
 
     public function __construct()
     {
+        $this->rend();
         $this->urlParser();
+    }
+
+    public function rend()
+    {
+
+        $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__).'/View');
+        $twig = new \Twig\Environment($loader,[
+            'cache' => false,
+        ]);
+
+        $this->twig = $twig;
     }
 
     public function urlParser()
@@ -31,22 +45,23 @@ class FrontController extends Controller
             if (is_array($pages) && count($pages) >= 2) {
                 $this->type = $pages[1];
             }
-            $this->execController();
+        }else{
+            $this->page = 'public';
         }
+        $this->execController();
     }
 
     public function execController()
     {
 
-            $this->controller = ucfirst(strtolower($this->type)) . 'Controller';
-            $this->controller = self::CONST_PATH . $this->controller;
+        $this->controller = ucfirst(strtolower($this->type)) . 'Controller';
+        $this->controller = self::CONST_PATH . $this->controller;
 
-            if (!file_exists( __DIR__ . '/' . $this->type . 'Controller.php')) {
-                exit($this->notfound());
-            }else{
-                $this->rend($this->page . '/' . $this->type . '.twig');
-                die();
-            }
+        if (!file_exists(__DIR__ . '/' . $this->type . 'Controller.php') || $this->page === '' ) {
+            exit($this->notfound());
+        } else {
+            $this->route = $this->page . '/' . $this->type . '.twig';
+        }
 
     }
 
@@ -57,10 +72,12 @@ class FrontController extends Controller
     }
 
 
-    public function run()
+    public function run($fastrun = null)
     {
-        $this->controller = new $this->controller();
-
-        return $this->controller;
+        if(isset($fastrun)){
+            echo $this->twig->render($fastrun);
+        }else {
+            echo $this->twig->render($this->route);
+        }
     }
 }

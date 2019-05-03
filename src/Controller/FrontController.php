@@ -59,7 +59,6 @@ class FrontController extends Controller
 
     public function execController()
     {
-
         $this->page = ucfirst(strtolower($this->page));
         $this->type = ucfirst(strtolower($this->type));
 
@@ -77,8 +76,6 @@ class FrontController extends Controller
         }else{
             exit($this->notfound());
         }
-
-
     }
 
     public function execCrud()

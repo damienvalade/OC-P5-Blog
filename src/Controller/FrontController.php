@@ -80,7 +80,7 @@ class FrontController extends Controller
 
     public function execCrud()
     {
-        $this->cruder = ucfirst(strtolower($this->action)) . 'Crud';
+        $this->cruder = ucfirst(strtolower($this->action)) . 'Action';
         $this->cruder = self::CONST_PATH . $this->cruder;
     }
 

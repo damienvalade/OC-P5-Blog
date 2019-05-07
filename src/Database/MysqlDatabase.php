@@ -50,6 +50,7 @@ class MysqlDatabase extends Database
         } else {
             $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
         }
+
         if ($one) {
             $data = $req->fetch();
         } else {
@@ -77,6 +78,7 @@ class MysqlDatabase extends Database
         } else {
             $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
         }
+
         if ($one) {
             $data = $req->fetch();
         } else {

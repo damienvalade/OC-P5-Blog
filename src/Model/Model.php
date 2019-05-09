@@ -8,10 +8,6 @@ use App\Database\MysqlDatabase;
 class Model
 {
 
-    protected $database;
-    protected $table;
-
-
     public function create(array $data)
     {
         $keys = implode(', ', array_keys($data));
@@ -21,12 +17,12 @@ class Model
         return MysqlDatabase::query($query);
     }
 
-    public function read(string $value, string $key = null)
+    public function read(string $table,string $value, string $key = null)
     {
         if (isset($key)) {
-            $query = 'SELECT * FROM ' . $this->table . ' WHERE ' . $key . ' = ?';
+            $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
         } else {
-            $query = 'SELECT * FROM ' . $this->table . ' WHERE id = ?';
+            $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
         }
 
         return MysqlDatabase::query($query, [$value]);
@@ -58,4 +54,5 @@ class Model
         }
         return MysqlDatabase::query($query, [$value]);
     }
+
 }

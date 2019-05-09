@@ -9,18 +9,18 @@
 
 {% block main %}
 
-    <form class="container mt-5">
+    <form class="container mt-5" action="" method="post">
 
         <h2 class="text-center mb-5"><span class="underline">C</span>onnexion</h2>
 
         <div class="row d-flex justify-content-center form-group">
-            <input type="email" class="form-control col-md-3" id="exampleInputEmail1" placeholder="Enter email">
+            <input name="username" type="username" class="form-control col-md-3" placeholder="Entrer pseudo">
         </div>
         <div class="row d-flex justify-content-center form-group">
-            <input type="password" class="form-control col-md-3" id="exampleInputPassword1">
+            <input name="password" type="password"  type="password" class="form-control col-md-3">
         </div>
         <div class="row d-flex justify-content-center mt-5 mb-5">
-            <a class="btn btn-arrow-style btn-arrow" onclick="document.getElementById('contact-form').submit();">Send</a>
+            <button type="submit" class="btn btn-arrow-style btn-arrow" >Send</button>
         </div>
     </form>
 

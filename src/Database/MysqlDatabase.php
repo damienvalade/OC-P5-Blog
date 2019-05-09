@@ -4,7 +4,6 @@ namespace App\Database;
 
 use \pdo;
 
-
 class MysqlDatabase extends Database
 {
 
@@ -32,10 +31,10 @@ class MysqlDatabase extends Database
         return $this->pdo;
     }
 
-    public function query($statement, $class_name = null, $one = false)
+    public function query(string $statement,$one = Null)
     {
 
-        $req = $this->getPDO()->query($statement);
+        $req = self::getPDO()->query($statement);
 
         if (
             strpos($statement, 'UPDATE') === 0 ||
@@ -45,11 +44,8 @@ class MysqlDatabase extends Database
             return $req;
         }
 
-        if ($class_name === null) {
-            $req->setFetchMode(PDO::FETCH_OBJ);
-        } else {
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
-        }
+
+        $req->setFetchMode(PDO::FETCH_OBJ);
 
         if ($one) {
             $data = $req->fetch();
@@ -60,9 +56,9 @@ class MysqlDatabase extends Database
         return $data;
     }
 
-    public function prepare($statement, $attributes, $class_name = null, $one = false)
+    public function prepare(string $statement,array $attributes = [],$one = false)
     {
-        $req = $this->getPDO()->prepare($statement);
+        $req = self::getPDO()->prepare($statement);
         $res = $req->execute($attributes);
 
         if (
@@ -73,11 +69,8 @@ class MysqlDatabase extends Database
             return $res;
         }
 
-        if ($class_name === null) {
-            $req->setFetchMode(PDO::FETCH_OBJ);
-        } else {
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
-        }
+
+        $req->setFetchMode(PDO::FETCH_OBJ);
 
         if ($one) {
             $data = $req->fetch();
@@ -88,7 +81,8 @@ class MysqlDatabase extends Database
         return $data;
     }
 
-    public function lasInsertId(){
+    public function lasInsertId()
+    {
         return $this->getPDO()->lastInsertId();
     }
 }

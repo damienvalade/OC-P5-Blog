@@ -1,8 +1,38 @@
 {
+    "name": "oc/blog",
+    "version": "0.0.5",
+    "type": "website",
+    "description": "Web Development - HTML, CSS, PHP, SQL",
+    "keywords": [
+        "portfolio",
+        "mvc"
+    ],
+    "homepage": "https://portfolio.damienvalade.fr/",
+    "authors": [
+        {
+            "name": "Damien Valade",
+            "email": "damien@damienvalade.fr",
+            "homepage": "https://portfolio.damienvalade.fr/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
     "require": {
         "tracy/tracy": "^2.6",
         "twbs/bootstrap": "^4.3",
         "twig/twig": "^2.8",
         "components/jquery": "^3.3"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
+    "support": {
+        "email": "damien@damienvalade.fr",
+        "issues": "https://github.com/damienvalade/OC-P5-Blog/issues"
     }
 }

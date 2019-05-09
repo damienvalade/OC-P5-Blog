@@ -23,6 +23,8 @@ class FrontController extends Controller
     {
         $this->rend();
         $this->urlParser();
+        $this->execController();
+        $this->execCrud();
     }
 
     public function rend()
@@ -50,11 +52,11 @@ class FrontController extends Controller
 
             if (is_array($pages) && count($pages) >= 2) {
                 $this->type = $pages[1];
+                $this->action = $pages[1];
             }
         }else{
             $this->page = 'public';
         }
-        $this->execController();
     }
 
     public function execController()
@@ -80,13 +82,18 @@ class FrontController extends Controller
 
     public function execCrud()
     {
-        $this->cruder = ucfirst(strtolower($this->action)) . 'Action';
-        $this->cruder = self::CONST_PATH . $this->cruder;
+        $this->cruder = $this->action . 'Action';
+
+        if (!method_exists($this->controller, $this->cruder)) {
+            $this->cruder = 'indexAction';
+        }
     }
 
 
     public function run($fastRun = null)
     {
+        $this->controller = new $this->controller;
+
         if(isset($fastRun)){
             echo $this->twig->render($fastRun);
         }else {

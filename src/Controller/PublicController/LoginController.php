@@ -12,7 +12,7 @@ class LoginController
     {
         if (!empty($_POST)) {
 
-            $user = ModelFactory::get('User')->read($_POST['email'], 'email');
+            $user = Model::read($_POST['username'], 'username');
 
             if (password_verify($_POST['pass'], $user['pass'])) {
                 Session::createSession(

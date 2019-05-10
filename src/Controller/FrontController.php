@@ -92,7 +92,15 @@ class FrontController extends Controller
 
     public function run($fastRun = null)
     {
-        $this->controller = new $this->controller;
+        if (class_exists($this->controller)){
+            $this->controller = new $this->controller;
+        }
+
+        $response = call_user_func([$this->controller, $this->cruder]);
+
+        if(!empty($response)){
+            $fastRun = $response;
+        }
 
         if(isset($fastRun)){
             echo $this->twig->render($fastRun);

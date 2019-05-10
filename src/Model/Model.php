@@ -1,11 +1,10 @@
 <?php
 
-
 namespace App\Model;
 
 use App\Database\MysqlDatabase;
 
-class Model
+class Model extends MysqlDatabase
 {
 
     public function create(array $data)
@@ -14,10 +13,10 @@ class Model
         $values = implode('", "', $data);
         $query = 'INSERT INTO ' . $this->table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';
 
-        return MysqlDatabase::query($query);
+        return $this->query($query);
     }
 
-    public function read(string $table,string $value, string $key = null)
+    public function read(string $table,string $value, string $key = null, $one = false)
     {
         if (isset($key)) {
             $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
@@ -25,7 +24,7 @@ class Model
             $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
         }
 
-        return MysqlDatabase::query($query, [$value]);
+        return $this->prepare($query, [$value], $one);
     }
 
     public function update(string $value, array $data, string $key = null)
@@ -42,7 +41,7 @@ class Model
             $query = 'UPDATE ' . $this->table . ' SET ' . $set . ' WHERE id = ?';
         }
 
-        return MysqlDatabase::query($query, [$value]);
+        return $this->query($query, [$value]);
     }
 
     public function delete(string $value, string $key = null)
@@ -52,7 +51,7 @@ class Model
         } else {
             $query = 'DELETE FROM ' . $this->table . ' WHERE id = ?';
         }
-        return MysqlDatabase::query($query, [$value]);
+        return $this->query($query, [$value]);
     }
 
 }

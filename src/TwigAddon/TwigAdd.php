@@ -11,7 +11,8 @@ class TwigAdd extends AbstractExtension
     public function getFunctions()
     {
         return array(
-          new TwigFunction('currentUrl',  array($this , 'currentUrl'))
+            new TwigFunction('currentUrl', array($this, 'currentUrl')),
+            new TwigFunction('pathPost', array ($this, 'pathPost'))
         );
     }
 
@@ -20,11 +21,20 @@ class TwigAdd extends AbstractExtension
     {
         $pageCurrent = isset($_GET['page']) ? $_GET['page'] : 'page';
 
-        if($pageCurrent === $url)
-        {
+        if ($pageCurrent === $url) {
             return ' active';
-        }else{
-            return $_GET['page'] . ' ' . $url;
+        } else {
+            return '';
+        }
+    }
+
+    public function pathPost()
+    {
+        if (isset ($_GET['page']))
+        {
+            $pathPost = 'index.php?page=' . $_GET['page'];
+
+            return $pathPost;
         }
     }
 }

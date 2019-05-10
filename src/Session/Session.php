@@ -12,7 +12,7 @@ class Session
         }
     }
 
-    public function createSession(int $id, string $name, string $email, string $image, int $level)
+    public static function createSession(int $id, string $name, string $email = null, string $image = null, int $level = null)
     {
         $_SESSION['user'] = [
 
@@ -25,13 +25,13 @@ class Session
         ];
     }
 
-    public function destroySession()
+    public static function destroySession()
     {
         $_SESSION = array();
         session_destroy();
     }
 
-    public function isLogged()
+    public static function isLogged()
     {
         if (array_key_exists('user', $_SESSION))
         {

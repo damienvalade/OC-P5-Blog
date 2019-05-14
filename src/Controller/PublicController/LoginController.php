@@ -12,10 +12,12 @@ class LoginController extends FrontController
 
     protected $users;
     protected $database;
+    protected $session;
 
     public function __construct()
     {
         $this->database = new Model();
+        $this->session = new Session();
     }
 
     public function loginAction()
@@ -29,7 +31,7 @@ class LoginController extends FrontController
 
                 $this->users = $this->database->read('users', $username, 'username', true);
 
-                if($this->users === true){
+                if(is_object($this->users)){
                     if ($password === $this->users->password) {
                         Session::createSession(
                             $this->users->id,
@@ -38,8 +40,8 @@ class LoginController extends FrontController
 
                         header('Location: index.php?page=admin');
 
-                    }
-                }
+                    }else{ $this->session->setError('Mauvais Password'); }
+                }else{ $this->session->setError('Mauvais Login');}
             }
         }
     }

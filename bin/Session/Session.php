@@ -42,6 +42,11 @@ class Session
         }return false;
     }
 
+    public static function setError(string $error)
+    {
+        $_SESSION['error'] = $error;
+    }
+
     public static function userId()
     {
         return self::isLogged() === false ? null : $_SESSION['user']['id'];
@@ -66,5 +71,6 @@ class Session
     {
         return self::isLogged() === false ? null : $_SESSION['user']['level'];
     }
+
 
 }

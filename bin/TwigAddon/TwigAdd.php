@@ -12,7 +12,8 @@ class TwigAdd extends AbstractExtension
     {
         return array(
             new TwigFunction('currentUrl', array($this, 'currentUrl')),
-            new TwigFunction('pathPost', array ($this, 'pathPost'))
+            new TwigFunction('pathPost', array ($this, 'pathPost')),
+            new TwigFunction('errorLogin', array ($this, 'errorLogin'))
         );
     }
 
@@ -36,5 +37,12 @@ class TwigAdd extends AbstractExtension
 
             return $pathPost;
         }
+    }
+
+    public function errorLogin()
+    {
+        $error = $_SESSION['error'];
+        $_SESSION['error'] = '';
+        return $error;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace Core\Model;
 
-use App\Database\MysqlDatabase;
+use Core\Database\MysqlDatabase;
 
 class Model extends MysqlDatabase
 {

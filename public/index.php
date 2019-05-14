@@ -4,9 +4,8 @@ define('ROOT', dirname(__DIR__));
 
 require_once ROOT . '/vendor/autoload.php';
 
-require_once ROOT . '/src/TwigAddon/TwigAdd.php';
 
-use App\Controller\FrontController;
+use Core\Controller\FrontController;
 use Tracy\Debugger;
 
 Debugger::enable();

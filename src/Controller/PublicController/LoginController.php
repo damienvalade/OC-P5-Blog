@@ -2,10 +2,10 @@
 
 namespace App\Controller\PublicController;
 
-use App\Controller\Controller;
-use App\Controller\FrontController;
-use App\Session\Session;
-use App\Model\Model;
+use Core\Controller\Controller;
+use Core\Controller\FrontController;
+use Core\Session\Session;
+use Core\Model\Model;
 
 class LoginController extends FrontController
 {

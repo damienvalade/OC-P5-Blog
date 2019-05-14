@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace Core\Controller;
 
-use TwigAdd\View\TwigAdd;
+use Core\TwigAddon\TwigAdd;
 
 class FrontController extends Controller
 {
@@ -30,7 +30,7 @@ class FrontController extends Controller
     public function rend()
     {
 
-        $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/View');
+        $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__DIR__)) . '/src/View');
         $twig = new \Twig\Environment($loader,[
             'cache' => false,
         ]);
@@ -67,7 +67,7 @@ class FrontController extends Controller
         $this->controller = $this->type . 'Controller';
         $this->controller = self::CONST_PATH . $this->page .'Controller\\'. $this->controller;
 
-        $this->rootLoader = __DIR__ . '/' . $this->type. 'Controller.php';
+        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->page . 'Controller/' .$this->type. 'Controller.php';
 
         if(file_exists($this->rootLoader)){
             if (!class_exists($this->controller) || $this->page === '' ) {
@@ -92,6 +92,8 @@ class FrontController extends Controller
 
     public function run($fastRun = null)
     {
+        $this->execCrud();
+
         if (class_exists($this->controller)){
             $this->controller = new $this->controller;
         }

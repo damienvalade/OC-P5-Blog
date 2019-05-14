@@ -23,17 +23,17 @@
                 <a class="nav-link {{ currentUrl('public.contact') }}" href="index.php?page=public.contact">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ currentUrl('public.login') }}" href="index.php?page=public.login">Connexion</a>
+                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('public.login') }}" href="index.php?page=public.login">Connexion</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li {{ isLoged('toVisible') }} class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     <img class="radius-50 icon-pp" src="../public/img/pp/perso.png" alt="">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="index.php?page=admin">Dashbord</a>
                     <a class="dropdown-item" href="index.php?page=admin.settings">Settings</a>
-                    <a class="dropdown-item" href="index.php?page=index.deconnexion">Déconnexion</a>
+                    <a class="dropdown-item" href="index.php?page=public.deconnexion">Déconnexion</a>
                 </div>
             </li>
         </ul>

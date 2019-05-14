@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Session;
+namespace Core\Session;
 
 class Session
 {
@@ -25,6 +25,7 @@ class Session
         ];
     }
 
+
     public static function destroySession()
     {
         $_SESSION = array();
@@ -40,6 +41,11 @@ class Session
                 return true;
             }return false;
         }return false;
+    }
+
+    public static function setError(string $error)
+    {
+        $_SESSION['error'] = $error;
     }
 
     public static function userId()
@@ -66,5 +72,6 @@ class Session
     {
         return self::isLogged() === false ? null : $_SESSION['user']['level'];
     }
+
 
 }

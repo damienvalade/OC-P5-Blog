@@ -46,6 +46,11 @@
     line-height: 2em;
 }
 
+.error-text{
+    color : #ff603e;
+    font-size: 20px;
+}
+
 /****************************************************************
  *
  * Btn decoration

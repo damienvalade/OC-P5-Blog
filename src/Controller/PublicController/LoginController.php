@@ -2,20 +2,22 @@
 
 namespace App\Controller\PublicController;
 
-use App\Controller\Controller;
-use App\Controller\FrontController;
-use App\Session\Session;
-use App\Model\Model;
+use Core\Controller\Controller;
+use Core\Controller\FrontController;
+use Core\Session\Session;
+use Core\Model\Model;
 
 class LoginController extends FrontController
 {
 
     protected $users;
     protected $database;
+    protected $session;
 
     public function __construct()
     {
         $this->database = new Model();
+        $this->session = new Session();
     }
 
     public function loginAction()
@@ -29,15 +31,21 @@ class LoginController extends FrontController
 
                 $this->users = $this->database->read('users', $username, 'username', true);
 
-                if ($password === $this->users->password) {
-                    Session::createSession(
-                        $this->users->id,
-                        $this->users->username
-                    );
+                if(is_object($this->users)){
+                    if ($password === $this->users->password) {
 
-                    header('Location: index.php?page=admin');
+                        $this->session->createSession(
+                            $this->users->id,
+                            $this->users->username,
+                            $this->users->email,
+                            $this->users->image,
+                            $this->users->level_administration
+                        );
 
-                }
+                        header('Location: index.php?page=admin');
+
+                    }else{ $this->session->setError('Mauvais Password'); }
+                }else{ $this->session->setError('Mauvais Login');}
             }
         }
     }

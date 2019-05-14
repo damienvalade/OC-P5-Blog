@@ -25,6 +25,7 @@ class Session
         ];
     }
 
+
     public static function destroySession()
     {
         $_SESSION = array();

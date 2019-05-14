@@ -33,9 +33,13 @@ class LoginController extends FrontController
 
                 if(is_object($this->users)){
                     if ($password === $this->users->password) {
-                        Session::createSession(
+
+                        $this->session->createSession(
                             $this->users->id,
-                            $this->users->username
+                            $this->users->username,
+                            $this->users->email,
+                            $this->users->image,
+                            $this->users->level_administration
                         );
 
                         header('Location: index.php?page=admin');

@@ -29,14 +29,16 @@ class LoginController extends FrontController
 
                 $this->users = $this->database->read('users', $username, 'username', true);
 
-                if ($password === $this->users->password) {
-                    Session::createSession(
-                        $this->users->id,
-                        $this->users->username
-                    );
+                if($this->users === true){
+                    if ($password === $this->users->password) {
+                        Session::createSession(
+                            $this->users->id,
+                            $this->users->username
+                        );
 
-                    header('Location: index.php?page=admin');
+                        header('Location: index.php?page=admin');
 
+                    }
                 }
             }
         }

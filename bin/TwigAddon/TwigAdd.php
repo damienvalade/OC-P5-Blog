@@ -15,7 +15,10 @@ class TwigAdd extends AbstractExtension
             new TwigFunction('currentUrl', array($this, 'currentUrl')),
             new TwigFunction('pathPost', array($this, 'pathPost')),
             new TwigFunction('errorLogin', array($this, 'errorLogin')),
-            new TwigFunction('isLoged', array($this, 'isLoged'))
+            new TwigFunction('isLoged', array($this, 'isLoged')),
+            new TwigFunction('userName', array($this, 'userName')),
+            new TwigFunction('userImage', array($this, 'userImage')),
+            new TwigFunction('userLevel', array($this, 'userLevel'))
         );
     }
 
@@ -67,4 +70,20 @@ class TwigAdd extends AbstractExtension
 
         }
     }
+
+    public function userName()
+    {
+        return Session::isLogged() === true ? ucfirst($_SESSION['user']['name']) : '';
+    }
+
+    public function userImage()
+    {
+        return Session::isLogged() === true ? $_SESSION['user']['image'] : '';
+    }
+
+    public function userLevel()
+    {
+        return Session::isLogged() === true ? $_SESSION['user']['level'] : '';
+    }
+
 }

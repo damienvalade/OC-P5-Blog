@@ -73,7 +73,7 @@ class FrontController extends Controller
             if (!class_exists($this->controller) || $this->page === '' ) {
                 exit($this->notfound());
             } else {
-                $this->route = $this->page . '/' . $this->type . '.twig';
+                $this->route = $this->page . 'View/Pages/' . $this->type . '.twig';
             }
         }else{
             exit($this->notfound());
@@ -96,9 +96,8 @@ class FrontController extends Controller
 
         if (class_exists($this->controller)){
             $this->controller = new $this->controller;
+            $response = call_user_func([$this->controller, $this->cruder]);
         }
-
-        $response = call_user_func([$this->controller, $this->cruder]);
 
         if(!empty($response)){
             $fastRun = $response;

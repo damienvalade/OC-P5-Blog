@@ -1,0 +1,33 @@
+{# **************** #}
+{# **** Navbar **** #}
+{# **************** #}
+
+<nav id="nabBar" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+
+    <label for="menu-toggle" id="label-gen" class="wrapper-menu">
+        <div id="line-start" class="line-menu half start"></div>
+        <div id="line-mid" class="line-menu mid"></div>
+        <div id="line-end" class="line-menu half end"></div>
+    </label>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li {{ isLoged('toVisible') }} class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <img class="radius-50 icon-pp" src="../public/{{ userImage() }}" alt="">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right ">
+                    <h6 class="text-center mt-2 mb-2">{{ userName() }}</h6>
+                    <a class="dropdown-item" href="index.php?page=admin">Dashbord</a>
+                    <a class="dropdown-item" href="index.php?page=admin.settings">Settings</a>
+                    <a class="dropdown-item mb-2" href="index.php?page=public.deconnexion">Déconnexion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

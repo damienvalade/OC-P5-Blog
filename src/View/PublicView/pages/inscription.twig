@@ -1,0 +1,62 @@
+{# **************** #}
+{# * Inscription ** #}
+{# **************** #}
+
+{% extends "/PublicView/layout/layout.twig" %}
+
+{% block titre %}Inscription{% endblock %}
+
+
+{% block main %}
+
+
+    <form class="container mt-5 write-white" action="{{ pathPost() }}" method="post">
+        <h2 class="text-center mb-5"><span class="underline">I</span>nscription</h2>
+
+        <p id="error" class="row d-flex justify-content-center error-text">{{ errorLogin() }}</p>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-4">
+                <label for="inputName">Nom de compte*</label>
+                <input type="Text" class="form-control" id="inputName" placeholder="Nom de compte">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail">E-mail*</label>
+                <input type="Email" class="form-control" id="inputEmail" placeholder="E-mail">
+            </div>
+        </div>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-4">
+                <label for="inputPassword1">Mot de passe*</label>
+                <input type="password" class="form-control" id="inputPassword1" placeholder="Mot de passe">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPassword2">Confirmation du mot de passe*</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Confirmation du mot de passe">
+            </div>
+        </div>
+
+
+
+        <div class="row d-flex justify-content-center form-group mt-3">
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                   class="form-control-file col-md-8">
+        </div>
+
+
+        <div class="form-group row d-flex justify-content-center mt-5">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="inputCheckbox">
+                <label class="form-check-label" for="inputCheckbox">
+                    Check me out
+                </label>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-5 mb-5">
+            <button type="submit" class="btn btn-arrow-style btn-arrow">Send</button>
+        </div>
+    </form>
+
+{% endblock %}

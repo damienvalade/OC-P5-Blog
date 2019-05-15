@@ -1,0 +1,67 @@
+{# **************** #}
+{# **** Layout **** #}
+{# **************** #}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="fr" />
+    <meta name="author" content="Marc Glisse" />
+    <title>
+        Squelette
+    </title>
+    <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../public/css/simple-sidebar.css" rel="stylesheet">
+    <link href="../public/css/normalize.css" rel="stylesheet">
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/errors.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="d-flex" id="wrapper">
+
+    {{ include('/AdminView/layout/sidebarAdmin.twig') }}
+
+    <div id="page-content-wrapper">
+
+        {{ include('/AdminView/layout/navbarAdmin.twig') }}
+
+        <div class="container-fluid">
+            <h1 class="mt-4">Test sidebar + navbar</h1>
+            </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+    {{ isLoged() }}
+
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/components/jquery/jquery.min.js"></script>
+
+<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+
+<script>
+
+    $(document).ready(function () {
+        $('#menu-toggle').click(function () {
+                $('#arrow-toggle').prop('checked', false);
+        });
+    });
+
+</script>
+
+</body>
+
+</html>

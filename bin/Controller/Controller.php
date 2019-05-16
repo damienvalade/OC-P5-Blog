@@ -2,10 +2,10 @@
 
 namespace Core\Controller;
 
+use Core\Session\Session;
 
 class Controller
 {
-    protected $route;
 
     protected function unauthorized()
     {
@@ -18,7 +18,7 @@ class Controller
     {
         header('HTTP/1.0 403 Forbidden');
 
-        $this->run( 'ErrorsView/403.twig');
+        $this->run('ErrorsView/403.twig');
     }
 
     protected function notfound()
@@ -34,4 +34,27 @@ class Controller
 
         $this->run('ErrorsView/500.twig');
     }
+
+    public function upload($fileDir)
+    {
+        $fileError = $_FILES['avatar']['error'];
+
+        if ($fileError > 0) {
+            htmlspecialchars(Session::setError('warning', 'Erreur lors du transfert du fichier...'));
+        } else {
+
+            $uniqid = str_replace( '.', '' , uniqid('', true));
+            $type = str_replace( 'image/', '' , $_FILES['avatar']['type']);
+
+            $uniqname = $uniqid . '.' . $type;
+
+            $filePath = dirname(dirname(__DIR__)) . "/public/img/{$fileDir}/{$uniqname}";
+            $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $filePath);
+            if ($result) {
+                htmlspecialchars(Session::setValidate('fichier', 'Fichier bien transferer'));
+            }
+            return $uniqname;
+        }
+    }
+
 }

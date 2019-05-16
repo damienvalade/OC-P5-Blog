@@ -13,6 +13,10 @@
     color : white !important;
 }
 
+.active{
+    color : #1fa67a !important;
+}
+
 /****************************************************************
  *
  * Text decoration
@@ -51,6 +55,10 @@
     font-size: 20px;
 }
 
+.nav-link
+{
+    color : white;
+}
 /****************************************************************
  *
  * Btn decoration

@@ -4,11 +4,12 @@
 namespace App\Controller\AdminController;
 
 
-class SettingsController
+class ArticlesController
 {
 
     public function indexAction()
     {
+       // TODO write this function
     }
 
 }

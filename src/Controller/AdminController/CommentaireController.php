@@ -4,11 +4,10 @@
 namespace App\Controller\AdminController;
 
 
-class SettingsController
+class CommentaireController
 {
-
     public function indexAction()
     {
+        // TODO write this function
     }
-
 }

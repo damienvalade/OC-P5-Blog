@@ -94,19 +94,18 @@ class FrontController extends Controller
     {
         $this->execCrud();
 
-        if (class_exists($this->controller)){
-            $this->controller = new $this->controller;
-            $response = call_user_func([$this->controller, $this->cruder]);
-        }
-
-        if(!empty($response)){
-            $fastRun = $response;
-        }
 
         if(isset($fastRun)){
             echo $this->twig->render($fastRun);
         }else {
+
+        if (class_exists($this->controller)){
+            $this->controller = new $this->controller;
+            call_user_func([$this->controller, $this->cruder]);
+        }
+
             echo $this->twig->render($this->route);
+
         }
     }
 }

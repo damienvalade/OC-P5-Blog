@@ -7,11 +7,11 @@ use Core\Database\MysqlDatabase;
 class Model extends MysqlDatabase
 {
 
-    public function create(array $data)
+    public function create(string $table, array $data)
     {
         $keys = implode(', ', array_keys($data));
         $values = implode('", "', $data);
-        $query = 'INSERT INTO ' . $this->table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';
+        $query = 'INSERT INTO ' . $table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';
 
         return $this->query($query);
     }

@@ -43,9 +43,18 @@ class Session
         }return false;
     }
 
-    public static function setError(string $error)
+    public static function setError(string $type, string $error)
     {
-        $_SESSION['error'] = $error;
+        $_SESSION['error'] = [
+            $type => $error
+        ];
+    }
+
+    public static function setValidate(string $type, string $message)
+    {
+        $_SESSION['validate'] = [
+            $type => $message
+        ];
     }
 
     public static function userId()

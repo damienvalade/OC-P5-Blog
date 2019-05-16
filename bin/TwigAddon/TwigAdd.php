@@ -14,11 +14,12 @@ class TwigAdd extends AbstractExtension
         return array(
             new TwigFunction('currentUrl', array($this, 'currentUrl')),
             new TwigFunction('pathPost', array($this, 'pathPost')),
-            new TwigFunction('errorLogin', array($this, 'errorLogin')),
+            new TwigFunction('errors', array($this, 'errors')),
             new TwigFunction('isLoged', array($this, 'isLoged')),
             new TwigFunction('userName', array($this, 'userName')),
             new TwigFunction('userImage', array($this, 'userImage')),
-            new TwigFunction('userLevel', array($this, 'userLevel'))
+            new TwigFunction('userLevel', array($this, 'userLevel')),
+            new TwigFunction('validate', array($this, 'validate'))
         );
     }
 
@@ -43,12 +44,21 @@ class TwigAdd extends AbstractExtension
         }
     }
 
-    public function errorLogin()
+    public function errors(string $page)
     {
-        if (isset($_SESSION['error'])) {
-            $error = $_SESSION['error'];
-            $_SESSION['error'] = '';
+        if (isset($_SESSION['error'][$page])) {
+            $error = $_SESSION['error'][$page];
+            $_SESSION['error'][$page] = '';
             return $error;
+        }
+    }
+
+    public function validate(string $page)
+    {
+        if (isset($_SESSION['validate'][$page])) {
+            $validate = $_SESSION['validate'][$page];
+            $_SESSION['validate'][$page] = '';
+            return $validate;
         }
     }
 

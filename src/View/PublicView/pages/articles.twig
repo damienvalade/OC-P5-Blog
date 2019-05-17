@@ -11,4 +11,14 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
+    <ul>
+        {% for articles in articles %}
+            <li>{{ articles.nomArticle }}</li>
+            <li>{{ articles.auteurArticle }}</li>
+            <li>{{ articles.chapoArticle }}</li>
+            <li>{{ articles.contenueArticle }}</li>
+            <br>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

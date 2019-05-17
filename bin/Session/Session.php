@@ -57,6 +57,40 @@ class Session
         ];
     }
 
+    public static function isAdmin()
+    {
+        if(self::isLogged())
+        {
+            if($_SESSION['user']['level'] === 1)
+            {
+                return true;
+            }
+        }else { return false; }
+    }
+
+    public static function isEditor()
+    {
+        if(self::isLogged())
+        {
+            if($_SESSION['user']['level'] === 2)
+            {
+                return true;
+            }
+        }else { return false; }
+    }
+
+    public static function isRegistered()
+    {
+        if(self::isLogged())
+        {
+            if($_SESSION['user']['level'] === 3)
+            {
+                return true;
+            }
+        }else { return false; }
+
+    }
+
     public static function userId()
     {
         return self::isLogged() === false ? null : $_SESSION['user']['id'];

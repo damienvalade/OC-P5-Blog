@@ -31,6 +31,11 @@ class LoginController extends FrontController
 
                 $this->users = $this->database->read('users', $username, 'username', true);
 
+                if(is_null($this->users->image))
+                {
+                    $this->users->image = 'img\photoprofil\default.png';
+                }
+
                 if(is_object($this->users)){
                     if ($password === $this->users->password) {
 

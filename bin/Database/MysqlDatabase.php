@@ -35,8 +35,6 @@ class MysqlDatabase extends Database
         }
 
 
-        $req->setFetchMode(PDO::FETCH_OBJ);
-
         if ($one) {
             $data = $req->fetch();
         } else {

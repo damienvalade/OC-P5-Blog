@@ -19,7 +19,8 @@ class TwigAdd extends AbstractExtension
             new TwigFunction('userName', array($this, 'userName')),
             new TwigFunction('userImage', array($this, 'userImage')),
             new TwigFunction('userLevel', array($this, 'userLevel')),
-            new TwigFunction('validate', array($this, 'validate'))
+            new TwigFunction('validate', array($this, 'validate')),
+            new TwigFunction('authorized', array($this, 'authorized')),
         );
     }
 
@@ -79,6 +80,11 @@ class TwigAdd extends AbstractExtension
             }
 
         }
+    }
+
+    public function authorized()
+    {
+
     }
 
     public function userName()

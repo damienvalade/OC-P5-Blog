@@ -9,7 +9,7 @@ class ArticlesController
 
     public function indexAction()
     {
-       // TODO write this function
+       // TODO write function
     }
 
 }

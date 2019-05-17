@@ -16,15 +16,25 @@ class Model extends MysqlDatabase
         return $this->query($query);
     }
 
-    public function read(string $table,string $value, string $key = null, $one = false)
+    public function read(string $table,string $value = null, string $key = null, $one = false)
     {
-        if (isset($key)) {
-            $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
-        } else {
-            $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
+
+        if($one){
+            if (isset($key)) {
+                $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
+            } else {
+                $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
+            }
+
+            return $this->prepare($query, [$value], $one);
+        }else{
+
+            $query = 'SELECT * FROM ' . $table;
+
+            return $this->query($query);
+
         }
 
-        return $this->prepare($query, [$value], $one);
     }
 
     public function update(string $value, array $data, string $key = null)

@@ -31,7 +31,7 @@ class FrontController extends Controller
     {
 
         $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__DIR__)) . '/src/View');
-        $twig = new \Twig\Environment($loader,[
+        $twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
 
@@ -39,6 +39,7 @@ class FrontController extends Controller
         $twig->addExtension(new TwigAdd());
 
         $this->twig = $twig;
+
     }
 
     public function urlParser()
@@ -54,7 +55,7 @@ class FrontController extends Controller
                 $this->type = $pages[1];
                 $this->action = $pages[1];
             }
-        }else{
+        } else {
             $this->page = 'public';
         }
     }
@@ -65,17 +66,17 @@ class FrontController extends Controller
         $this->type = ucfirst(strtolower($this->type));
 
         $this->controller = $this->type . 'Controller';
-        $this->controller = self::CONST_PATH . $this->page .'Controller\\'. $this->controller;
+        $this->controller = self::CONST_PATH . $this->page . 'Controller\\' . $this->controller;
 
-        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->page . 'Controller/' .$this->type. 'Controller.php';
+        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->page . 'Controller/' . $this->type . 'Controller.php';
 
-        if(file_exists($this->rootLoader)){
-            if (!class_exists($this->controller) || $this->page === '' ) {
+        if (file_exists($this->rootLoader)) {
+            if (!class_exists($this->controller) || $this->page === '') {
                 exit($this->notfound());
             } else {
                 $this->route = $this->page . 'View/Pages/' . $this->type . '.twig';
             }
-        }else{
+        } else {
             exit($this->notfound());
         }
     }
@@ -89,22 +90,28 @@ class FrontController extends Controller
         }
     }
 
-
-    public function run($fastRun = null)
+    public function run(string $fastRun = null)
     {
         $this->execCrud();
 
+        if (isset($fastRun)) {
 
-        if(isset($fastRun)){
             echo $this->twig->render($fastRun);
-        }else {
 
-        if (class_exists($this->controller)){
-            $this->controller = new $this->controller;
-            call_user_func([$this->controller, $this->cruder]);
-        }
+        } else {
 
-            echo $this->twig->render($this->route);
+            if (class_exists($this->controller)) {
+
+                $this->controller = new $this->controller;
+                $response = call_user_func([$this->controller, $this->cruder]);
+
+            }
+
+            if ($response === NULL) {
+                echo $this->twig->render($this->route);
+            } else {
+                echo $this->twig->render($this->route, $response);
+            }
 
         }
     }

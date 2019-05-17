@@ -64,6 +64,32 @@
 {
     color : white;
 }
+
+/****************************************************************
+ *
+ * Table decoration
+ *
+*****************************************************************/
+
+.thead-emerald > tr > th{
+    background-color: #1FA67A;
+    color: #fff;
+    border-color: #1FA67A;
+}
+
+.table-striped-emerald > tbody > tr:nth-of-type(2n+1) {
+    background-color: rgba(255,255,255,.05);
+}
+
+.table td,
+.table th{
+    border-top: 1px solid #1FA67A80 !important;
+}
+
+.table{
+    color: #fff;
+}
+
 /****************************************************************
  *
  * Btn decoration

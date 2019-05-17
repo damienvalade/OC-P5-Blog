@@ -1,0 +1,37 @@
+{# **************** #}
+{#  Administration  #}
+{# **************** #}
+
+{% extends "/AdminView/layout/layoutAdmin.twig" %}
+
+{% block titre %}Administration{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>dministration</h2>
+
+    <table class="table table-striped-emerald">
+        <thead class="thead-emerald">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Utilisateur</th>
+                <th scope="col">Email</th>
+                <th scope="col">Image</th>
+                <th scope="col">Niveau</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for users in users %}
+            <tr>
+                <th scope="row">{{ users.id }}</th>
+                <td>{{ users.username }}</td>
+                <td>{{ users.email }}</td>
+                <td>{{ users.image }}</td>
+                <td>{{ users.level_administration }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,37 +1,17 @@
 <?php
 
-
 namespace App\Model\AdminModel;
 
-
 use Core\Model\Model;
-use Core\Session\Session;
 
-class UserssettingsModel
+class UserssettingsModel extends Model
 {
-    protected $data;
-    protected $database;
-
-    public function __construct()
+    public function innerJoin(string $table, string $value, string $on)
     {
-        $this->database = new Model();
-    }
+        $querry = 'SELECT users.id, users.name, users.Firstname, users.username, users.email, users.image,  administration_type.type
+                    FROM users
+                    JOIN administration_type ON users.level_administration = administration_type.id';
 
-    public function indexAction()
-    {
-        if( Session::isLogged())
-        {
-            if( Session::isAdmin() === true){
-
-                $this->data = $this->database->read('users');
-
-                return ['users' => $this->data] ;
-
-            }else{
-                exit($this->unauthorized());
-            }
-        }else{
-            exit($this->unauthorized());
-        }
+        return $this->query($querry);
     }
 }

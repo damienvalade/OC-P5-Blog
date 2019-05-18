@@ -4,7 +4,7 @@
 namespace App\Controller\AdminController;
 
 
-use Core\Model\Model;
+use App\Model\AdminModel\UserssettingsModel;
 use Core\Session\Session;
 
 class UserssettingsController
@@ -15,7 +15,7 @@ class UserssettingsController
 
     public function __construct()
     {
-        $this->database = new Model();
+        $this->database = new UserssettingsModel();
     }
 
     public function indexAction()
@@ -24,7 +24,7 @@ class UserssettingsController
         {
             if( Session::isAdmin() === true){
 
-                $this->data = $this->database->read('users');
+                $this->data = $this->database->innerJoin('','','');
 
                 return ['users' => $this->data] ;
 

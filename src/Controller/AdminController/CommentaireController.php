@@ -4,6 +4,7 @@
 namespace App\Controller\AdminController;
 
 
+use App\Model\AdminModel\CommentaireModel;
 use Core\Model\Model;
 
 class CommentaireController
@@ -13,12 +14,12 @@ class CommentaireController
 
     public function __construct()
     {
-        $this->database = new Model();
+        $this->database = new CommentaireModel();
     }
 
     public function indexAction()
     {
-        $this->data = $this->database->read('commentaire');
+        $this->data = $this->database->innerJoin('','','');
 
         return [ 'commentaire' => $this->data] ;
     }

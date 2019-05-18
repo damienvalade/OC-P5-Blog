@@ -11,4 +11,34 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
+   <table class="table table-striped-emerald">
+        <thead class="thead-emerald">
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Date Création</th>
+            <th scope="col">Date modification</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for articles in articles %}
+            <tr>
+                <th scope="row">{{ articles.nomArticle }}</th>
+                <td>{{ articles.auteurArticle }}</td>
+                <td>{{ articles.dateCreation }}</td>
+                <td>{{ articles.dateMaj }}</td>
+                <td>{{ articles.id_categories }}</td>
+                <td>
+                    <a class="fa-text" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
 {% endblock %}

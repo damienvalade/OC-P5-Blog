@@ -4,7 +4,8 @@
 namespace App\Controller\AdminController;
 
 
-use Core\Model\Model;
+use App\Model\AdminModel\ArticlesModel;
+
 
 class ArticlesController
 {
@@ -14,12 +15,12 @@ class ArticlesController
 
     public function __construct()
     {
-        $this->database = new Model();
+        $this->database = new ArticlesModel();
     }
 
     public function indexAction()
     {
-        $this->data = $this->database->read('articles');
+        $this->data = $this->database->innerJoin('','','');
 
         return ['articles' => $this->data] ;
     }

@@ -11,4 +11,31 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">C</span>ommentaire</h2>
 
+    <table class="table table-striped-emerald">
+        <thead class="thead-emerald">
+        <tr>
+            <th scope="col">Article</th>
+            <th scope="col">Commentaire</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaire %}
+            <tr>
+                <th scope="row">{{ commentaire.id_article }}</th>
+                <td>{{ commentaire.commentaire }}</td>
+                <td>{{ commentaire.id_auteur }}</td>
+                <td>{{ commentaire.dateCreation }}</td>
+                <td>
+                    <a class="fa-text" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

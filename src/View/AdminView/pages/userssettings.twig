@@ -1,0 +1,47 @@
+{# **************** #}
+{#  Administration  #}
+{# **************** #}
+
+{% extends "/AdminView/layout/layoutAdmin.twig" %}
+
+{% block titre %}Administration{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">U</span>tilisateurs</h2>
+
+
+
+    <table class="table table-striped-emerald">
+        <thead class="thead-emerald">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Articles</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for users in users %}
+            <tr>
+                <th scope="row">{{ users.id }}</th>
+                <td><img class="icon-pp mr-4" src="{{ users.image }}">{{ users.username }}</td>
+                <td>{{ users.firstname }}</td>
+                <td>{{ users.email }}</td>
+                <td>{{ users.level_administration }}</td>
+                <td>{{ users.articles }}</td>
+                <td>
+                    <a class="fa-text" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
+                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

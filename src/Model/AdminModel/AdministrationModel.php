@@ -4,7 +4,7 @@
 namespace App\Model\AdminModel;
 
 
-class ArticleModel
+class AdministrationModel
 {
 
 }

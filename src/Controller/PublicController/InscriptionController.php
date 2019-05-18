@@ -29,6 +29,8 @@ class InscriptionController extends Controller
                 $eamail = $_POST['inputEmail'];
                 $password = $_POST['inputPassword1'];
                 $passwordVerif = $_POST['inputPassword2'];
+                $nom = $_POST['inputNom'];
+                $prenom = $_POST['inputPrenom'];
 
                 $this->users = $this->database->read('users', $eamail, 'email', true);
 
@@ -38,6 +40,8 @@ class InscriptionController extends Controller
 
                     if ($password === $passwordVerif) {
                         $data = [
+                            'firstname' => $prenom,
+                            'name' => $nom,
                             'username' => $username,
                             'password' => $password,
                             'email' => $eamail,

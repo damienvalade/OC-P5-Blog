@@ -5,7 +5,6 @@ namespace App\Controller\AdminController;
 
 
 use App\Model\AdminModel\CommentaireModel;
-use Core\Model\Model;
 
 class CommentaireController
 {

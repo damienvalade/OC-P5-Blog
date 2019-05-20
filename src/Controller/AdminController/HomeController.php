@@ -3,7 +3,7 @@
 namespace App\Controller\AdminController;
 
 use Core\Controller\FrontController;
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 
 class HomeController extends FrontController
 {

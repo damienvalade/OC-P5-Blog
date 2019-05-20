@@ -2,7 +2,7 @@
 
 namespace Core\Controller;
 
-use Core\TwigAddon\TwigAdd;
+use Core\View\Twig\TwigAdd;
 
 class FrontController extends Controller
 {

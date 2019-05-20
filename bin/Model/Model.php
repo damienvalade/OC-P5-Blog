@@ -2,7 +2,7 @@
 
 namespace Core\Model;
 
-use Core\Database\MysqlDatabase;
+use Core\Model\Database\MysqlDatabase;
 
 class Model extends MysqlDatabase
 {

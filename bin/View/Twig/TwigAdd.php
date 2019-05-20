@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\TwigAddon;
+namespace Core\View\Twig;
 
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

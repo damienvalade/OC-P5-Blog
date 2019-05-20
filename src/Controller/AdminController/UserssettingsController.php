@@ -5,7 +5,7 @@ namespace App\Controller\AdminController;
 
 
 use App\Model\AdminModel\UserssettingsModel;
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 
 class UserssettingsController
 {

@@ -4,7 +4,7 @@ define('ROOT', dirname(__DIR__));
 
 require_once ROOT . '/vendor/autoload.php';
 
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 use Core\Controller\FrontController;
 use Tracy\Debugger;
 

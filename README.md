@@ -1,5 +1,8 @@
 # Blog open Classrooms
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/54225064ae2148ecb5ada07ba78b3d41)](https://app.codacy.com/app/damienvalade/OC-P5-Blog?utm_source=github.com&utm_medium=referral&utm_content=damienvalade/OC-P5-Blog&utm_campaign=Badge_Grade_Dashboard)
+
+
 Projet Open Classrooms de blog 
 
 ## Principe 

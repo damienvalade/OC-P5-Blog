@@ -117,7 +117,7 @@ class FrontController extends Controller
 
             }
 
-            if (isset($this->test) && !is_null($this->test)) {
+            if (isset($this->test) && !is_null($this->test) && !is_null($response)) {
                 echo $this->twig->render($this->page . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig', $response);
             } elseif ($response === NULL)
             {

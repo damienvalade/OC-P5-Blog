@@ -5,9 +5,10 @@ namespace App\Controller\AdminController;
 
 
 use App\Model\AdminModel\ArticlesModel;
+use Core\Controller\FrontController;
 
 
-class ArticlesController
+class ArticlesController extends FrontController
 {
 
     protected $data;
@@ -23,6 +24,14 @@ class ArticlesController
         $this->data = $this->database->innerJoin('','','');
 
         return ['articles' => $this->data] ;
+    }
+
+    public function updateAction(){
+        // TODO
+    }
+
+    public function createAction(){
+        // TODO
     }
 
 }

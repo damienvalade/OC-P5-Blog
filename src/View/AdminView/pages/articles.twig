@@ -11,7 +11,12 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
-   <table class="table table-striped-emerald">
+    <div class="row d-flex justify-content-center mt-5 mb-5">
+        <a href="index.php?page=admin.articles.create" class="btn btn-emerauld text-center">Ajouter</a>
+    </div>
+
+
+    <table class="table table-striped-emerald">
         <thead class="thead-emerald">
         <tr>
             <th scope="col">Titre</th>
@@ -31,7 +36,7 @@
                 <td>{{ articles.dateMaj }}</td>
                 <td>{{ articles.titre }}</td>
                 <td>
-                    <a class="fa-text" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="index.php?page=admin.articles.update"><i class="fa fa-pencil-square-o"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
                 </td>

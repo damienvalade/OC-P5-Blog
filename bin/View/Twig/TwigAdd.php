@@ -41,8 +41,14 @@ class TwigAdd extends AbstractExtension
         if (isset ($_GET['page'])) {
             $pathPost = 'index.php?page=' . $_GET['page'];
 
-            return $pathPost;
+
         }
+
+        if (isset($_GET['id'])) {
+            $pathPost .= '&id=' . $_GET['id'];
+        }
+
+        return $pathPost;
     }
 
     public function errors(string $page)

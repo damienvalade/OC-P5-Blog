@@ -35,4 +35,12 @@ class UserssettingsController
             exit($this->unauthorized());
         }
     }
+
+    public function updateAction(){
+        // TODO
+    }
+
+    public function createAction(){
+        // TODO
+    }
 }

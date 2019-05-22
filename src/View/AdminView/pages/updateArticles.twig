@@ -1,0 +1,76 @@
+{# **************** #}
+{#  Update Article  #}
+{# **************** #}
+
+{% extends "/AdminView/layout/layoutAdmin.twig" %}
+
+{% block titre %}Mettre à jour un Article{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">M</span>ettre à jour un Article</h2>
+
+    <form class="container mt-5 write-white" action="{{ pathPost() }}" method="post" enctype="multipart/form-data">
+
+        <p id="error" class="row d-flex justify-content-center error-text">{{ errors('inscription') }}</p>
+        <p id="error" class="row d-flex justify-content-center validate-text">{{ validate('inscription') }}</p>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-8">
+                <label for="inputName">Nom article*</label>
+                <input required type="Text" class="form-control" id="inputName" name="inputName"
+                       placeholder="Nom de compte">
+            </div>
+        </div>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-8">
+                <label for="inputName">Chapo article*</label>
+                <input required type="Text" class="form-control" id="inputName" name="inputName"
+                       placeholder="Chapo article">
+            </div>
+        </div>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-8">
+                <label for="inputName">Type article*</label>
+                <select required type="Text" class="form-control" id="inputName" name="inputName"
+                        placeholder="Chapo article">
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row row d-flex justify-content-center">
+            <div class="form-group col-md-8">
+                <label for="inputName">Contenue Article*</label>
+                <textarea required type="Text" class="form-control" id="inputName" name="inputName"
+                          placeholder="Chapo article"></textarea>
+            </div>
+        </div>
+
+
+        <div class="row d-flex justify-content-center form-group mt-3">
+            <input required type="file" id="avatar" name="avatar" accept=".jpg, .jpeg, .png, .svg, .gif"
+                   class="form-control-file col-md-8">
+        </div>
+
+
+        <div class="form-group row d-flex justify-content-center mt-5">
+            <div class="form-check">
+                <input required class="form-check-input" type="checkbox" id="inputCheckbox">
+                <label class="form-check-label" for="inputCheckbox">
+                    Check me out
+                </label>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-5 mb-5">
+            <button type="submit" class="btn btn-arrow-style btn-arrow">Send</button>
+        </div>
+    </form>
+
+{% endblock %}

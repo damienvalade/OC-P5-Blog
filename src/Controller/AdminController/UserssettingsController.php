@@ -37,7 +37,10 @@ class UserssettingsController
     }
 
     public function updateAction(){
-        // TODO
+
+        $this->data = $this->database->read('users', '1', 'id', true);
+
+        return ['users' => $this->data] ;
     }
 
     public function createAction(){

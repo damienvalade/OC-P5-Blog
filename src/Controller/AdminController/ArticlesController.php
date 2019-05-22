@@ -12,6 +12,7 @@ class ArticlesController extends FrontController
 {
 
     protected $data;
+    protected $data2;
     protected $database;
 
     public function __construct()
@@ -23,11 +24,16 @@ class ArticlesController extends FrontController
     {
         $this->data = $this->database->innerJoin('','','');
 
-        return ['articles' => $this->data] ;
+        return ['articles' => $this->data];
     }
 
     public function updateAction(){
-        // TODO
+
+        $this->data = $this->database->read('articles', '1', 'id', true);
+        $this->data2 = $this->database->read('categories');
+
+        return ['articles' => $this->data,
+            'types' => $this->data2] ;
     }
 
     public function createAction(){

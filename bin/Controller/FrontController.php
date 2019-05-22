@@ -118,7 +118,7 @@ class FrontController extends Controller
             }
 
             if (isset($this->test) && !is_null($this->test)) {
-                echo $this->twig->render($this->page . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig');
+                echo $this->twig->render($this->page . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig', $response);
             } elseif ($response === NULL)
             {
                 echo $this->twig->render($this->route);

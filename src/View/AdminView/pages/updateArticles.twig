@@ -20,7 +20,7 @@
             <div class="form-group col-md-8">
                 <label for="inputName">Nom article*</label>
                 <input required type="Text" class="form-control" id="inputName" name="inputName"
-                       placeholder="Nom de compte">
+                       placeholder="Nom de compte" value="{{ articles.nomArticle }}">
             </div>
         </div>
 
@@ -28,7 +28,7 @@
             <div class="form-group col-md-8">
                 <label for="inputName">Chapo article*</label>
                 <input required type="Text" class="form-control" id="inputName" name="inputName"
-                       placeholder="Chapo article">
+                       placeholder="Chapo article" value="{{ articles.chapoArticle }}">
             </div>
         </div>
 
@@ -37,9 +37,9 @@
                 <label for="inputName">Type article*</label>
                 <select required type="Text" class="form-control" id="inputName" name="inputName"
                         placeholder="Chapo article">
-                    <option></option>
-                    <option></option>
-                    <option></option>
+                    {% for types in types %}
+                        <option>{{ types.titre }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
@@ -48,10 +48,13 @@
             <div class="form-group col-md-8">
                 <label for="inputName">Contenue Article*</label>
                 <textarea required type="Text" class="form-control" id="inputName" name="inputName"
-                          placeholder="Chapo article"></textarea>
+                          placeholder="Chapo article">{{ articles.contenueArticle }}</textarea>
             </div>
         </div>
 
+        <div class="row d-flex justify-content-center mt-3 mb-4">
+            <img class="w-20 text-center" src="{{ articles.image }}">
+        </div>
 
         <div class="row d-flex justify-content-center form-group mt-3">
             <input required type="file" id="avatar" name="avatar" accept=".jpg, .jpeg, .png, .svg, .gif"

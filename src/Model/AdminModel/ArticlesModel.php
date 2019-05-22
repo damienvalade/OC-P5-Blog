@@ -10,7 +10,7 @@ class ArticlesModel extends Model
 {
     public function innerJoin(string $table, string $value, string $on)
     {
-        $querry = 'SELECT articles.nomArticle, articles.auteurArticle, articles.dateCreation, articles.dateMaj, categories.titre
+        $querry = 'SELECT articles.id, articles.nomArticle, articles.auteurArticle, articles.dateCreation, articles.dateMaj, categories.titre
                     FROM articles
                     JOIN categories ON articles.id_categories = categories.id';
 

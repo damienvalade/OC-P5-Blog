@@ -5,7 +5,7 @@ namespace App\Controller\PublicController;
 
 use Core\Controller\Controller;
 use Core\Model\Model;
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 
 class InscriptionController extends Controller
 {

@@ -2,7 +2,7 @@
 
 namespace Core\Controller;
 
-use Core\Session\Session;
+use Core\Controller\Session\Session;
 
 class Controller
 {

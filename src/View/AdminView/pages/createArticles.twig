@@ -26,28 +26,28 @@
 
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-8">
-                <label for="inputName">Chapo article*</label>
-                <input required type="Text" class="form-control" id="inputName" name="inputName"
+                <label for="inputChapo">Chapo article*</label>
+                <input required type="Text" class="form-control" id="inputChapo" name="inputChapo"
                        placeholder="Chapo article">
             </div>
         </div>
 
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-8">
-                <label for="inputName">Type article*</label>
-                <select required type="Text" class="form-control" id="inputName" name="inputName"
+                <label for="inputType">Type article*</label>
+                <select required type="Text" class="form-control" id="inputType" name="inputType"
                         placeholder="Chapo article">
-                    <option></option>
-                    <option></option>
-                    <option></option>
+                    {% for types in types %}
+                        <option value="{{ types.id }}">{{ types.titre }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
 
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-8">
-                <label for="inputName">Contenue Article*</label>
-                <textarea required type="Text" class="form-control" id="inputName" name="inputName"
+                <label for="inputContenue">Contenue Article*</label>
+                <textarea required type="Text" class="form-control" id="inputContenue" name="inputContenue"
                           placeholder="Chapo article"></textarea>
             </div>
         </div>

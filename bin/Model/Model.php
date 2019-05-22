@@ -37,7 +37,7 @@ class Model extends MysqlDatabase
 
     }
 
-    public function update(string $value, array $data, string $key = null)
+    public function update(string $table, string $value, array $data, string $key = null, $one = false)
     {
         $set = null;
 
@@ -46,12 +46,12 @@ class Model extends MysqlDatabase
         }
         $set = substr_replace($set, '', -2);
         if (isset($key)) {
-            $query = 'UPDATE ' . $this->table . ' SET ' . $set . ' WHERE ' . $key . ' = ?';
+            $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE ' . $key . ' = ?';
         } else {
-            $query = 'UPDATE ' . $this->table . ' SET ' . $set . ' WHERE id = ?';
+            $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE id = ?';
         }
 
-        return $this->query($query, [$value]);
+        return $this->prepare($query, [$value], $one);
     }
 
     public function delete(string $value, string $key = null)

@@ -79,7 +79,7 @@ class UserssettingsController extends FrontController
                             'level_administration' => '3'
                         ];
 
-                        $this->database->update('users', $eamail, $data);
+                        $this->database->create('users', $data);
 
                         $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
 
@@ -90,6 +90,6 @@ class UserssettingsController extends FrontController
             }
         }
 
-        return ['true' => true];
+        return ['users' => $this->data] ;
     }
 }

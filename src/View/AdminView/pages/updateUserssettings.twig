@@ -19,11 +19,11 @@
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-4">
                 <label for="inputName">Nom de compte*</label>
-                <input required type="Text" class="form-control" id="inputName" name="inputName" placeholder="Nom de compte">
+                <input required type="Text" class="form-control" id="inputName" name="inputName" placeholder="Nom de compte" value="{{ users.username }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputEmail">E-mail*</label>
-                <input required type="Email" class="form-control" id="inputEmail" name="inputEmail" placeholder="E-mail">
+                <input required type="Email" class="form-control" id="inputEmail" name="inputEmail" placeholder="E-mail" value="{{ users.email }}">
             </div>
         </div>
 
@@ -41,15 +41,18 @@
         <div class="form-row row d-flex justify-content-center mt-3 mb-4">
             <div class="form-group col-md-4">
                 <label for="inputNom">Nom*</label>
-                <input required type="password" class="form-control" id="inputNom" name="inputNom" placeholder="Nom">
+                <input required type="text" class="form-control" id="inputNom" name="inputNom" placeholder="Nom" value="{{ users.name }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputPrenom">Prénom*</label>
-                <input required type="password" class="form-control" id="inputPrenom" name="inputPrenom" placeholder="Prénom">
+                <input required type="text" class="form-control" id="inputPrenom" name="inputPrenom" placeholder="Prénom" value="{{ users.firstname }}">
             </div>
         </div>
 
 
+        <div class="row d-flex justify-content-center mt-3 mb-4">
+                <img class="radius-50 w-20 text-center" src="{{ users.image }}">
+        </div>
 
         <div class="row d-flex justify-content-center form-group mt-3">
             <input required type="file" id="avatar" name="avatar" accept=".jpg, .jpeg, .png, .svg, .gif"
@@ -65,6 +68,7 @@
                 </label>
             </div>
         </div>
+
 
         <div class="row d-flex justify-content-center mt-5 mb-5">
             <button type="submit" class="btn btn-arrow-style btn-arrow">Send</button>

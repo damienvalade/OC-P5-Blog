@@ -17,6 +17,8 @@ class FrontController extends Controller
     protected $controller;
     protected $cruder;
 
+    protected $test;
+
     const CONST_PATH = '\App\Controller\\';
 
     public function __construct()
@@ -55,6 +57,9 @@ class FrontController extends Controller
                 $this->type = $pages[1];
                 $this->action = $pages[1];
             }
+            if (is_array($pages) && count($pages) >= 3) {
+                $this->test = $pages[2];
+            }
         } else {
             $this->page = 'public';
         }
@@ -83,7 +88,12 @@ class FrontController extends Controller
 
     public function execCrud()
     {
-        $this->cruder = $this->action . 'Action';
+
+        if(is_null($this->test )){
+            $this->cruder = $this->action . 'Action';
+        } else{
+            $this->cruder = $this->test . 'Action';
+        }
 
         if (!method_exists($this->controller, $this->cruder)) {
             $this->cruder = 'indexAction';
@@ -94,7 +104,7 @@ class FrontController extends Controller
     {
         $this->execCrud();
 
-        if (isset($fastRun)) {
+        if (isset($fastRun) ) {
 
             echo $this->twig->render($fastRun);
 
@@ -107,11 +117,16 @@ class FrontController extends Controller
 
             }
 
-            if ($response === NULL) {
+            if (isset($this->test) && !is_null($this->test)) {
+                echo $this->twig->render($this->page . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig');
+            } elseif ($response === NULL)
+            {
                 echo $this->twig->render($this->route);
-            } else {
+            }
+            else {
                 echo $this->twig->render($this->route, $response);
             }
+
 
         }
     }

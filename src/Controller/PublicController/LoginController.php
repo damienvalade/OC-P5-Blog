@@ -46,7 +46,7 @@ class LoginController extends FrontController
                             $this->users->level_administration
                         );
 
-                        header('Location: index.php?page=admin');
+                        header('Location: index.php?side=admin');
 
                     }else{ $this->session->setError('login', 'Mauvais Password'); }
                 }else{ $this->session->setError('login','Mauvais Login');}

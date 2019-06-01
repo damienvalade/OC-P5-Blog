@@ -7,12 +7,15 @@ use Core\View\Twig\TwigAdd;
 class FrontController extends Controller
 {
 
+    protected $side;
+    protected $rubric;
+    protected $request;
+
     protected $rootLoader;
     protected $route;
     protected $twig;
     protected $url;
-    protected $page;
-    protected $type = 'Home';
+
     protected $action;
     protected $controller;
     protected $cruder;
@@ -26,7 +29,7 @@ class FrontController extends Controller
         $this->rend();
         $this->urlParser();
         $this->execController();
-        $this->execCrud();
+        $this->execAction();
     }
 
     public function rend()
@@ -46,53 +49,53 @@ class FrontController extends Controller
 
     public function urlParser()
     {
-        if (isset ($_GET['page'])) {
-
-            $this->url = str_replace(' ', '', $_GET['page']);
-            $pages = explode('.', $this->url);
-
-            $this->page = $pages[0];
-
-            if (is_array($pages) && count($pages) >= 2) {
-                $this->type = $pages[1];
-                $this->action = $pages[1];
-            }
-            if (is_array($pages) && count($pages) >= 3) {
-                $this->test = $pages[2];
-            }
+        if (isset ($_GET['side'])) {
+            $this->side = $_GET['side'];
         } else {
-            $this->page = 'public';
+            $this->side = 'public';
+        }
+
+        if(isset ($_GET['rubric']))
+        {
+            $this->rubric = $_GET['rubric'];
+        } else{
+            $this->rubric = 'home';
+        }
+
+        if(isset ($_GET['request']))
+        {
+            $this->request = $_GET['request'];
         }
     }
 
     public function execController()
     {
-        $this->page = ucfirst(strtolower($this->page));
-        $this->type = ucfirst(strtolower($this->type));
+        $this->side = ucfirst(strtolower($this->side));
+        $this->rubric = ucfirst(strtolower($this->rubric));
 
-        $this->controller = $this->type . 'Controller';
-        $this->controller = self::CONST_PATH . $this->page . 'Controller\\' . $this->controller;
+        $this->controller = $this->rubric . 'Controller';
+        $this->controller = self::CONST_PATH . $this->side . 'Controller\\' . $this->controller;
 
-        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->page . 'Controller/' . $this->type . 'Controller.php';
+        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->side . 'Controller/' . $this->rubric . 'Controller.php';
 
         if (file_exists($this->rootLoader)) {
-            if (!class_exists($this->controller) || $this->page === '') {
+            if (!class_exists($this->controller) || $this->side === '') {
                 exit($this->notfound());
             } else {
-                $this->route = $this->page . 'View/Pages/' . $this->type . '.twig';
+                $this->route = $this->side . 'View/Pages/' . $this->rubric . '.twig';
             }
         } else {
             exit($this->notfound());
         }
     }
 
-    public function execCrud()
+    public function execAction()
     {
 
-        if(is_null($this->test )){
-            $this->cruder = $this->action . 'Action';
-        } else{
-            $this->cruder = $this->test . 'Action';
+        if(is_null($this->request )){
+            $this->cruder = $this->rubric . 'Action';
+        }else{
+            $this->cruder = $this->side . 'Action';
         }
 
         if (!method_exists($this->controller, $this->cruder)) {
@@ -102,7 +105,7 @@ class FrontController extends Controller
 
     public function run(string $fastRun = null)
     {
-        $this->execCrud();
+        $this->execAction();
 
         if (isset($fastRun) ) {
 
@@ -118,7 +121,7 @@ class FrontController extends Controller
             }
 
             if (isset($this->test) && !is_null($this->test) && !is_null($response)) {
-                echo $this->twig->render($this->page . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig', $response);
+                echo $this->twig->render($this->side . 'View/pages/' . $this->test . ucfirst($this->action) . '.twig', $response);
             } elseif ($response === NULL)
             {
                 echo $this->twig->render($this->route);

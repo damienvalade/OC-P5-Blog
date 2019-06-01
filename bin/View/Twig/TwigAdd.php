@@ -27,7 +27,9 @@ class TwigAdd extends AbstractExtension
 
     public function currentUrl(string $url = null, array $params = [])
     {
-        $pageCurrent = isset($_GET['page']) ? $_GET['page'] : 'page';
+        $pageCurrent = isset($_GET['side']) ? 'side=' . $_GET['side'] : 'side=public';
+        $pageCurrent .= isset($_GET['rubric']) ? '&rubric=' . $_GET['rubric'] : '';
+        $pageCurrent .= isset($_GET['request']) ? '&request=' . $_GET['request'] : '';
 
         if ($pageCurrent === $url) {
             return ' active';
@@ -38,11 +40,22 @@ class TwigAdd extends AbstractExtension
 
     public function pathPost()
     {
-        if (isset ($_GET['page'])) {
-            $pathPost = 'index.php?page=' . $_GET['page'];
 
-
+        if (isset ($_GET['side'])) {
+            $pathPost = 'index.php?side=' . $_GET['side'];
         }
+
+        if(isset ($_GET['rubric']))
+        {
+            $pathPost .= '&rubric=' . $_GET['rubric'];
+        }
+
+        if(isset ($_GET['request']))
+        {
+            $pathPost .= '&request=' . $_GET['request'];
+        }
+
+
 
         if (isset($_GET['id'])) {
             $pathPost .= '&id=' . $_GET['id'];

@@ -14,20 +14,20 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link {{ currentUrl('public') }}" href="index.php?page=public">Portfolio</a>
+                <a class="nav-link {{ currentUrl('side=public') }}" href="index.php?side=public">Portfolio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ currentUrl('public.articles') }}" href="index.php?page=public.articles">Articles</a>
+                <a class="nav-link {{ currentUrl('side=public&rubric=articles') }}" href="index.php?side=public&rubric=articles">Articles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ currentUrl('public.contact') }}" href="index.php?page=public.contact">Contact</a>
+                <a class="nav-link {{ currentUrl('side=public&rubric=contact') }}" href="index.php?side=public&rubric=contact">Contact</a>
             </li>
             <li class="nav-item">
-                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('public.login') }}" href="index.php?page=public.login"><i class="fa fa-sign-in"></i></a>
+                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('side=public&rubric=login') }}" href="index.php?side=public&rubric=login"><i class="fa fa-sign-in"></i></a>
             </li>
 
             <li class="nav-item">
-                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('public.inscription') }}" href="index.php?page=public.inscription"><i class="fa fa-user-plus"></i></a>
+                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('side=public&rubric=inscription') }}" href="index.php?side=public&rubric=inscription"><i class="fa fa-user-plus"></i></a>
             </li>
 
             <li {{ isLoged('toVisible') }} class="nav-item dropdown">
@@ -36,9 +36,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right ">
                     <h6 class="text-center mt-2 mb-2">{{ userName() }}</h6>
-                    <a class="dropdown-item" href="index.php?page=admin">Dashboard</a>
-                    <a class="dropdown-item" href="index.php?page=admin.settings">Settings</a>
-                    <a class="dropdown-item mb-2" href="index.php?page=public.deconnexion">Déconnexion</a>
+                    <a class="dropdown-item" href="index.php?side=admin">Dashboard</a>
+                    <a class="dropdown-item" href="index.php?side=admin&rubric=settings">Settings</a>
+                    <a class="dropdown-item mb-2" href="index.php?side=public&rubric=deconnexion">Déconnexion</a>
                 </div>
             </li>
         </ul>

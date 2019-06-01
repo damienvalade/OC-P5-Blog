@@ -12,7 +12,7 @@
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
     <div class="row d-flex justify-content-center mt-5 mb-5">
-        <a href="index.php?page=admin.articles.create" class="btn btn-emerauld text-center">Ajouter</a>
+        <a href="index.php?side=admin&rubric=articles&request=create" class="btn btn-emerauld text-center">Ajouter</a>
     </div>
 
 
@@ -36,7 +36,7 @@
                 <td>{{ articles.dateMaj }}</td>
                 <td>{{ articles.titre }}</td>
                 <td>
-                    <a class="fa-text" href="index.php?page=admin.articles.update&id={{ articles.id }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="index.php?side=admin&rubric=articles&request=update&id={{ articles.id }}"><i class="fa fa-pencil-square-o"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
                 </td>

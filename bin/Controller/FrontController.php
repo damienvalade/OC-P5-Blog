@@ -53,7 +53,7 @@ class FrontController extends Controller
     public function urlParser()
     {
         if (isset ($_GET['side'])) {
-            $this->side = filter_input(INPUT_POST, 'side');
+            $this->side = $_GET['side'];
         } else {
             $this->side = 'public';
         }

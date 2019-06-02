@@ -52,20 +52,20 @@ class FrontController extends Controller
 
     public function urlParser()
     {
-        if (isset ($_GET['side'])) {
+        if (!is_null(filter_input(INPUT_GET, 'side'))) {
             $this->side = filter_input(INPUT_GET, 'side');
         } else {
             $this->side = 'public';
         }
 
-        if(isset ($_GET['rubric']))
+        if(!is_null(filter_input(INPUT_GET, 'rubric')))
         {
             $this->rubric = filter_input(INPUT_GET, 'rubric');
         } else{
             $this->rubric = 'home';
         }
 
-        if(isset ($_GET['request']))
+        if(!is_null(filter_input(INPUT_GET, 'request')))
         {
             $this->request = filter_input(INPUT_GET, 'request');
         }

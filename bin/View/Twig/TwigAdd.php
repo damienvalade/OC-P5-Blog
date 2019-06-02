@@ -27,9 +27,22 @@ class TwigAdd extends AbstractExtension
 
     public function currentUrl(string $url = null, array $params = [])
     {
-        $pageCurrent = isset($_GET['side']) ? 'side=' . $_GET['side'] : 'side=public';
-        $pageCurrent .= isset($_GET['rubric']) ? '&rubric=' . $_GET['rubric'] : '';
-        $pageCurrent .= isset($_GET['request']) ? '&request=' . $_GET['request'] : '';
+
+        if (!is_null(filter_input(INPUT_GET, 'side'))) {
+            $pageCurrent = 'side=' . filter_input(INPUT_GET, 'side', FILTER_SANITIZE_STRING);
+        } else {
+            $pageCurrent = 'side=public';
+        }
+
+        if(!is_null(filter_input(INPUT_GET, 'rubric')))
+        {
+            $pageCurrent .= '&rubric=' . filter_input(INPUT_GET, 'rubric', FILTER_SANITIZE_STRING);
+        }
+
+        if(!is_null(filter_input(INPUT_GET, 'request')))
+        {
+            $pageCurrent .= '&request=' . filter_input(INPUT_GET, 'request', FILTER_SANITIZE_STRING);
+        }
 
         if ($pageCurrent === $url) {
             return ' active';

@@ -116,5 +116,19 @@ class Session
         return self::isLogged() === false ? null : $_SESSION['user']['level'];
     }
 
+    public function setValue($key){
+        if(filter_var($_SESSION[$key])){
+            return isset($_SESSION[$key]) ? $_SESSION[$key] : false;
+        }
+    }
+
+    public function getValue($key, $value){
+        if(filter_var($_SESSION[$key])){
+            $_SESSION[$key] = $value;
+        }
+
+    }
+
+
 
 }

@@ -23,25 +23,17 @@ class UserssettingsController extends FrontController
 
     public function indexAction()
     {
-        if( $this->session->isLogged())
+
+        $response = [ 'path' => $this->unauthorized(),
+            'data' => [],
+        ];
+
+        if( $this->session->isLogged() && $this->session->isAdmin() === true)
         {
-            if( $this->session->isAdmin() === true){
-
-                $this->data = $this->database->innerJoin();
-
-                $response = [ 'path' => 'AdminView/Pages/userssettings.twig',
-                    'data' => ['users' => $this->data]
-                ];
-
-            }else{
-                $response = [ 'path' => $this->unauthorized(),
-                    'data' => []
-                ];
-            }
-        }else{
-            $response = [ 'path' => $this->unauthorized(),
-                'data' => []
+            $response = [ 'path' => 'AdminView/Pages/userssettings.twig',
+                'data' => ['users' => $this->data]
             ];
+
         }
 
         return $response;

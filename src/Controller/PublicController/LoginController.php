@@ -52,6 +52,72 @@ class LoginController extends FrontController
                 }else{ $this->session->setError('login','Mauvais Login');}
             }
         }
+        $response = [ 'path' => 'PublicView/Pages/login.twig',
+            'data' => [],
+        ];
+
+        return $response;
+    }
+
+
+    public function subcribeAction()
+    {
+        if (!empty($_POST)) {
+
+            if (!empty($_POST['inputName']) && !empty($_POST['inputEmail'])
+                && !empty($_POST['inputPassword1']) && !empty($_POST['inputPassword2'])) {
+
+                $username = $_POST['inputName'];
+                $eamail = $_POST['inputEmail'];
+                $password = $_POST['inputPassword1'];
+                $passwordVerif = $_POST['inputPassword2'];
+                $nom = $_POST['inputNom'];
+                $prenom = $_POST['inputPrenom'];
+
+                $this->users = $this->database->read('users', $eamail, 'email', true);
+
+                if (!is_object($this->users)) {
+
+                    $filename = $this->upload('photoprofil', $username);
+
+                    if ($password === $passwordVerif) {
+                        $data = [
+                            'firstname' => $prenom,
+                            'name' => $nom,
+                            'username' => $username,
+                            'password' => $password,
+                            'email' => $eamail,
+                            'image' => 'img\\\\photoprofil\\\\' . $filename,
+                            'level_administration' => '3'
+                        ];
+
+                        $this->database->create('users', $data);
+
+                        $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+
+                    } else {
+                        $this->session->setError('inscription', 'Mot de passe différent');
+                    }
+                }else{ $this->session->setError('inscription', 'Adresse Email déjà utilisé'); }
+            }
+        }
+        $response = [ 'path' => 'PublicView/Pages/inscription.twig',
+            'data' => [],
+        ];
+
+        return $response;
+    }
+
+    public function disconnectAction()
+    {
+        $_SESSION['user'] = '';
+        session_destroy();
+
+        $response = [ 'path' => 'PublicView/Pages/home.twig',
+            'data' => [],
+        ];
+
+        return $response;
     }
 
 }

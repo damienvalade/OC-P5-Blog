@@ -2,10 +2,16 @@
 
 namespace App\Controller\PublicController;
 
-class HomeController
+use Core\Controller\FrontController;
+
+class HomeController extends FrontController
 {
     public function indexAction()
     {
+        $response = [ 'path' => 'PublicView/Pages/home.twig',
+            'data' => []
+        ];
 
+        return $response;
     }
 }

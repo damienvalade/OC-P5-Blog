@@ -52,22 +52,20 @@ class FrontController extends Controller
 
     public function urlParser()
     {
-        if (isset ($_GET['side'])) {
-            $this->side = filter_input(INPUT_POST, 'side');
+        if (filter_input(INPUT_GET, 'side') !== null) {
+            $this->side = filter_input(INPUT_GET, 'side');
         } else {
             $this->side = 'public';
         }
 
-        if(isset ($_GET['rubric']))
-        {
-            $this->rubric = $_GET['rubric'];
-        } else{
+        if (filter_input(INPUT_GET, 'rubric') !== null) {
+            $this->rubric = filter_input(INPUT_GET, 'rubric');
+        } else {
             $this->rubric = 'home';
         }
 
-        if(isset ($_GET['request']))
-        {
-            $this->request = $_GET['request'];
+        if (filter_input(INPUT_GET, 'request') !== null) {
+            $this->request = filter_input(INPUT_GET, 'request');
         }
     }
 
@@ -96,9 +94,9 @@ class FrontController extends Controller
 
     public function execAction()
     {
-        if(is_null($this->request )){
+        if ($this->request === null) {
             $this->cruder = $this->rubric . 'Action';
-        }else{
+        } else {
             $this->cruder = $this->request . 'Action';
         }
 
@@ -107,39 +105,21 @@ class FrontController extends Controller
         }
     }
 
-    public function run(string $fastRun = null)
+    public function run()
     {
 
-        if($this->isError === false){
-            if (isset($fastRun) ) {
+        var_dump($this->controller);
+        var_dump($this->cruder);
 
-                echo $this->twig->render($fastRun);
+        if (class_exists($this->controller)) {
+            $this->controller = new $this->controller;
+            $response = call_user_func([$this->controller, $this->cruder]);
 
-            } else {
-
-                if (class_exists($this->controller)) {
-
-                    $this->controller = new $this->controller;
-                    $response = call_user_func([$this->controller, $this->cruder]);
-
-                }
-
-                if (isset($this->request) && !is_null($this->request) && !is_null($response)) {
-                    echo $this->twig->render($this->side . 'View/pages/' . $this->request . ucfirst($this->rubric) . '.twig', $response);
-
-                } elseif ($response === NULL)
-                {
-                    echo $this->twig->render($this->route);
-                }
-                else {
-                    echo $this->twig->render($this->route, $response);
-                }
-
-            }
+            echo $this->twig->render($response['path'], $response['data']);
         }else{
-            $error = $this->typeError;
-            $this->isError = false;
-            $this->$error();
+            $this->notfound();
+            echo $this->twig->render($this->notfound());
         }
     }
+
 }

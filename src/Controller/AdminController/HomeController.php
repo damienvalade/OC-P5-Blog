@@ -13,13 +13,23 @@ class HomeController extends FrontController
         {
             if( Session::isAdmin() === true){
 
+                $response = [ 'path' => 'AdminView/Pages/home.twig',
+                    'data' => [],
+                ];
+
 
 
             }else{
-                exit($this->unauthorized());
+                $response = [ 'path' => $this->unauthorized(),
+                    'data' => [],
+                ];
             }
         }else{
-            exit($this->unauthorized());
+            $response = [ 'path' => $this->unauthorized(),
+                'data' => [],
+            ];
         }
+
+        return $response;
     }
 }

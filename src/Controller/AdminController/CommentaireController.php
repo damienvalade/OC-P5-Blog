@@ -20,6 +20,10 @@ class CommentaireController
     {
         $this->data = $this->database->innerJoin('','','');
 
-        return [ 'commentaire' => $this->data] ;
+        $response = [ 'path' => 'AdminView/Pages/commentaire.twig',
+            'data' => ['commentaire' => $this->data],
+        ];
+
+        return $response;
     }
 }

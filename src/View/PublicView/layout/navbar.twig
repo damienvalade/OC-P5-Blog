@@ -27,7 +27,7 @@
             </li>
 
             <li class="nav-item">
-                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('side=public&rubric=inscription') }}" href="index.php?side=public&rubric=inscription"><i class="fa fa-user-plus"></i></a>
+                <a {{ isLoged('toHidde') }} class="nav-link {{ currentUrl('side=public&rubric=login&action=subcribe') }}" href="index.php?side=public&rubric=login&request=subcribe"><i class="fa fa-user-plus"></i></a>
             </li>
 
             <li {{ isLoged('toVisible') }} class="nav-item dropdown">
@@ -38,7 +38,7 @@
                     <h6 class="text-center mt-2 mb-2">{{ userName() }}</h6>
                     <a class="dropdown-item" href="index.php?side=admin">Dashboard</a>
                     <a class="dropdown-item" href="index.php?side=admin&rubric=settings">Settings</a>
-                    <a class="dropdown-item mb-2" href="index.php?side=public&rubric=deconnexion">Déconnexion</a>
+                    <a class="dropdown-item mb-2" href="index.php?side=public&rubric=login&request=disconnect">Déconnexion</a>
                 </div>
             </li>
         </ul>

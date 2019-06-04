@@ -23,20 +23,28 @@ class UserssettingsController extends FrontController
 
     public function indexAction()
     {
-        if( Session::isLogged())
+        if( $this->session->isLogged())
         {
-            if( Session::isAdmin() === true){
+            if( $this->session->isAdmin() === true){
 
                 $this->data = $this->database->innerJoin('','','');
 
-                return ['users' => $this->data] ;
+                $response = [ 'path' => 'AdminView/Pages/userssettings.twig',
+                    'data' => ['users' => $this->data]
+                ];
 
             }else{
-                exit($this->unauthorized());
+                $response = [ 'path' => $this->unauthorized(),
+                    'data' => []
+                ];
             }
         }else{
-            exit($this->unauthorized());
+            $response = [ 'path' => $this->unauthorized(),
+                'data' => []
+            ];
         }
+
+        return $response;
     }
 
     public function updateAction(){
@@ -45,7 +53,12 @@ class UserssettingsController extends FrontController
 
         $this->data = $this->database->read('users', $id, 'id', true);
 
-        return ['users' => $this->data] ;
+
+        $response = [ 'path' => 'AdminView/Pages/updateUserssettings.twig',
+            'data' => ['users' => $this->data],
+        ];
+
+        return $response;
     }
 
     public function createAction(){
@@ -90,6 +103,10 @@ class UserssettingsController extends FrontController
             }
         }
 
-        return ['users' => $this->data] ;
+        $response = [ 'path' => 'AdminView/Pages/createUserssettings.twig',
+            'data' => ['users' => $this->data],
+        ];
+
+        return $response; ;
     }
 }

@@ -19,6 +19,10 @@ class ArticlesController extends FrontController
     {
         $this->data = $this->database->read('articles');
 
-        return ['articles' => $this->data] ;
+        $response = [ 'path' => 'PublicView/Pages/articles.twig',
+            'data' => ['articles' => $this->data],
+            ];
+
+        return $response;
     }
 }

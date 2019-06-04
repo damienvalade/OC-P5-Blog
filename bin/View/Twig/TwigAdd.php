@@ -25,23 +25,27 @@ class TwigAdd extends AbstractExtension
     }
 
 
-    public function currentUrl(string $url = null, array $params = [])
+    public function currentUrl(string $url = null)
     {
 
-        if (!is_null(filter_input(INPUT_GET, 'side'))) {
-            $pageCurrent = 'side=' . filter_input(INPUT_GET, 'side', FILTER_SANITIZE_STRING);
+        $side = filter_input(INPUT_GET, 'side');
+        $rubric = filter_input(INPUT_GET, 'rubric');
+        $request = filter_input(INPUT_GET, 'request');
+
+        if ($side !== null) {
+            $pageCurrent = 'side=' . $side;
         } else {
             $pageCurrent = 'side=public';
         }
 
-        if(!is_null(filter_input(INPUT_GET, 'rubric')))
+        if($rubric !== null)
         {
-            $pageCurrent .= '&rubric=' . filter_input(INPUT_GET, 'rubric', FILTER_SANITIZE_STRING);
+            $pageCurrent .= '&rubric=' . $rubric;
         }
 
-        if(!is_null(filter_input(INPUT_GET, 'request')))
+        if($request !== null)
         {
-            $pageCurrent .= '&request=' . filter_input(INPUT_GET, 'request', FILTER_SANITIZE_STRING);
+            $pageCurrent .= '&request=' . $request;
         }
 
         if ($pageCurrent === $url) {
@@ -54,24 +58,27 @@ class TwigAdd extends AbstractExtension
     public function pathPost()
     {
 
-        if (isset ($_GET['side'])) {
-            $pathPost = 'index.php?side=' . $_GET['side'];
+        $side = filter_input(INPUT_GET, 'side');
+        $rubric = filter_input(INPUT_GET, 'rubric');
+        $request = filter_input(INPUT_GET, 'request');
+        $id_path = filter_input(INPUT_GET, 'id');
+
+        if ($side !== null) {
+            $pathPost = 'index.php?side=' . $side;
         }
 
-        if(isset ($_GET['rubric']))
+        if($rubric !== null)
         {
-            $pathPost .= '&rubric=' . $_GET['rubric'];
+            $pathPost .= '&rubric=' . $rubric;
         }
 
-        if(isset ($_GET['request']))
+        if($request !== null)
         {
-            $pathPost .= '&request=' . $_GET['request'];
+            $pathPost .= '&request=' . $request;
         }
 
-
-
-        if (isset($_GET['id'])) {
-            $pathPost .= '&id=' . $_GET['id'];
+        if ($id_path !== null) {
+            $pathPost .= '&id=' . $id_path;
         }
 
         return $pathPost;
@@ -114,10 +121,6 @@ class TwigAdd extends AbstractExtension
         }
     }
 
-    public function authorized()
-    {
-
-    }
 
     public function userName()
     {

@@ -21,38 +21,39 @@ class LoginController extends FrontController
 
     public function loginAction()
     {
-        if (!empty($_POST)) {
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-            if(!empty($_POST['password']) && !empty($_POST['username'])) {
+        if ($username !== null && $password !== null) {
 
-                $username = $_POST['username'];
-                $password = $_POST['password'];
+            $this->users = $this->database->read('users', $username, 'username', true);
 
-                $this->users = $this->database->read('users', $username, 'username', true);
+            if (is_null($this->users->image)) {
+                $this->users->image = 'img\photoprofil\default.png';
+            }
 
-                if(is_null($this->users->image))
-                {
-                    $this->users->image = 'img\photoprofil\default.png';
+            if (is_object($this->users)) {
+                if ($password === $this->users->password) {
+
+                    $this->session->createSession(
+                        $this->users->id,
+                        $this->users->username,
+                        $this->users->email,
+                        $this->users->image,
+                        $this->users->level_administration
+                    );
+
+                    header('Location: index.php?side=admin');
+
+                } else {
+                    $this->session->setError('login', 'Mauvais Password');
                 }
-
-                if(is_object($this->users)){
-                    if ($password === $this->users->password) {
-
-                        $this->session->createSession(
-                            $this->users->id,
-                            $this->users->username,
-                            $this->users->email,
-                            $this->users->image,
-                            $this->users->level_administration
-                        );
-
-                        header('Location: index.php?side=admin');
-
-                    }else{ $this->session->setError('login', 'Mauvais Password'); }
-                }else{ $this->session->setError('login','Mauvais Login');}
+            } else {
+                $this->session->setError('login', 'Mauvais Login');
             }
         }
-        $response = [ 'path' => 'PublicView/Pages/login.twig',
+
+        $response = ['path' => 'PublicView/Pages/login.twig',
             'data' => [],
         ];
 
@@ -62,46 +63,47 @@ class LoginController extends FrontController
 
     public function subcribeAction()
     {
-        if (!empty($_POST)) {
 
-            if (!empty($_POST['inputName']) && !empty($_POST['inputEmail'])
-                && !empty($_POST['inputPassword1']) && !empty($_POST['inputPassword2'])) {
+        $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, 'inputPassword1', FILTER_SANITIZE_STRING);
+        $passwordVerif = filter_input(INPUT_POST, 'inputPassword2', FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_POST, 'inputNom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'inputPrenom', FILTER_SANITIZE_SPECIAL_CHARS);
 
-                $username = $_POST['inputName'];
-                $eamail = $_POST['inputEmail'];
-                $password = $_POST['inputPassword1'];
-                $passwordVerif = $_POST['inputPassword2'];
-                $nom = $_POST['inputNom'];
-                $prenom = $_POST['inputPrenom'];
+        if ($username !== null && $eamail !== null
+            && $password !== null && $passwordVerif !== null) {
 
-                $this->users = $this->database->read('users', $eamail, 'email', true);
+            $this->users = $this->database->read('users', $eamail, 'email', true);
 
-                if (!is_object($this->users)) {
+            if (!is_object($this->users)) {
 
-                    $filename = $this->upload('photoprofil', $username);
+                $filename = $this->upload('photoprofil', $username);
 
-                    if ($password === $passwordVerif) {
-                        $data = [
-                            'firstname' => $prenom,
-                            'name' => $nom,
-                            'username' => $username,
-                            'password' => $password,
-                            'email' => $eamail,
-                            'image' => 'img\\\\photoprofil\\\\' . $filename,
-                            'level_administration' => '3'
-                        ];
+                if ($password === $passwordVerif) {
+                    $data = [
+                        'firstname' => $prenom,
+                        'name' => $nom,
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $eamail,
+                        'image' => 'img\\\\photoprofil\\\\' . $filename,
+                        'level_administration' => '3'
+                    ];
 
-                        $this->database->create('users', $data);
+                    $this->database->create('users', $data);
 
-                        $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
 
-                    } else {
-                        $this->session->setError('inscription', 'Mot de passe différent');
-                    }
-                }else{ $this->session->setError('inscription', 'Adresse Email déjà utilisé'); }
+                } else {
+                    $this->session->setError('inscription', 'Mot de passe différent');
+                }
+            } else {
+                $this->session->setError('inscription', 'Adresse Email déjà utilisé');
             }
         }
-        $response = [ 'path' => 'PublicView/Pages/inscription.twig',
+
+        $response = ['path' => 'PublicView/Pages/inscription.twig',
             'data' => [],
         ];
 
@@ -113,7 +115,7 @@ class LoginController extends FrontController
         $_SESSION['user'] = '';
         session_destroy();
 
-        $response = [ 'path' => 'PublicView/Pages/home.twig',
+        $response = ['path' => 'PublicView/Pages/home.twig',
             'data' => [],
         ];
 

@@ -8,7 +8,7 @@ use Core\Model\Model;
 
 class CommentaireModel extends Model
 {
-    public function innerJoin(string $table, string $value, string $on)
+    public function innerJoin()
     {
         $querry = 'SELECT articles.nomArticle, commentaire.commentaire, users.firstname, commentaire.dateCreation
                     FROM commentaire

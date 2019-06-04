@@ -27,7 +27,7 @@ class UserssettingsController extends FrontController
         {
             if( $this->session->isAdmin() === true){
 
-                $this->data = $this->database->innerJoin('','','');
+                $this->data = $this->database->innerJoin();
 
                 $response = [ 'path' => 'AdminView/Pages/userssettings.twig',
                     'data' => ['users' => $this->data]
@@ -49,10 +49,41 @@ class UserssettingsController extends FrontController
 
     public function updateAction(){
 
-        $id = (int)$_GET['id'];
+        $id_user = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        $this->data = $this->database->read('users', $id, 'id', true);
+        $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
+        $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, 'inputPassword1', FILTER_SANITIZE_STRING);
+        $passwordVerif = filter_input(INPUT_POST, 'inputPassword2', FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_POST, 'inputNom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'inputPrenom', FILTER_SANITIZE_SPECIAL_CHARS);
 
+        if ($username !== null && $eamail !== null
+            && $password !== null && $passwordVerif !== null) {
+
+                $filename = $this->upload('photoprofil', $username);
+
+                if ($password === $passwordVerif) {
+                    $data = [
+                        'firstname' => $prenom,
+                        'name' => $nom,
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $eamail,
+                        'image' => 'img\\\\photoprofil\\\\' . $filename,
+                        'level_administration' => '3'
+                    ];
+
+                    $this->database->update('users', $id_user, $data, 'id');
+
+                    $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+
+                } else {
+                    $this->session->setError('inscription', 'Mot de passe différent');
+                }
+        }
+
+        $this->data = $this->database->read('users', $id_user, 'id', true);
 
         $response = [ 'path' => 'AdminView/Pages/updateUserssettings.twig',
             'data' => ['users' => $this->data],
@@ -63,17 +94,15 @@ class UserssettingsController extends FrontController
 
     public function createAction(){
 
-        if (!empty($_POST)) {
+            $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
+            $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
+            $password = filter_input(INPUT_POST, 'inputPassword1', FILTER_SANITIZE_STRING);
+            $passwordVerif = filter_input(INPUT_POST, 'inputPassword2', FILTER_SANITIZE_STRING);
+            $nom = filter_input(INPUT_POST, 'inputNom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, 'inputPrenom', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            if (!empty($_POST['inputName']) && !empty($_POST['inputEmail'])
-                && !empty($_POST['inputPassword1']) && !empty($_POST['inputPassword2'])) {
-
-                $username = $_POST['inputName'];
-                $eamail = $_POST['inputEmail'];
-                $password = $_POST['inputPassword1'];
-                $passwordVerif = $_POST['inputPassword2'];
-                $nom = $_POST['inputNom'];
-                $prenom = $_POST['inputPrenom'];
+            if ($username !== null && $eamail !== null
+                && $password !== null && $passwordVerif !== null) {
 
                 $this->users = $this->database->read('users', $eamail, 'email', true);
 
@@ -101,7 +130,6 @@ class UserssettingsController extends FrontController
                     }
                 }else{ $this->session->setError('inscription', 'Adresse Email déjà utilisé'); }
             }
-        }
 
         $response = [ 'path' => 'AdminView/Pages/createUserssettings.twig',
             'data' => ['users' => $this->data],

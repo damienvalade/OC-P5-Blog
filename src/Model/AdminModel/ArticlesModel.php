@@ -8,7 +8,7 @@ use Core\Model\Model;
 
 class ArticlesModel extends Model
 {
-    public function innerJoin(string $table, string $value, string $on)
+    public function innerJoin()
     {
         $querry = 'SELECT articles.id, articles.nomArticle, articles.auteurArticle, articles.dateCreation, articles.dateMaj, categories.titre
                     FROM articles

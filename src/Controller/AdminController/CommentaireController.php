@@ -18,7 +18,7 @@ class CommentaireController
 
     public function indexAction()
     {
-        $this->data = $this->database->innerJoin('','','');
+        $this->data = $this->database->innerJoin();
 
         $response = [ 'path' => 'AdminView/Pages/commentaire.twig',
             'data' => ['commentaire' => $this->data],

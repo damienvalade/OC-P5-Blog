@@ -7,27 +7,25 @@ use Core\Controller\Session\Session;
 
 class HomeController extends FrontController
 {
+    protected $session;
+
+    public function __construct()
+    {
+     $this->session = new Session();
+    }
+
     public function indexAction()
     {
-        if( Session::isLogged())
-        {
-            if( Session::isAdmin() === true){
+        $response = [ 'path' => $this->unauthorized(),
+            'data' => [],
+        ];
 
+        if( $this->session->isLogged() && $this->session->isAdmin() === true)
+        {
                 $response = [ 'path' => 'AdminView/Pages/home.twig',
                     'data' => [],
                 ];
 
-
-
-            }else{
-                $response = [ 'path' => $this->unauthorized(),
-                    'data' => [],
-                ];
-            }
-        }else{
-            $response = [ 'path' => $this->unauthorized(),
-                'data' => [],
-            ];
         }
 
         return $response;

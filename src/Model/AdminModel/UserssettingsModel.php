@@ -6,7 +6,7 @@ use Core\Model\Model;
 
 class UserssettingsModel extends Model
 {
-    public function innerJoin(string $table, string $value, string $on)
+    public function innerJoin()
     {
         $querry = 'SELECT users.id, users.name, users.Firstname, users.username, users.email, users.image,  administration_type.type
                     FROM users

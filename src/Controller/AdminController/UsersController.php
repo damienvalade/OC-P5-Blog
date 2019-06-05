@@ -4,11 +4,11 @@
 namespace App\Controller\AdminController;
 
 
-use App\Model\AdminModel\UserssettingsModel;
+use App\Model\AdminModel\UsersModel;
 use Core\Controller\FrontController;
 use Core\Controller\Session\Session;
 
-class UserssettingsController extends FrontController
+class UsersController extends FrontController
 {
 
     protected $data;
@@ -17,7 +17,7 @@ class UserssettingsController extends FrontController
 
     public function __construct()
     {
-        $this->database = new UserssettingsModel();
+        $this->database = new UsersModel();
         $this->session = new Session();
     }
 
@@ -28,9 +28,11 @@ class UserssettingsController extends FrontController
             'data' => [],
         ];
 
+        $this->data = $this->database->innerjoin();
+
         if( $this->session->isLogged() && $this->session->isAdmin() === true)
         {
-            $response = [ 'path' => 'AdminView/Pages/userssettings.twig',
+            $response = [ 'path' => 'AdminView/Pages/users.twig',
                 'data' => ['users' => $this->data]
             ];
 
@@ -77,7 +79,7 @@ class UserssettingsController extends FrontController
 
         $this->data = $this->database->read('users', $id_user, 'id', true);
 
-        $response = [ 'path' => 'AdminView/Pages/updateUserssettings.twig',
+        $response = [ 'path' => 'AdminView/Pages/updateUsers.twig',
             'data' => ['users' => $this->data],
         ];
 
@@ -123,7 +125,7 @@ class UserssettingsController extends FrontController
                 }else{ $this->session->setError('inscription', 'Adresse Email déjà utilisé'); }
             }
 
-        $response = [ 'path' => 'AdminView/Pages/createUserssettings.twig',
+        $response = [ 'path' => 'AdminView/Pages/createUsers.twig',
             'data' => ['users' => $this->data],
         ];
 

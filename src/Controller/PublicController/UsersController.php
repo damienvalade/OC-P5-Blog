@@ -6,7 +6,7 @@ use Core\Controller\FrontController;
 use Core\Controller\Session\Session;
 use Core\Model\Model;
 
-class LoginController extends FrontController
+class UsersController extends FrontController
 {
 
     protected $users;

@@ -4,7 +4,7 @@ namespace App\Model\AdminModel;
 
 use Core\Model\Model;
 
-class UserssettingsModel extends Model
+class UsersModel extends Model
 {
     public function innerJoin()
     {

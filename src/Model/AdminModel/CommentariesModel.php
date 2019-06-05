@@ -6,7 +6,7 @@ namespace App\Model\AdminModel;
 
 use Core\Model\Model;
 
-class CommentaireModel extends Model
+class CommentariesModel extends Model
 {
     public function innerJoin()
     {

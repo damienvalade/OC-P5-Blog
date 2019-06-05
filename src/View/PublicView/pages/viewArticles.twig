@@ -1,0 +1,28 @@
+{# **************** #}
+{# * ArticlesView * #}
+{# **************** #}
+
+{% extends "/PublicView/layout/layout.twig" %}
+
+{% block titre %}Articles{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
+
+    <div class="card m-5">
+        <img class="card-img-top" src="{{ articles.image }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ articles.nomArticle }}</h5>
+            <p class="card-text">
+                <small class="text-muted">{{ articles.auteurArticle }}</small>
+            </p>
+            <p class="card-text">{{ articles.contenueArticle }}</p>
+            <p class="card-text">
+                <small class="text-muted">{{ articles.dateMaj }}</small>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -18,7 +18,13 @@ class ArticlesController extends FrontController
 
     public function indexAction()
     {
-        $this->data = $this->database->read('articles');
+        $id_type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT);
+
+        if($id_type === null){
+            $this->data = $this->database->read('articles');
+        }else{
+            $this->data = $this->database->query('select * from articles where id_categories =' . $id_type);
+        }
 
         $this->data2 = $this->database->read('categories');
 
@@ -34,7 +40,7 @@ class ArticlesController extends FrontController
 
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        $this->data = $this->database->read('articles', $id_article, 'id', true);
+        $this->data = $this->database->prepare('articles', $id_article, 'id', true);
 
         $response = [ 'path' => 'PublicView/Pages/viewArticles.twig',
             'data' => ['articles' => $this->data],

@@ -11,16 +11,39 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
-    {% for articles in articles %}
-    <div class="card m-5">
-        <img class="card-img-top" src="{{ articles.image }}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{ articles.nomArticle }}</h5>
-            <p class="card-text"><small class="text-muted">{{ articles.auteurArticle }}</small></p>
-            <p class="card-text">{{ articles.contenueArticle }}</p>
-            <p class="card-text"><small class="text-muted">{{ articles.dateMaj }}</small></p>
+    <div class="container w100">
+        <div class="row">
+            <div class="col-md-10 pl-0 pr-0">
+                {% for articles in articles %}
+                    <div class="card m-5">
+                        <img class="card-img-top" src="{{ articles.image }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ articles.nomArticle }}</h5>
+                            <p class="card-text">
+                                <small class="text-muted">{{ articles.auteurArticle }}</small>
+                            </p>
+                            <p class="card-text">{{ articles.contenueArticle }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">{{ articles.dateMaj }}</small>
+                            </p>
+                            <a href="index.php?side=public&rubric=articles&request=view&id={{ articles.id }}"
+                               class="btn btn-emerauld text-center">Voir Plus</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-2 pl-0 pr-0">
+                <div>
+                    <ul>
+                        {% for categories in categories %}
+                            <li><a href="index.php?side=public&rubric=articles&type={{ categories.id }}"
+                                   class="btn btn-emerauld text-center">{{ categories.titre }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    {% endfor %}
 
 {% endblock %}

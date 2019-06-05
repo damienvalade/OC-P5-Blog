@@ -4,23 +4,23 @@
 namespace App\Controller\AdminController;
 
 
-use App\Model\AdminModel\CommentaireModel;
+use App\Model\AdminModel\CommentariesModel;
 
-class CommentaireController
+class CommentariesController
 {
     protected $data;
     protected $database;
 
     public function __construct()
     {
-        $this->database = new CommentaireModel();
+        $this->database = new CommentariesModel();
     }
 
     public function indexAction()
     {
         $this->data = $this->database->innerJoin();
 
-        $response = [ 'path' => 'AdminView/Pages/commentaire.twig',
+        $response = [ 'path' => 'AdminView/Pages/commentaries.twig',
             'data' => ['commentaire' => $this->data],
         ];
 

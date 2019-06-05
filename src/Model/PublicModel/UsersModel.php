@@ -2,7 +2,7 @@
 
 namespace App\Model\PublicModel;
 
-class LoginModel
+class UsersModel
 {
 
 }

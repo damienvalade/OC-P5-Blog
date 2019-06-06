@@ -3,6 +3,7 @@
 namespace Core\Controller;
 
 use Core\Controller\Session\Session;
+use Core\Model\Database\Database;
 
 class Controller
 {
@@ -56,5 +57,4 @@ class Controller
             return $uniqname;
         }
     }
-
 }

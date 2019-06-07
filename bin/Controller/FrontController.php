@@ -37,7 +37,6 @@ class FrontController extends Controller
 
     public function rend()
     {
-
         $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__DIR__)) . '/src/View');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,
@@ -47,7 +46,6 @@ class FrontController extends Controller
         $twig->addExtension(new TwigAdd());
 
         $this->twig = $twig;
-
     }
 
     public function urlParser()
@@ -107,10 +105,6 @@ class FrontController extends Controller
 
     public function run()
     {
-
-        var_dump($this->controller);
-        var_dump($this->cruder);
-
         if (class_exists($this->controller)) {
             $this->controller = new $this->controller;
             $response = call_user_func([$this->controller, $this->cruder]);
@@ -121,5 +115,4 @@ class FrontController extends Controller
             echo $this->twig->render($this->notfound());
         }
     }
-
 }

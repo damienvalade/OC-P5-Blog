@@ -8,6 +8,7 @@ use Core\Model\Model;
 class AdministrationController
 {
     protected $database;
+    protected $data;
 
     public function __construct()
     {
@@ -17,17 +18,10 @@ class AdministrationController
     public function indexAction()
     {
 
-        $view = $this->database->query('SELECT * FROM view');
-
-        $dashboard = fopen(dirname(dirname(dirname(__dir__))) . '/public/json/dashboard.json', 'w+');
-
-        $data = json_encode($view);
-
-        fwrite($dashboard, $data);
-        fclose($dashboard);
+        $this->data = $this->database->query('SELECT * FROM view');
 
         $response = [ 'path' => 'AdminView/Pages/administration.twig',
-            'data' => [],
+            'data' => ['view' => $this->data]
         ];
 
         return $response;

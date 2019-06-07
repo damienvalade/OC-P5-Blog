@@ -11,6 +11,14 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>dministration</h2>
 
+
+    {% for view in view %}
+
+        <h1>{{ view.nb_view }}</h1>
+        <h1>{{ view.page }}</h1>
+
+    {% endfor %}
+
     <canvas id="myChart" style="position: relative; height:30vh; width:60vw"></canvas>
 
 
@@ -20,71 +28,54 @@
 
     <script>
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "http://localhost/OC-P5-Blog/public/json/dashboard.json", true);
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-                courses = JSON.parse(xmlhttp.responseText);
 
-                console.log(courses["0"]);
-                console.log(courses["1"]);
-                console.log(courses["2"]);
-                console.log(courses["3"]);
+        view = [];
+        page = [];
 
-                view = [];
-                page = [];
+        {% for view in view %}
 
-                for(var i= 0; i < courses.length; i++)
-                {
-                    view.push(courses[i]["nb_view"]);
-                    page.push(courses[i]["page"]);
+        view.push('{{ view.nb_view }}');
+        page.push('{{ view.page }}');
 
-
-                }
-
-
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: page,
-                        datasets: [{
-                            label: '# of Visites',
-                            data: view,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
+        {% endfor %}
+        
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: page,
+                datasets: [{
+                    label: '# of Visites',
+                    data: view,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
                         }
-                    }
-                });
-
+                    }]
+                }
             }
-        };
-
-        xmlhttp.send();
+        });
 
 
     </script>

@@ -10,10 +10,19 @@ include_once '../app/config.php';
 class Cookies
 {
 
-    public function setCookies($name, $value, $time = '')
-    {
+    protected $jwt;
 
-        setcookie($name, $value, time() + 3600, '/');
+    public function __construct()
+    {
+        $this->jwt = new JWT();
+    }
+
+    public function setCookies($name, $value, $time = null)
+    {
+        if($time === null){
+            $time = time() + 3600;
+        }
+        setcookie($name, $value, $time, '/');
     }
 
     public function getCookies($name)
@@ -30,11 +39,12 @@ class Cookies
 
         if($unset !== null){
             unset($unset);
-            setcookie($name, '', time() - 3600);
+            self::setCookies('user','',time() - 3600);
+            return true;
         }
     }
 
-    public function encodeJWT(int $id, string $name, string $email = null, string $image = null, int $level = null)
+    public function encodeJWT(int $id = null, string $name = null, string $email = null, string $image = null, int $level = null)
     {
 
         $key = JWT_KEY;
@@ -48,17 +58,30 @@ class Cookies
         );
 
 
-        $jwt = JWT::encode($token, $key);
+        $jwt = $this->jwt->encode($token, $key);
 
         return $jwt;
     }
 
     public function decodeJWT($token)
     {
-
-        $decoded = JWT::decode($token, JWT_KEY, array('HS256'));
-        $decoded_array = (array)$decoded;
-
-        return $decoded_array;
+        if($token !== null){
+            $decoded = $this->jwt->decode($token, JWT_KEY, array('HS256'));
+            $decoded_array = (array)$decoded;
+            return $decoded_array;
+        }return false;
     }
+
+    public function dataJWT($name, $value){
+
+        $data = self::decodeJWT(self::getCookies($name));
+
+        if(is_array($data)){
+            if(isset($data[$value])){
+                $value = filter_var($data[$value],FILTER_SANITIZE_SPECIAL_CHARS,FILTER_NULL_ON_FAILURE);
+                return $value;
+            }
+        }return false;
+    }
+
 }

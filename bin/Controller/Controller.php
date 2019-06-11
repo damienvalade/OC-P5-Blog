@@ -2,11 +2,17 @@
 
 namespace Core\Controller;
 
-use Core\Controller\Session\Session;
-use Core\Model\Database\Database;
+use Core\Controller\Cookies\Cookies;
 
 class Controller
 {
+    protected $cookies;
+
+    public function __construct()
+    {
+        $this->cookies = new Cookies();
+    }
+
     protected function redirect($page){
         header('Location: ' . $page);
         exit;
@@ -56,7 +62,7 @@ class Controller
             $filePath = dirname(dirname(__DIR__)) . "/public/img/{$fileDir}/{$uniqname}";
             $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $filePath);
             if ($result) {
-                htmlspecialchars(Session::setValidate('fichier', 'Fichier bien transferer'));
+                htmlspecialchars($this->cookies->setCookies('fichier', 'Fichier bien transferer'));
             }
             return $uniqname;
         }

@@ -39,7 +39,7 @@ class Cookies
 
         if($unset !== null){
             unset($unset);
-            self::setCookies('user','',time() - 3600);
+            self::setCookies($name,'',time() - 3600);
             return true;
         }
     }
@@ -83,5 +83,4 @@ class Cookies
             }
         }return false;
     }
-
 }

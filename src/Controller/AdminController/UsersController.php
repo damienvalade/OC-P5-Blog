@@ -5,20 +5,20 @@ namespace App\Controller\AdminController;
 
 
 use App\Model\AdminModel\UsersModel;
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
-use Core\Controller\Session\Session;
 
 class UsersController extends FrontController
 {
 
     protected $data;
     protected $database;
-    protected $session;
+    protected $cookies;
 
     public function __construct()
     {
         $this->database = new UsersModel();
-        $this->session = new Session();
+        $this->cookies = new Cookies();
     }
 
     public function indexAction()
@@ -30,7 +30,7 @@ class UsersController extends FrontController
 
         $this->data = $this->database->innerjoin();
 
-        if( $this->session->isLogged() && $this->session->isAdmin() === true)
+        if( $this->cookies->dataJWT('user','id') !== false )
         {
             $response = [ 'path' => 'AdminView/Pages/users.twig',
                 'data' => ['users' => $this->data]
@@ -70,7 +70,7 @@ class UsersController extends FrontController
 
                     $this->database->update('users', $id_user, $data, 'id');
 
-                    $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
 
                 } else {
                     $this->session->setError('inscription', 'Mot de passe différent');

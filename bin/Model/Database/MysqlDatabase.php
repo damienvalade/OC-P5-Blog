@@ -34,7 +34,6 @@ class MysqlDatabase extends Database
             return $req;
         }
 
-
         if ($one) {
             $data = $req->fetch();
         } else {

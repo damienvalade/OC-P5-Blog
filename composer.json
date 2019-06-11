@@ -25,7 +25,9 @@
         "tracy/tracy": "^2.6",
         "twbs/bootstrap": "^4.3",
         "twig/twig": "^2.8",
-        "components/jquery": "^3.3"
+        "components/jquery": "^3.3",
+        "nnnick/chartjs": "^2.8",
+        "firebase/php-jwt": "^5.0"
     },
     "config": {
         "platform": {

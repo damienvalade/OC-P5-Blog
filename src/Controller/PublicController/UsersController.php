@@ -2,8 +2,8 @@
 
 namespace App\Controller\PublicController;
 
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
-use Core\Controller\Session\Session;
 use Core\Model\Model;
 
 class UsersController extends FrontController
@@ -11,12 +11,12 @@ class UsersController extends FrontController
 
     protected $users;
     protected $database;
-    protected $session;
+    protected $cookies;
 
     public function __construct()
     {
         $this->database = new Model();
-        $this->session = new Session();
+        $this->cookies = new Cookies();
     }
 
     public function loginAction()
@@ -35,15 +35,15 @@ class UsersController extends FrontController
             if (is_object($this->users)) {
                 if ($password === $this->users->password) {
 
-                    $this->session->createSession(
-                        $this->users->id,
+                    $data = $this->cookies->encodeJWT($this->users->id,
                         $this->users->username,
                         $this->users->email,
                         $this->users->image,
-                        $this->users->level_administration
-                    );
+                        $this->users->level_administration);
 
-                    header('Location: index.php?side=admin');
+                    $this->cookies->setCookies('user',$data);
+
+                    $this->redirect('index.php?side=admin');
 
                 } else {
                     $this->session->setError('login', 'Mauvais Password');
@@ -112,8 +112,9 @@ class UsersController extends FrontController
 
     public function disconnectAction()
     {
-        $_SESSION['user'] = '';
-        session_destroy();
+
+        $this->cookies->unsetCookies('user');
+        $this->redirect('index.php?side=public');
 
         $response = ['path' => 'PublicView/Pages/home.twig',
             'data' => [],

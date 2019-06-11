@@ -3,15 +3,15 @@
 namespace App\Controller\AdminController;
 
 use Core\Controller\FrontController;
-use Core\Controller\Session\Session;
+use Core\Controller\Cookies\Cookies;
 
 class HomeController extends FrontController
 {
-    protected $session;
+    protected $cookies;
 
     public function __construct()
     {
-     $this->session = new Session();
+     $this->cookies = new Cookies();
     }
 
     public function indexAction()
@@ -20,7 +20,7 @@ class HomeController extends FrontController
             'data' => [],
         ];
 
-        if( $this->session->isLogged() && $this->session->isAdmin() === true)
+        if( $this->cookies->dataJWT('user','id') !== false )
         {
                 $response = [ 'path' => 'AdminView/Pages/home.twig',
                     'data' => [],

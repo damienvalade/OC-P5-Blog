@@ -2,12 +2,16 @@
 
 namespace Core\View\Twig;
 
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\Session\Session;
+use http\Cookie;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class TwigAdd extends AbstractExtension
 {
+
+    protected $cookies;
 
     public function getFunctions()
     {
@@ -24,6 +28,10 @@ class TwigAdd extends AbstractExtension
         );
     }
 
+    public function __construct()
+    {
+        $this->cookies = new Cookies();
+    }
 
     public function currentUrl(string $url = null)
     {
@@ -104,7 +112,8 @@ class TwigAdd extends AbstractExtension
 
     public function isLoged(string $howto = null)
     {
-        if (Session::isLogged() === true) {
+
+        if ($this->cookies->dataJWT('user','id') !== false) {
             if ($howto === 'toHidde') {
                 return 'hidden';
             } else if ($howto === 'toVisible') {
@@ -124,17 +133,17 @@ class TwigAdd extends AbstractExtension
 
     public function userName()
     {
-        return Session::isLogged() === true ? ucfirst($_SESSION['user']['name']) : '';
+        return $this->cookies->dataJWT('user','name') !== false ? ucfirst($this->cookies->dataJWT('user','name')) : '';
     }
 
     public function userImage()
     {
-        return Session::isLogged() === true ? $_SESSION['user']['image'] : '';
+        return $this->cookies->dataJWT('user','image') !== false ? ucfirst($this->cookies->dataJWT('user','image')) : '';
     }
 
     public function userLevel()
     {
-        return Session::isLogged() === true ? $_SESSION['user']['level'] : '';
+        return $this->cookies->dataJWT('user','level') !== false ? ucfirst($this->cookies->dataJWT('user','level')) : '';
     }
 
 }

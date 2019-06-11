@@ -3,35 +3,40 @@
 namespace Core\Controller;
 
 use Core\Controller\Session\Session;
+use Core\Model\Database\Database;
 
 class Controller
 {
+    protected function redirect($page){
+        header('Location: ' . $page);
+        exit;
+    }
+
+    protected function redirectError($error){
+        header('HTTP/1.0 ' . $error);
+    }
 
     protected function unauthorized()
     {
-        header('HTTP/1.0 401 Unauthorized');
-
+        self::redirectError('401 Unauthorized');
         return 'ErrorsView/401.twig';
     }
 
     protected function forbidden()
     {
-        header('HTTP/1.0 403 Forbidden');
-
+        self::redirectError('403 Forbidden');
         return 'ErrorsView/403.twig';
     }
 
     protected function notfound()
     {
-        header('HTTP/1.0 404 Not Found');
-
+        self::redirectError('404 Not Found');
         return 'ErrorsView/404.twig';
     }
 
     protected function serverError()
     {
-        header('HTTP/1.0 500 Internal Server Error');
-
+        self::redirectError('500 Internal Server Error');
         return 'ErrorsView/500.twig';
     }
 
@@ -56,5 +61,4 @@ class Controller
             return $uniqname;
         }
     }
-
 }

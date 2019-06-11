@@ -43,7 +43,7 @@ class UsersController extends FrontController
 
                     $this->cookies->setCookies('user',$data);
 
-                    header('Location: index.php?side=admin');
+                    $this->redirect('index.php?side=admin');
 
                 } else {
                     $this->session->setError('login', 'Mauvais Password');
@@ -114,8 +114,7 @@ class UsersController extends FrontController
     {
 
         $this->cookies->unsetCookies('user');
-
-        header('Location: index.php?side=public');
+        $this->redirect('index.php?side=public');
 
         $response = ['path' => 'PublicView/Pages/home.twig',
             'data' => [],

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content=" On peux voir mes super articles avec mon super portfolio !">
+    <meta name="description" content="{%  block description %}{% endblock %}">
     <meta name="author" content="Damien Valade">
 
     <title>{% block titre %}{% endblock %} - Damien Valade</title>
@@ -22,7 +22,6 @@
 
     <link href="../public/css/style.css" rel="stylesheet">
     <link href="../public/css/errors.css" rel="stylesheet">
-    <link href="../public/css/CircularProgressBar.css" rel="stylesheet">
 
 </head>
 
@@ -38,6 +37,7 @@
 
 <script src="../vendor/components/jquery/jquery.min.js"></script>
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../public/js/progressbar.min.js"></script>
 
 {% block script %}{% endblock %}
 

@@ -1,5 +1,18 @@
 /****************************************************************
  *
+ * progressbar decoration
+ *
+*****************************************************************/
+
+.percent{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+/****************************************************************
+ *
  * color decoration
  *
 *****************************************************************/
@@ -185,6 +198,16 @@
 
 .fa-text{
     font-size: 1.2rem !important;
+}
+
+.footer > ul {
+    font-size: 1.5rem;
+    color : #1FA67A !important;
+    list-style:none;
+}
+
+.footer > * a{
+    color : #1FA67A !important;
 }
 
 /****************************************************************
@@ -377,7 +400,7 @@
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -394,13 +417,10 @@
 .flip-card-front {
     background-color: #bbb;
     color: black;
-    z-index: 2;
 }
 
 .flip-card-back {
-    background-color: #2980b9;
+    background-color: #416475;
     color: white;
     transform: rotateY(180deg);
-    z-index: 1;
-    border-radius: .25rem!important;
 }

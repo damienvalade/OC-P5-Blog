@@ -28,12 +28,12 @@ class UsersController extends FrontController
 
             $this->users = $this->database->read('users', $username, 'username', true);
 
-            if (is_null($this->users->image)) {
-                $this->users->image = 'img\photoprofil\default.png';
-            }
-
             if (is_object($this->users)) {
                 if ($password === $this->users->password) {
+
+                    if (is_null($this->users->image)) {
+                        $this->users->image = 'img\photoprofil\default.png';
+                    }
 
                     $data = $this->cookies->encodeJWT($this->users->id,
                         $this->users->username,
@@ -46,10 +46,12 @@ class UsersController extends FrontController
                     $this->redirect('index.php?side=admin');
 
                 } else {
-                    $this->session->setError('login', 'Mauvais Password');
+                    $this->cookies->setCookies('login', 'Mauvais Password');
+                    $this->redirect('index.php?side=public&rubric=users&request=login');
                 }
             } else {
-                $this->session->setError('login', 'Mauvais Login');
+                $this->cookies->setCookies('login', 'Mauvais Login');
+                $this->redirect('index.php?side=public&rubric=users&request=login');
             }
         }
 

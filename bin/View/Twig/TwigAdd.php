@@ -13,6 +13,11 @@ class TwigAdd extends AbstractExtension
 
     protected $cookies;
 
+    public function __construct()
+    {
+        $this->cookies = new Cookies();
+    }
+
     public function getFunctions()
     {
         return array(
@@ -26,11 +31,6 @@ class TwigAdd extends AbstractExtension
             new TwigFunction('validate', array($this, 'validate')),
             new TwigFunction('authorized', array($this, 'authorized')),
         );
-    }
-
-    public function __construct()
-    {
-        $this->cookies = new Cookies();
     }
 
     public function currentUrl(string $url = null)
@@ -92,20 +92,22 @@ class TwigAdd extends AbstractExtension
         return $pathPost;
     }
 
-    public function errors(string $page)
+    public function errors($page)
     {
-        if (isset($_SESSION['error'][$page])) {
-            $error = $_SESSION['error'][$page];
-            $_SESSION['error'][$page] = '';
+        $error = $this->cookies->getCookies($page);
+
+        if ($error !== false) {
+            $this->cookies->unsetCookies($page);
             return $error;
         }
     }
 
     public function validate(string $page)
     {
-        if (isset($_SESSION['validate'][$page])) {
-            $validate = $_SESSION['validate'][$page];
-            $_SESSION['validate'][$page] = '';
+        $validate = $this->cookies->getCookies($page);
+
+        if ($validate !== false) {
+            $this->cookies->unsetCookies($page);
             return $validate;
         }
     }

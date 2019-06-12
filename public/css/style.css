@@ -385,6 +385,22 @@
  * Flip Card
  *
 *****************************************************************/
+@media screen and (max-width: 500px) {
+    .flip-card {
+        background-color: transparent;
+        width: 200px !important;
+        height: 91px !important;
+        perspective: 1000px;
+    }
+
+    .flip-card-back > p {
+        font-size: 0.7rem;
+    }
+
+    .flip-card-back > h3 {
+        font-size: 1rem;
+    }
+}
 
 .flip-card {
     background-color: transparent;

@@ -31,7 +31,7 @@ class UsersController extends FrontController
             if (is_object($this->users)) {
                 if ($password === $this->users->password) {
 
-                    if (is_null($this->users->image)) {
+                    if ($this->users->image === null) {
                         $this->users->image = 'img\photoprofil\default.png';
                     }
 

@@ -12,11 +12,11 @@ Projet de la formation ***Développeur d'application - PHP / Symfony***.
 
 Utilisation du modéle MVC d'un de mes projet personnel :
 
-  * **Damien Valade** - *Eitri* - [Projet](https://github.com/damienvalade/Eitri)
+- **Damien Valade** - *Eitri* - [Projet](https://github.com/damienvalade/Eitri)
 
 ## Auteur
 
-  * **Damien Valade** - *OC-P5-Blog* - [DamienValade](https://github.com/damienvalade)
+- **Damien Valade** - *OC-P5-Blog* - [DamienValade](https://github.com/damienvalade)
 
 ## Badge du projet
 

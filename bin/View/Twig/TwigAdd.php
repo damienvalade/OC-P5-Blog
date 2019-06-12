@@ -104,10 +104,10 @@ class TwigAdd extends AbstractExtension
 
     public function validate(string $page)
     {
-        $validate = $this->cookies->dataJWT('validate','$page');
+        $validate = $this->cookies->getCookies($page);
 
         if ($validate !== false) {
-            $this->cookies->unsetCookies('validate');
+            $this->cookies->unsetCookies($page);
             return $validate;
         }
     }

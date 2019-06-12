@@ -4,6 +4,8 @@
 
 {% extends "/PublicView/layout/layout.twig" %}
 
+
+{%  block description %}Damien Valade {% endblock %}
 {% block titre %}Portfolio{% endblock %}
 
 
@@ -43,45 +45,12 @@
         <h2 class="text-center"><span class="underline">C</span>ompétences</h2>
         <div class="row justify-content-md-center mt-5">
 
-            <div class="c100 p80 green">
-                <span>HTML - CSS</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-
-            <div class="c100 p80 green">
-                <span>Wordpress</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-
-            <div class="c100 p70 green">
-                <span>SQL</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-
-            <div class="c100 p70 green">
-                <span>PHP</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-
-            <div class="c100 p50 green">
-                <span>c++</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
+            <span class="text-center"><div class="percent" id="wordpress"></div>Wordpress</span>
+            <span class="text-center"><div class="percent" id="htmlcss"></div>HTML - CSS</span>
+            <span class="text-center"><div class="percent" id="sql"></div>SQL</span>
+            <span class="text-center"><div class="percent" id="php"></div>PHP</span>
+            <span class="text-center"><div class="percent" id="cpp"></div>c++</span>
+            <span class="text-center"><div class="percent" id="montage"></div>Montage photo - vidéo</span>
 
         </div>
     </section>
@@ -245,4 +214,180 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block script %}
+<script>
+    // progressbar.js@1.0.0 version is used
+    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+    var bar = new ProgressBar.Circle(wordpress, {
+    color: '#aaa',
+    // This has to be the same size as the maximum width to
+    // prevent clipping
+    strokeWidth: 4,
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+    autoStyleContainer: false
+    },
+    from: { color: '#aaa', width: 1 },
+    to: { color: '#1FA67A', width: 4 },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100);
+    if (value === 0) {
+    circle.setText('');
+    } else {
+        circle.setText(value + '%');
+    }
+
+    }
+    });
+    bar.animate(0.8);  // Number from 0.0 to 1.0
+    var bar = new ProgressBar.Circle(htmlcss, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+            autoStyleContainer: false
+        },
+        from: { color: '#aaa', width: 1 },
+        to: { color: '#1FA67A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+            circle.path.setAttribute('stroke-width', state.width);
+
+            var value = Math.round(circle.value() * 100);
+            if (value === 0) {
+                circle.setText('');
+            } else {
+                circle.setText(value + '%');
+            }
+
+        }
+    });
+    bar.animate(0.8);  // Number from 0.0 to 1.0
+    var bar = new ProgressBar.Circle(sql, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+            autoStyleContainer: false
+        },
+        from: { color: '#aaa', width: 1 },
+        to: { color: '#1FA67A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+            circle.path.setAttribute('stroke-width', state.width);
+
+            var value = Math.round(circle.value() * 100);
+            if (value === 0) {
+                circle.setText('');
+            } else {
+                circle.setText(value + '%');
+            }
+
+        }
+    });
+    bar.animate(0.7);  // Number from 0.0 to 1.0
+    var bar = new ProgressBar.Circle(php, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+            autoStyleContainer: false
+        },
+        from: { color: '#aaa', width: 1 },
+        to: { color: '#1FA67A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+            circle.path.setAttribute('stroke-width', state.width);
+
+            var value = Math.round(circle.value() * 100);
+            if (value === 0) {
+                circle.setText('');
+            } else {
+                circle.setText(value + '%');
+            }
+
+        }
+    });
+    bar.animate(0.7);  // Number from 0.0 to 1.0
+    var bar = new ProgressBar.Circle(cpp, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+            autoStyleContainer: false
+        },
+        from: { color: '#aaa', width: 1 },
+        to: { color: '#1FA67A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+            circle.path.setAttribute('stroke-width', state.width);
+
+            var value = Math.round(circle.value() * 100);
+            if (value === 0) {
+                circle.setText('');
+            } else {
+                circle.setText(value + '%');
+            }
+
+        }
+    });
+    bar.animate(0.5);  // Number from 0.0 to 1.0
+    var bar = new ProgressBar.Circle(montage, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+            autoStyleContainer: false
+        },
+        from: { color: '#aaa', width: 1 },
+        to: { color: '#1FA67A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+            circle.path.setAttribute('stroke-width', state.width);
+
+            var value = Math.round(circle.value() * 100);
+            if (value === 0) {
+                circle.setText('');
+            } else {
+                circle.setText(value + '%');
+            }
+
+        }
+    });
+    bar.animate(0.5);  // Number from 0.0 to 1.0
+</script>
 {% endblock %}

@@ -58,7 +58,7 @@ class ArticlesController extends FrontController
 
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        $this->data = $this->database->prepare('articles', $id_article, 'id', true);
+        $this->data = $this->database->read('articles',$id_article,'id',true);
 
         $response = ['path' => 'PublicView/Pages/viewArticles.twig',
             'data' => ['articles' => $this->data],

@@ -158,80 +158,44 @@
  *
 *****************************************************************/
 
-.btn-arrow{
-    padding: .3em 1em;
-    border: 2px solid #1fa67a;
-    color : #1fa67a;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    font-size: 20px;
-    font-weight: 500;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-.btn-arrow:after{
-    margin-left: -1em;
-    opacity: 0;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-
-.btn-arrow:before{
-    margin-left: -1em;
-    opacity: 0;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-.btn-arrow:hover{
-    border: 0px solid;
-    padding: .3em 2em .3em .7em;
-    float: right!important;
+.btn-arrow {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white !important;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    text-decoration: none !important;
+    background-color: #343A40;
 }
 
 .btn-arrow:hover {
-    margin-left: -1em;
-    opacity: 1;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
+    cursor: pointer;
+    color: #84ceb5 !important;
 }
 
-.btn-arrow:hover:after {
-    margin-left: 1rem;
-    opacity: 1;
+.btn-arrow::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 4px solid #343A40;
+    transform-origin: center;
+    transform: scale(1);
 }
+
+.btn-arrow:hover::before {
+    transition: all 0.75s ease-in-out;
+    transform-origin: center;
+    transform: scale(1.75);
+    opacity: 0;
+}
+
 
 /****************************************************************
  *

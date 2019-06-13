@@ -37,12 +37,18 @@ class ArticlesController extends FrontController
     public function indexAction()
     {
         $id_type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT);
+        $id_auteur = filter_input(INPUT_GET, 'auteur', FILTER_SANITIZE_STRING);
 
-        if ($id_type === null) {
+        if($id_auteur !== null){
+                $this->data = $this->database->query("select * from articles where auteurArticle = '$id_auteur'");
+        }elseif ($id_type !== null){
+                $this->data = $this->database->query('select * from articles where id_categories =' . $id_type);
+        }else{
             $this->data = $this->database->read('articles');
-        } else {
-            $this->data = $this->database->query('select * from articles where id_categories =' . $id_type);
         }
+
+
+
 
         $this->data3 = $this->database->query('select auteurArticle from articles GROUP BY auteurArticle');
 

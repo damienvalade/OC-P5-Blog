@@ -49,7 +49,7 @@
                     <h3 class="text-center write-white mt-5 mb-5"><span class="underline">A</span>uteur</h3>
                     <ul>
                         {% for auteur in auteur %}
-                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&type=">
+                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&auteur={{ auteur.auteurArticle }}">
                                     {{ auteur.auteurArticle }}</a></li><hr>
                         {% endfor %}
                     </ul>

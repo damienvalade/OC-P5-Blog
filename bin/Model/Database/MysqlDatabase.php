@@ -25,7 +25,6 @@ class MysqlDatabase extends Database
 
         $req = self::getPDO()->query($statement);
 
-
         if (
             strpos($statement, 'UPDATE') === 0 ||
             strpos($statement, 'INSERT') === 0 ||

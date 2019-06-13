@@ -1,5 +1,28 @@
 /****************************************************************
  *
+ * article side decoration
+ *
+*****************************************************************/
+
+.article-cat > ul{
+    padding-left: 0rem;
+    list-style:none;
+}
+
+.article-cat > * a{
+    color : #1FA67A !important;
+    text-decoration: none;
+}
+
+.article-cat > * hr{
+    background-color: #1FA67A;
+    border: none;
+    height: 2px;
+    margin-top: 0rem;
+}
+
+/****************************************************************
+ *
  * progressbar decoration
  *
 *****************************************************************/

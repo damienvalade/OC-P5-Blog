@@ -32,7 +32,7 @@ class ArticlesController extends FrontController
                 'day' => $date
             ];
 
-            $this->data = $this->database->query('view', $details);
+            $this->data = $this->database->create('view', $details);
         }
 
         foreach ($view as $value => $key) {
@@ -45,7 +45,7 @@ class ArticlesController extends FrontController
                     'day' => $date
                 ];
 
-                $this->data = $this->database->query('view', $details);
+                $this->data = $this->database->create('view', $details);
 
             }elseif ($key['day'] === $date) {
                 $nb_view = $key['nb_view'] + 1;

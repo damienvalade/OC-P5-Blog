@@ -1,5 +1,28 @@
 /****************************************************************
  *
+ * article side decoration
+ *
+*****************************************************************/
+
+.article-cat > ul{
+    padding-left: 0rem;
+    list-style:none;
+}
+
+.article-cat > * a{
+    color : #1FA67A !important;
+    text-decoration: none;
+}
+
+.article-cat > * hr{
+    background-color: #1FA67A;
+    border: none;
+    height: 2px;
+    margin-top: 0rem;
+}
+
+/****************************************************************
+ *
  * progressbar decoration
  *
 *****************************************************************/
@@ -9,6 +32,19 @@
     width: 200px;
     height: 200px;
     position: relative;
+}
+
+@media screen and (max-width: 500px) {
+    .percent{
+        margin: 20px;
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+
+    .percent-text{
+        font-size: 0.7rem;
+    }
 }
 
 /****************************************************************
@@ -44,6 +80,19 @@
 .write-white{
     color : white;
 }
+
+@media screen and (max-width: 500px) {
+    .name-style{
+        font-size: 30px !important;
+        letter-spacing: 6px !important;
+    }
+
+    .status-style{
+        font-size: 10px !important;
+        letter-spacing: 7px !important;
+    }
+}
+
 
 .name-style{
     font-family: 'Rubik',Helvetica,Arial,Lucida,sans-serif;
@@ -109,80 +158,44 @@
  *
 *****************************************************************/
 
-.btn-arrow{
-    padding: .3em 1em;
-    border: 2px solid #1fa67a;
-    color : #1fa67a;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    font-size: 20px;
-    font-weight: 500;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-.btn-arrow:after{
-    margin-left: -1em;
-    opacity: 0;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-
-.btn-arrow:before{
-    margin-left: -1em;
-    opacity: 0;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
-}
-
-.btn-arrow:hover{
-    border: 0px solid;
-    padding: .3em 2em .3em .7em;
-    float: right!important;
+.btn-arrow {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white !important;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    text-decoration: none !important;
+    background-color: #343A40;
 }
 
 .btn-arrow:hover {
-    margin-left: -1em;
-    opacity: 1;
-    text-shadow: none;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: none;
-    text-transform: none;
-    content: ">";
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s;
+    cursor: pointer;
+    color: #84ceb5 !important;
 }
 
-.btn-arrow:hover:after {
-    margin-left: 1rem;
-    opacity: 1;
+.btn-arrow::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 4px solid #343A40;
+    transform-origin: center;
+    transform: scale(1);
 }
+
+.btn-arrow:hover::before {
+    transition: all 0.75s ease-in-out;
+    transform-origin: center;
+    transform: scale(1.75);
+    opacity: 0;
+}
+
 
 /****************************************************************
  *
@@ -385,6 +398,22 @@
  * Flip Card
  *
 *****************************************************************/
+@media screen and (max-width: 500px) {
+    .flip-card {
+        background-color: transparent;
+        width: 200px !important;
+        height: 91px !important;
+        perspective: 1000px;
+    }
+
+    .flip-card-back > p {
+        font-size: 0.7rem;
+    }
+
+    .flip-card-back > h3 {
+        font-size: 1rem;
+    }
+}
 
 .flip-card {
     background-color: transparent;

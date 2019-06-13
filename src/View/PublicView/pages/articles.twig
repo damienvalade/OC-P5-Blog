@@ -11,7 +11,7 @@
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
 
-    <div class="container w100">
+    <div class="container">
         <div class="row">
             <div class="col-md-10 pl-0 pr-0">
                 {% for articles in articles %}
@@ -34,14 +34,27 @@
             </div>
 
             <div class="col-md-2 pl-0 pr-0">
-                <div>
+
+                <div class="article-cat mt-5">
+                    <h3 class="text-center write-white mt-5 mb-5"><span class="underline">C</span>atégories</h3>
                     <ul>
                         {% for categories in categories %}
-                            <li><a href="index.php?side=public&rubric=articles&type={{ categories.id }}"
-                                   class="btn btn-emerauld text-center">{{ categories.titre }}</a></li>
+                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&type={{ categories.id }}">
+                                    {{ categories.titre }}</a></li><hr>
                         {% endfor %}
                     </ul>
                 </div>
+
+                <div class="article-cat mt-5">
+                    <h3 class="text-center write-white mt-5 mb-5"><span class="underline">A</span>uteur</h3>
+                    <ul>
+                        {% for auteur in auteur %}
+                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&type=">
+                                    {{ auteur.auteurArticle }}</a></li><hr>
+                        {% endfor %}
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>

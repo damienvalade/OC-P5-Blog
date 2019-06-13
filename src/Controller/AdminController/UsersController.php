@@ -100,7 +100,7 @@ class UsersController extends FrontController
 
                 $this->users = $this->database->read('users', $eamail, 'email', true);
 
-                if (!is_object($this->users)) {
+                if ($this->users === '') {
 
                     $filename = $this->upload('photoprofil', $username);
 

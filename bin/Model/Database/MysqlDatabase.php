@@ -49,6 +49,7 @@ class MysqlDatabase extends Database
 
         $res = $req->execute($attributes);
 
+
         if (
             strpos($statement, 'UPDATE') === 0 ||
             strpos($statement, 'INSERT') === 0 ||
@@ -56,8 +57,6 @@ class MysqlDatabase extends Database
         ) {
             return $res;
         }
-
-        $req->setFetchMode(PDO::FETCH_OBJ);
 
         if ($one) {
             $data = $req->fetch();

@@ -16,10 +16,10 @@ class Model extends MysqlDatabase
         return $this->query($query);
     }
 
-    public function read(string $table,string $value = null, string $key = null, $one = false)
+    public function read(string $table,string $value = null, string $key = null, $one = true, $exotic = false)
     {
 
-        if($one){
+        if(!$one){
             if (isset($key)) {
                 $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
             } else {
@@ -29,15 +29,22 @@ class Model extends MysqlDatabase
             return $this->prepare($query, [$value], $one);
         }else{
 
+            if($exotic){
+                $query = "SELECT $value FROM $table GROUP BY $value";
+                return $this->query($query);
+            }
+
             $query = 'SELECT * FROM ' . $table;
 
             return $this->query($query);
 
         }
 
+
+
     }
 
-    public function update(string $table, string $value, array $data, string $key = null, $one = false)
+    public function update(string $table, string $value, array $data, string $key = null)
     {
         $set = null;
 
@@ -51,7 +58,7 @@ class Model extends MysqlDatabase
             $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE id = ?';
         }
 
-        return $this->prepare($query, [$value], $one);
+        return $this->prepare($query, [$value]);
     }
 
     public function delete(string $value, string $key = null)

@@ -26,20 +26,30 @@ class UsersController extends FrontController
 
         if ($username !== null && $password !== null) {
 
-            $this->users = $this->database->read('users', $username, 'username', true);
+            $this->users = $this->database->read('users', $username, 'username', false);
 
-            if (is_object($this->users)) {
-                if ($password === $this->users->password) {
+            if ($this->users !== '') {
 
-                    if ($this->users->image === null) {
-                        $this->users->image = 'img\photoprofil\default.png';
+                foreach ($this->users as $value => $key){
+                    $idUSer = $key['id'];
+                    $passwordVerif = $key['password'];
+                    $image = $key['image'];
+                    $username = $key['username'];
+                    $email = $key['email'];
+                    $level_administration = $key['level_administration'];
+                }
+
+                if ($password === $passwordVerif) {
+
+                    if ($image === null) {
+                        $image = 'img\photoprofil\default.png';
                     }
 
-                    $data = $this->cookies->encodeJWT($this->users->id,
-                        $this->users->username,
-                        $this->users->email,
-                        $this->users->image,
-                        $this->users->level_administration);
+                    $data = $this->cookies->encodeJWT($idUSer,
+                        $username,
+                        $email,
+                        $image,
+                        $level_administration);
 
                     $this->cookies->setCookies('user',$data);
 
@@ -78,7 +88,7 @@ class UsersController extends FrontController
 
             $this->users = $this->database->read('users', $eamail, 'email', true);
 
-            if (!is_object($this->users)) {
+            if ($this->users === '') {
 
                 $filename = $this->upload('photoprofil', $username);
 

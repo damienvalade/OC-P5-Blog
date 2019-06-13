@@ -16,20 +16,41 @@ class ArticlesController extends FrontController
     {
         $this->database = new Model();
 
-        $view = $this->database->query("SELECT * FROM `view` WHERE `url` = '$_SERVER[REQUEST_URI]'");
+        $serverUri = filter_input(INPUT_SERVER,'REQUEST_URI',FILTER_SANITIZE_STRING);
+        $serverHost = filter_input(INPUT_SERVER,'HTTP_HOST',FILTER_SANITIZE_STRING);
+
+        $view = $this->database->read('view',$serverUri,'url', false);
 
         $date = date('Y-m-d');
 
         if($view === []){
-            $this->data = $this->database->query("INSERT INTO `view`(`page`, `url`, `nb_view`, `day`) VALUES ('$_SERVER[HTTP_HOST]','$_SERVER[REQUEST_URI]',1, '$date')");
+
+            $details = [
+                'page' => $serverHost,
+                'url' => $serverUri,
+                'nb_view' => 1,
+                'day' => $date
+            ];
+
+            $this->data = $this->database->create('view', $details);
         }
 
         foreach ($view as $value => $key) {
             if($key['day'] === null){
-                $this->data = $this->database->query("INSERT INTO `view`(`page`, `url`, `nb_view`, `day`) VALUES ('$_SERVER[HTTP_HOST]','$_SERVER[REQUEST_URI]',1, '$date')");
+
+                $details = [
+                    'page' => $serverHost,
+                    'url' => $serverUri,
+                    'nb_view' => 1,
+                    'day' => $date
+                ];
+
+                $this->data = $this->database->create('view', $details);
+
             }elseif ($key['day'] === $date) {
                 $nb_view = $key['nb_view'] + 1;
-                $this->data = $this->database->query("UPDATE `view` SET `nb_view`= '$nb_view' WHERE `url` = '$_SERVER[REQUEST_URI]'");
+                $details = ['nb_view' => $nb_view];
+                $this->data = $this->database->update('view',$serverUri,$details,'url');
             }
         }
     }
@@ -37,14 +58,17 @@ class ArticlesController extends FrontController
     public function indexAction()
     {
         $id_type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT);
+        $id_auteur = filter_input(INPUT_GET, 'auteur', FILTER_SANITIZE_STRING);
 
-        if ($id_type === null) {
+        if($id_auteur !== null){
+            $this->data = $this->database->read('articles',$id_auteur,'auteurArticle', false);
+        }elseif ($id_type !== null){
+            $this->data = $this->database->read('articles',$id_type,'id_categories', false);
+        }else{
             $this->data = $this->database->read('articles');
-        } else {
-            $this->data = $this->database->query('select * from articles where id_categories =' . $id_type);
         }
 
-        $this->data3 = $this->database->query('select auteurArticle from articles GROUP BY auteurArticle');
+        $this->data3 = $this->database->read('articles','auteurArticle',null,true,true);
 
         $this->data2 = $this->database->read('categories');
 
@@ -62,7 +86,9 @@ class ArticlesController extends FrontController
 
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        $this->data = $this->database->read('articles',$id_article,'id',true);
+        $this->data = $this->database->read('articles',$id_article,'id',false);
+
+        var_dump($this->data);
 
         $response = ['path' => 'PublicView/Pages/viewArticles.twig',
             'data' => ['articles' => $this->data],

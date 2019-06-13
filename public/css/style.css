@@ -11,6 +11,19 @@
     position: relative;
 }
 
+@media screen and (max-width: 500px) {
+    .percent{
+        margin: 20px;
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+
+    .percent-text{
+        font-size: 0.7rem;
+    }
+}
+
 /****************************************************************
  *
  * color decoration
@@ -44,6 +57,19 @@
 .write-white{
     color : white;
 }
+
+@media screen and (max-width: 500px) {
+    .name-style{
+        font-size: 30px !important;
+        letter-spacing: 6px !important;
+    }
+
+    .status-style{
+        font-size: 10px !important;
+        letter-spacing: 7px !important;
+    }
+}
+
 
 .name-style{
     font-family: 'Rubik',Helvetica,Arial,Lucida,sans-serif;

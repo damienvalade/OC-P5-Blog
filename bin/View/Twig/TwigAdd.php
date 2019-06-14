@@ -140,7 +140,7 @@ class TwigAdd extends AbstractExtension
 
     public function userImage()
     {
-        return $this->cookies->dataJWT('user','image') !== false ? ucfirst($this->cookies->dataJWT('user','image')) : '';
+        return $this->cookies->dataJWT('user','image') !== false ? $this->cookies->dataJWT('user','image') : '';
     }
 
     public function userLevel()

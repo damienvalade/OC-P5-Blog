@@ -49,7 +49,6 @@ class MysqlDatabase extends Database
 
         $res = $req->execute($attributes);
 
-
         if (
             strpos($statement, 'UPDATE') === 0 ||
             strpos($statement, 'INSERT') === 0 ||

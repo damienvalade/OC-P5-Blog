@@ -72,6 +72,10 @@
  *
 *****************************************************************/
 
+li{
+    padding-bottom: 0.2rem;
+}
+
 .underline {
     text-decoration: underline #1fa67a;
     color: #1fa67a;
@@ -365,6 +369,18 @@
     /* Place the timelime to the left */
     .timeline::after {
         left: 31px;
+    }
+
+    .content>h3{
+        font-size: 1rem;
+    }
+
+    .content>p{
+        font-size: 0.7rem;
+    }
+
+    .content> * li{
+        font-size: 0.7rem;
     }
 
     /* Full-width containers */

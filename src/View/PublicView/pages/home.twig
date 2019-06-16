@@ -5,7 +5,7 @@
 {% extends "/PublicView/layout/layout.twig" %}
 
 
-{%  block description %}Damien Valade {% endblock %}
+{% block description %}Damien Valade {% endblock %}
 {% block titre %}Portfolio{% endblock %}
 
 
@@ -19,21 +19,23 @@
 
     <section class="w-100 bg-white pt-5 pb-5">
         <div class="container">
-        <h2 class="text-center"><span class="underline">P</span>resentation</h2>
-        <p class="mt-5 text-justify">
-            Ayant obtenu mon brevet de technicien supérieur en « système numérique » mais aussi une certification de
-            « développeur logiciel ». Pour consolider mes acquis, je me suis tourné vers une certification
-            Openclassrooms
-            de « Développeur d’application PHP / Symfony ».
-        </p>
-        <p class="text-justify">
-            Passionné d’informatique, et cela, depuis mon enfance; Gamer et compétiteur dans l’âme, j’aime me dépasser
-            et relever de nouveaux défis.
-        </p>
-        <p class="text-justify">
-            Mes défis pour 2019 sont, d’être développeur freelance sur WordPress, et d’aider les personnes qui veulent
-            ce lancer dans ce type de développement, à travers différents tutoriels.
-        </p>
+            <h2 class="text-center"><span class="underline">P</span>resentation</h2>
+            <p class="mt-5 text-justify">
+                Ayant obtenu mon brevet de technicien supérieur en « système numérique » mais aussi une certification de
+                « développeur logiciel ». Pour consolider mes acquis, je me suis tourné vers une certification
+                Openclassrooms
+                de « Développeur d’application PHP / Symfony ».
+            </p>
+            <p class="text-justify">
+                Passionné d’informatique, et cela, depuis mon enfance; Gamer et compétiteur dans l’âme, j’aime me
+                dépasser
+                et relever de nouveaux défis.
+            </p>
+            <p class="text-justify">
+                Mes défis pour 2019 sont, d’être développeur freelance sur WordPress, et d’aider les personnes qui
+                veulent
+                ce lancer dans ce type de développement, à travers différents tutoriels.
+            </p>
         </div>
     </section>
 
@@ -96,8 +98,10 @@
                         <li>
                             Mettre en oeuvre des tests unitaires et fonctionnels ainsi qu’utiliser les outils les plus
                             connus
-                            d’intégration continue -Produire une documentation technique et fonctionnelle de
-                            l’application
+                            d’intégration continue
+                        </li>
+                        <li>
+                            Produire une documentation technique et fonctionnelle de l’application
                         </li>
                         <li>
                             Prendre en compte les problématiques de performance d’une application PHP
@@ -160,7 +164,7 @@
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet ABI</h3>
-                        <p  class="w-100">Projet HTML/CSS/PHP/AJAX/MySQL & PDO</p>
+                        <p class="w-100">Projet HTML/CSS/PHP/AJAX/MySQL & PDO</p>
                     </figcaption>
                 </div>
             </figure>
@@ -220,7 +224,8 @@
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Rhobalas.jpg" class="img-fluid">
                     </div>
-                    <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap img-fluid">
+                    <figcaption
+                            class="flip-card-back d-flex align-content-center justify-content-center flex-wrap img-fluid">
                         <h3 class="w-100">Projet Rhobalas</h3>
                         <p class="w-100">Projet HTML/CSS/Bootstrap/JSon/JS</p>
                     </figcaption>
@@ -232,177 +237,177 @@
 {% endblock %}
 
 {% block script %}
-<script>
+    <script>
 
-    AOS.init();
+        AOS.init();
 
-    var bar = new ProgressBar.Circle(wordpress, {
-    color: '#aaa',
-    // This has to be the same size as the maximum width to
-    // prevent clipping
-    strokeWidth: 4,
-    trailWidth: 1,
-    easing: 'easeInOut',
-    duration: 1400,
-    text: {
-    autoStyleContainer: false
-    },
-    from: { color: '#aaa', width: 1 },
-    to: { color: '#1FA67A', width: 4 },
-    // Set default step function for all animate calls
-    step: function(state, circle) {
-    circle.path.setAttribute('stroke', state.color);
-    circle.path.setAttribute('stroke-width', state.width);
+        var bar = new ProgressBar.Circle(wordpress, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-    var value = Math.round(circle.value() * 100);
-    if (value === 0) {
-    circle.setText('');
-    } else {
-        circle.setText(value + '%');
-    }
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-    }
-    });
-    bar.animate(0.8);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(htmlcss, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
-
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.8);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(htmlcss, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.8);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(sql, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.8);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(sql, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.7);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(php, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.7);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(php, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.7);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(cpp, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.7);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(cpp, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.5);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(montage, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.5);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(montage, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.5);  // Number from 0.0 to 1.0
-</script>
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
+
+            }
+        });
+        bar.animate(0.5);  // Number from 0.0 to 1.0
+    </script>
 {% endblock %}

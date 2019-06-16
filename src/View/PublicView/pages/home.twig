@@ -11,7 +11,7 @@
 
 {% block main %}
 
-    <section class="container text-center pt-5 pb-5">
+    <section class="container text-center pt-5 pb-5 mb-5 mt-5">
         <img class="radius-50" style="width: 15rem;" src="/img/pp/perso.png" alt="">
         <h2 class="mt-5 name-style">DAMIEN VALADE</h2>
         <p class="status-style">Etudiant Openclassrooms</p>
@@ -41,25 +41,39 @@
         <a class="btn-arrow" href="#projets">Voir mes projets</a>
     </section>
 
-    <section class="container pb-5 pt-5">
+    <section class="container pb-5 pt-5" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">C</span>ompétences</h2>
         <div class="row justify-content-center mt-5">
 
-            <span class="text-center percent-text"><div class="percent" id="wordpress"></div>Wordpress</span>
-            <span class="text-center percent-text"><div class="percent" id="htmlcss"></div>HTML - CSS</span>
-            <span class="text-center percent-text"><div class="percent" id="sql"></div>SQL</span>
-            <span class="text-center percent-text"><div class="percent" id="php"></div>PHP</span>
-            <span class="text-center percent-text"><div class="percent" id="cpp"></div>c++</span>
-            <span class="text-center percent-text"><div class="percent" id="montage"></div>Montage photo - vidéo</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="wordpress"></div>Wordpress</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="htmlcss"></div>HTML - CSS</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="sql"></div>SQL</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="php"></div>PHP</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="cpp"></div>c++</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="montage"></div>Montage photo - vidéo</span>
 
         </div>
     </section>
 
-    <section class="bg-white pt-5 pb-5">
+    <section class="bg-white pt-5 pb-5" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">P</span>arcours</h2>
         <div class="timeline">
             <section class="contain mt-5 right">
-                <div class="content">
+                <div class="content right-arrow" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                     <h3>Certification Développeur – PHP / SYMFONY</h3>
                     <p>21 septembre 2018</p>
                     <p>OpenClassrooms</p>
@@ -93,7 +107,7 @@
             </section>
 
             <section class="contain left">
-                <div class="content">
+                <div class="content left-arrow" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                     <h3>Certification Développeur Web</h3>
                     <p>20 juillet 2018</p>
                     <p>Centre AFPA Brive</p>
@@ -118,7 +132,7 @@
             </section>
 
             <section class="contain right">
-                <div class="content">
+                <div class="content right-arrow" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                     <h3>BTS Système numérique</h3>
                     <p>14 juillet 2017</p>
                     <p>Lycée Turgot – Limoges</p>
@@ -135,10 +149,11 @@
         </div>
     </section>
 
-    <section class="container mt-5" id="projets">
+    <section class="container mt-5" id="projets" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">P</span>rojets</h2>
         <div class="row justify-content-around mt-5">
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="fade-right">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-ABI.jpg" class="img-fluid">
@@ -150,7 +165,7 @@
                 </div>
             </figure>
 
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="fade-left">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Marck.jpg" class="img-fluid">
@@ -163,7 +178,7 @@
             </figure>
         </div>
         <div class="row justify-content-around">
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="fade-right">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Chalet-v1.jpg" class="img-fluid">
@@ -176,7 +191,7 @@
             </figure>
 
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="fade-left">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Chalet-v2.jpg" class="img-fluid">
                     </div>
@@ -189,7 +204,7 @@
         </div>
         <div class="row d-flex justify-content-around mb-5">
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="fade-right">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Films.jpg" class="img-fluid">
                     </div>
@@ -201,7 +216,7 @@
             </figure>
 
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="fade-left">
                     <div class="flip-card-front">
                         <img src="/img/projects/Back-Rhobalas.jpg" class="img-fluid">
                     </div>
@@ -218,8 +233,8 @@
 
 {% block script %}
 <script>
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+    AOS.init();
 
     var bar = new ProgressBar.Circle(wordpress, {
     color: '#aaa',

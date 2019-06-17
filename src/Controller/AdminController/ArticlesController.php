@@ -3,8 +3,9 @@
 namespace App\Controller\AdminController;
 
 use App\Model\AdminModel\ArticlesModel;
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
-use Core\Controller\Session\Session;
+
 
 use \date;
 
@@ -19,7 +20,7 @@ class ArticlesController extends FrontController
     public function __construct()
     {
         $this->database = new ArticlesModel();
-        $this->session = new Session();
+        $this->session = new Cookies();
     }
 
     public function indexAction()
@@ -63,7 +64,7 @@ class ArticlesController extends FrontController
             $this->session->setValidate('inscription', 'Article mis à jour');
         }
 
-        $this->data = $this->database->read('articles', $id_article, 'id', true);
+        $this->data = $this->database->read('articles', $id_article, 'id', false);
         $this->data2 = $this->database->read('categories');
 
         $response = [ 'path' => 'AdminView/Pages/updateArticles.twig',
@@ -105,7 +106,7 @@ class ArticlesController extends FrontController
         }
 
 
-        $response = [ 'path' => 'AdminView/Pages/updateArticles.twig',
+        $response = [ 'path' => 'AdminView/Pages/createArticles.twig',
             'data' => ['types' => $this->data2]
         ];
 

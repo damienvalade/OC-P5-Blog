@@ -13,46 +13,46 @@
         </div>
 
         <div class="sidebar-heading text-center">
-        <a href="index.php?page=admin.settings" id="navbardrop">
-            <img class="radius-50 icon-pp" src="/{{ userImage() }}" alt="">
+        <a href="/admin/settings" id="navbardrop">
+            <img class="radius-50 icon-pp" src="{{ userImage() }}" alt="">
         </a>
         </div>
 
         <ul class="list-group list-group-flush">
 
-            <li>
-                <a href="index.php?side=admin&rubric=users" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=users') }}">
+            <li class="m-0 p-0">
+                <a href="/admin/users" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=users') }}">
                     <i class="fa fa-user"></i>
                     <span class="arrow-hide">Utilisateur</span>
                 </a>
             </li>
 
-            <li>
-                <a href="index.php?side=admin&rubric=administration" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=administration') }}">
+            <li class="m-0 p-0">
+                <a href="/admin/administration" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=administration') }}">
                     <i class="fa fa-sliders"></i>
                     <span class="arrow-hide">Administatrion</span>
                 </a>
             </li>
-            <li>
-                <a href="index.php?side=admin" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin') }}">
+            <li class="m-0 p-0">
+                <a href="/admin/home" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin') }}">
                     <i class="fa fa-bar-chart"></i>
                     <span class="arrow-hide">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="index.php?side=admin&rubric=articles" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=articles') }}">
+            <li class="m-0 p-0">
+                <a href="/admin/articles" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=articles') }}">
                     <i class="fa fa-files-o"></i>
                     <span class="arrow-hide">Articles</span>
                 </a>
             </li>
-            <li>
-                <a href="index.php?side=admin&rubric=commentaries" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=commentaries') }}">
+            <li class="m-0 p-0">
+                <a href="/admin/commentaries" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=commentaries') }}">
                     <i class="fa fa-comment"></i>
                     <span class="arrow-hide">Commentaires</span>
                 </a>
             </li>
-            <li>
-                <a href="index.php?side=public" class="list-group-item list-group-item-action bg-light">
+            <li class="m-0 p-0">
+                <a href="/public/home" class="list-group-item list-group-item-action bg-light">
                     <i class="fa fa-home"></i>
                     <span class="arrow-hide">Home</span>
                 </a>

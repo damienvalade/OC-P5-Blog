@@ -5,7 +5,35 @@
     RewriteEngine on
     RewriteBase /
 
-    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-    RewriteRule ^(.*)$ http://%1/$1 [NE,R=301,L]
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)/type/([^/]*)$ /index.php?side=$1&rubric=$2&type=$3 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)/auteur/([^/]*)$ /index.php?side=$1&rubric=$2&auteur=$3 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)/request/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3&id=$4 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L]
+
 
 </IfModule>

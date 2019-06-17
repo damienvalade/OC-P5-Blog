@@ -28,7 +28,7 @@ class UsersController extends FrontController
 
             $this->users = $this->database->read('users', $username, 'username', false);
 
-            if ($this->users !== '') {
+            if ($this->users !== '' && !empty($this->users)) {
 
                 foreach ($this->users as $value => $key){
                     $idUSer = $key['id'];
@@ -53,15 +53,15 @@ class UsersController extends FrontController
 
                     $this->cookies->setCookies('user',$data);
 
-                    $this->redirect('index.php?side=admin');
+                    $this->redirect('/admin/home');
 
                 } else {
                     $this->cookies->setCookies('login', 'Mauvais Password');
-                    $this->redirect('index.php?side=public&rubric=users&request=login');
+                    $this->redirect('/public/users/request/login');
                 }
             } else {
                 $this->cookies->setCookies('login', 'Mauvais Login');
-                $this->redirect('index.php?side=public&rubric=users&request=login');
+                $this->redirect('/public/users/request/login');
             }
         }
 
@@ -88,7 +88,7 @@ class UsersController extends FrontController
 
             $this->users = $this->database->read('users', $eamail, 'email', true);
 
-            if ($this->users === '') {
+            if ($this->users === '' && !empty($this->users)) {
 
                 $filename = $this->upload('photoprofil', $username);
 
@@ -105,13 +105,16 @@ class UsersController extends FrontController
 
                     $this->database->create('users', $data);
 
-                    $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->redirect('/public/users/request/login/subcribe');
 
                 } else {
-                    $this->session->setError('inscription', 'Mot de passe différent');
+                    $this->cookies->setCookies('inscription', 'Mot de passe différent !');
+                    $this->redirect('/public/users/request/login/subcribe');
                 }
             } else {
-                $this->session->setError('inscription', 'Adresse Email déjà utilisé');
+                $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé !');
+                $this->redirect('/public/users/request/login/subcribe');
             }
         }
 
@@ -126,7 +129,7 @@ class UsersController extends FrontController
     {
 
         $this->cookies->unsetCookies('user');
-        $this->redirect('index.php?side=public');
+        $this->redirect('/public/home');
 
         $response = ['path' => 'PublicView/Pages/home.twig',
             'data' => [],

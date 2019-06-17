@@ -16,7 +16,7 @@
             <div class="col-md-10 pl-0 pr-0">
                 {% for articles in articles %}
                     <div class="card m-5">
-                        <img class="card-img-top" src="{{ articles.image }}" alt="Card image cap">
+                        <img class="card-img-top" src="\{{ articles.image }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ articles.nomArticle }}</h5>
                             <p class="card-text">
@@ -26,7 +26,7 @@
                             <p class="card-text">
                                 <small class="text-muted">{{ articles.dateMaj }}</small>
                             </p>
-                            <a href="index.php?side=public&rubric=articles&request=view&id={{ articles.id }}"
+                            <a href="/public/articles/view/{{ articles.id }}"
                                class="btn btn-emerauld text-center">Voir Plus</a>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <h3 class="text-center write-white mt-5 mb-5"><span class="underline">C</span>atégories</h3>
                     <ul>
                         {% for categories in categories %}
-                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&type={{ categories.id }}">
+                            <li class="pb-3"><a href="/public/articles/type/{{ categories.id }}">
                                     {{ categories.titre }}</a></li><hr>
                         {% endfor %}
                     </ul>
@@ -49,7 +49,7 @@
                     <h3 class="text-center write-white mt-5 mb-5"><span class="underline">A</span>uteur</h3>
                     <ul>
                         {% for auteur in auteur %}
-                            <li class="pb-3"><a href="index.php?side=public&rubric=articles&auteur={{ auteur.auteurArticle }}">
+                            <li class="pb-3"><a href="/public/articles/auteur/{{ auteur.auteurArticle }}">
                                     {{ auteur.auteurArticle }}</a></li><hr>
                         {% endfor %}
                     </ul>

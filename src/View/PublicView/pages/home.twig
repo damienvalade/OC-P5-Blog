@@ -5,35 +5,37 @@
 {% extends "/PublicView/layout/layout.twig" %}
 
 
-{%  block description %}Damien Valade {% endblock %}
+{% block description %}Damien Valade {% endblock %}
 {% block titre %}Portfolio{% endblock %}
 
 
 {% block main %}
 
-    <section class="container text-center pt-5 pb-5">
-        <img class="radius-50" style="width: 15rem;" src="../public/img/pp/perso.png" alt="">
+    <section class="container text-center pt-5 pb-5 mb-5 mt-5">
+        <img class="radius-50" style="width: 15rem;" src="/img/pp/perso.png" alt="">
         <h2 class="mt-5 name-style">DAMIEN VALADE</h2>
         <p class="status-style">Etudiant Openclassrooms</p>
     </section>
 
     <section class="w-100 bg-white pt-5 pb-5">
-        <div class="container">
         <h2 class="text-center"><span class="underline">P</span>resentation</h2>
-        <p class="mt-5 text-justify">
-            Ayant obtenu mon brevet de technicien supérieur en « système numérique » mais aussi une certification de
-            « développeur logiciel ». Pour consolider mes acquis, je me suis tourné vers une certification
-            Openclassrooms
-            de « Développeur d’application PHP / Symfony ».
-        </p>
-        <p class="text-justify">
-            Passionné d’informatique, et cela, depuis mon enfance; Gamer et compétiteur dans l’âme, j’aime me dépasser
-            et relever de nouveaux défis.
-        </p>
-        <p class="text-justify">
-            Mes défis pour 2019 sont, d’être développeur freelance sur WordPress, et d’aider les personnes qui veulent
-            ce lancer dans ce type de développement, à travers différents tutoriels.
-        </p>
+        <div class="container">
+            <p class="mt-5 text-justify">
+                Ayant obtenu mon brevet de technicien supérieur en « système numérique » mais aussi une certification de
+                « développeur logiciel ». Pour consolider mes acquis, je me suis tourné vers une certification
+                Openclassrooms
+                de « Développeur d’application PHP / Symfony ».
+            </p>
+            <p class="text-justify">
+                Passionné d’informatique, et cela, depuis mon enfance; Gamer et compétiteur dans l’âme, j’aime me
+                dépasser
+                et relever de nouveaux défis.
+            </p>
+            <p class="text-justify">
+                Mes défis pour 2019 sont, d’être développeur freelance sur WordPress, et d’aider les personnes qui
+                veulent
+                ce lancer dans ce type de développement, à travers différents tutoriels.
+            </p>
         </div>
     </section>
 
@@ -41,25 +43,39 @@
         <a class="btn-arrow" href="#projets">Voir mes projets</a>
     </section>
 
-    <section class="container pb-5 pt-5">
+    <section class="container pb-5 pt-5" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">C</span>ompétences</h2>
         <div class="row justify-content-center mt-5">
 
-            <span class="text-center percent-text"><div class="percent" id="wordpress"></div>Wordpress</span>
-            <span class="text-center percent-text"><div class="percent" id="htmlcss"></div>HTML - CSS</span>
-            <span class="text-center percent-text"><div class="percent" id="sql"></div>SQL</span>
-            <span class="text-center percent-text"><div class="percent" id="php"></div>PHP</span>
-            <span class="text-center percent-text"><div class="percent" id="cpp"></div>c++</span>
-            <span class="text-center percent-text"><div class="percent" id="montage"></div>Montage photo - vidéo</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="wordpress"></div>Wordpress</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="htmlcss"></div>HTML - CSS</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="sql"></div>SQL</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="php"></div>PHP</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="cpp"></div>c++</span>
+            <span class="text-center percent-text" data-aos="zoom-out-up"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"><div class="percent" id="montage"></div>Montage photo - vidéo</span>
 
         </div>
     </section>
 
-    <section class="bg-white pt-5 pb-5">
+    <section class="bg-white pt-5 pb-5" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">P</span>arcours</h2>
         <div class="timeline">
             <section class="contain mt-5 right">
-                <div class="content">
+                <div class="content right-arrow" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <h3>Certification Développeur – PHP / SYMFONY</h3>
                     <p>21 septembre 2018</p>
                     <p>OpenClassrooms</p>
@@ -82,8 +98,10 @@
                         <li>
                             Mettre en oeuvre des tests unitaires et fonctionnels ainsi qu’utiliser les outils les plus
                             connus
-                            d’intégration continue -Produire une documentation technique et fonctionnelle de
-                            l’application
+                            d’intégration continue
+                        </li>
+                        <li>
+                            Produire une documentation technique et fonctionnelle de l’application
                         </li>
                         <li>
                             Prendre en compte les problématiques de performance d’une application PHP
@@ -93,7 +111,7 @@
             </section>
 
             <section class="contain left">
-                <div class="content">
+                <div class="content left-arrow" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <h3>Certification Développeur Web</h3>
                     <p>20 juillet 2018</p>
                     <p>Centre AFPA Brive</p>
@@ -118,7 +136,7 @@
             </section>
 
             <section class="contain right">
-                <div class="content">
+                <div class="content right-arrow" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <h3>BTS Système numérique</h3>
                     <p>14 juillet 2017</p>
                     <p>Lycée Turgot – Limoges</p>
@@ -135,25 +153,26 @@
         </div>
     </section>
 
-    <section class="container mt-5" id="projets">
+    <section class="container mt-5" id="projets" data-aos="fade-up"
+             data-aos-duration="1000">
         <h2 class="text-center"><span class="underline">P</span>rojets</h2>
         <div class="row justify-content-around mt-5">
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="zoom-out-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-ABI.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-ABI.jpg" class="img-fluid">
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet ABI</h3>
-                        <p  class="w-100">Projet HTML/CSS/PHP/AJAX/MySQL & PDO</p>
+                        <p class="w-100">Projet HTML/CSS/PHP/AJAX/MySQL & PDO</p>
                     </figcaption>
                 </div>
             </figure>
 
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="zoom-out-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-Marck.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-Marck.jpg" class="img-fluid">
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet Mark</h3>
@@ -163,10 +182,10 @@
             </figure>
         </div>
         <div class="row justify-content-around">
-            <figure class="flip-card img-fluid">
+            <figure class="flip-card img-fluid" data-aos="zoom-out-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-Chalet-v1.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-Chalet-v1.jpg" class="img-fluid">
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet Chalets et Caviar V1</h3>
@@ -176,9 +195,9 @@
             </figure>
 
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="zoom-out-up">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-Chalet-v2.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-Chalet-v2.jpg" class="img-fluid">
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet Chalets et Caviar V1</h3>
@@ -189,9 +208,9 @@
         </div>
         <div class="row d-flex justify-content-around mb-5">
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="zoom-out-up">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-Films.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-Films.jpg" class="img-fluid">
                     </div>
                     <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap">
                         <h3 class="w-100">Projet Films de plain air</h3>
@@ -201,11 +220,12 @@
             </figure>
 
             <figure class="flip-card">
-                <div class="flip-card-inner img-fluid">
+                <div class="flip-card-inner img-fluid" data-aos="zoom-out-up">
                     <div class="flip-card-front">
-                        <img src="../public/img/projects/Back-Rhobalas.jpg" class="img-fluid">
+                        <img src="/img/projects/Back-Rhobalas.jpg" class="img-fluid">
                     </div>
-                    <figcaption class="flip-card-back d-flex align-content-center justify-content-center flex-wrap img-fluid">
+                    <figcaption
+                            class="flip-card-back d-flex align-content-center justify-content-center flex-wrap img-fluid">
                         <h3 class="w-100">Projet Rhobalas</h3>
                         <p class="w-100">Projet HTML/CSS/Bootstrap/JSon/JS</p>
                     </figcaption>
@@ -217,177 +237,177 @@
 {% endblock %}
 
 {% block script %}
-<script>
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+    <script>
 
-    var bar = new ProgressBar.Circle(wordpress, {
-    color: '#aaa',
-    // This has to be the same size as the maximum width to
-    // prevent clipping
-    strokeWidth: 4,
-    trailWidth: 1,
-    easing: 'easeInOut',
-    duration: 1400,
-    text: {
-    autoStyleContainer: false
-    },
-    from: { color: '#aaa', width: 1 },
-    to: { color: '#1FA67A', width: 4 },
-    // Set default step function for all animate calls
-    step: function(state, circle) {
-    circle.path.setAttribute('stroke', state.color);
-    circle.path.setAttribute('stroke-width', state.width);
+        AOS.init();
 
-    var value = Math.round(circle.value() * 100);
-    if (value === 0) {
-    circle.setText('');
-    } else {
-        circle.setText(value + '%');
-    }
+        var bar = new ProgressBar.Circle(wordpress, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-    }
-    });
-    bar.animate(0.8);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(htmlcss, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.8);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(htmlcss, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.8);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(sql, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.8);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(sql, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.7);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(php, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.7);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(php, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.7);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(cpp, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.7);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(cpp, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.5);  // Number from 0.0 to 1.0
-    var bar = new ProgressBar.Circle(montage, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#aaa', width: 1 },
-        to: { color: '#1FA67A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
 
-            var value = Math.round(circle.value() * 100);
-            if (value === 0) {
-                circle.setText('');
-            } else {
-                circle.setText(value + '%');
             }
+        });
+        bar.animate(0.5);  // Number from 0.0 to 1.0
+        var bar = new ProgressBar.Circle(montage, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: {color: '#aaa', width: 1},
+            to: {color: '#1FA67A', width: 4},
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
 
-        }
-    });
-    bar.animate(0.5);  // Number from 0.0 to 1.0
-</script>
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + '%');
+                }
+
+            }
+        });
+        bar.animate(0.5);  // Number from 0.0 to 1.0
+    </script>
 {% endblock %}

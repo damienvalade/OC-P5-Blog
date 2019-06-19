@@ -33,6 +33,7 @@ class ArticlesController extends FrontController
             ];
 
             $this->data = $this->database->create('view', $details);
+
         }
 
         foreach ($view as $value => $key) {
@@ -87,8 +88,6 @@ class ArticlesController extends FrontController
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         $this->data = $this->database->read('articles',$id_article,'id',false);
-
-        var_dump($this->data);
 
         $response = ['path' => 'PublicView/Pages/viewArticles.twig',
             'data' => ['articles' => $this->data],

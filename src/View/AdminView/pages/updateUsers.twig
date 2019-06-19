@@ -16,6 +16,8 @@
         <p id="error" class="row d-flex justify-content-center error-text">{{ errors('inscription') }}</p>
         <p id="error" class="row d-flex justify-content-center validate-text">{{ validate('inscription') }}</p>
 
+        {% for users in users %}
+
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-4">
                 <label for="inputName">Nom de compte*</label>
@@ -69,6 +71,7 @@
             </div>
         </div>
 
+    {% endfor %}
 
         <div class="row d-flex justify-content-center mt-5 mb-5">
             <button type="submit" class="btn btn-arrow-style btn-arrow">Send</button>

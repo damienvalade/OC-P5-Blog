@@ -12,7 +12,7 @@
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
     {% for articles in articles %}
     <div class="card m-5">
-        <img class="card-img-top" src="{{ articles.image }}" alt="Card image cap">
+        <img class="card-img-top" src="/{{ articles.image }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ articles.nomArticle }}</h5>
             <p class="card-text">

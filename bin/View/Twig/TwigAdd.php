@@ -72,21 +72,21 @@ class TwigAdd extends AbstractExtension
         $id_path = filter_input(INPUT_GET, 'id');
 
         if ($side !== null) {
-            $pathPost = 'index.php?side=' . $side;
+            $pathPost = '/' . $side;
         }
 
         if($rubric !== null)
         {
-            $pathPost .= '&rubric=' . $rubric;
+            $pathPost .= '/' . $rubric;
         }
 
         if($request !== null)
         {
-            $pathPost .= '&request=' . $request;
+            $pathPost .= '/request/' . $request;
         }
 
         if ($id_path !== null) {
-            $pathPost .= '&id=' . $id_path;
+            $pathPost .= '/' . $id_path;
         }
 
         return $pathPost;
@@ -140,7 +140,7 @@ class TwigAdd extends AbstractExtension
 
     public function userImage()
     {
-        return $this->cookies->dataJWT('user','image') !== false ? ucfirst($this->cookies->dataJWT('user','image')) : '';
+        return $this->cookies->dataJWT('user','image') !== false ? $this->cookies->dataJWT('user','image') : '';
     }
 
     public function userLevel()

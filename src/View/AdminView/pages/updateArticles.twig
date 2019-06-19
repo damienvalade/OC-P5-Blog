@@ -16,6 +16,8 @@
         <p id="error" class="row d-flex justify-content-center error-text">{{ errors('inscription') }}</p>
         <p id="error" class="row d-flex justify-content-center validate-text">{{ validate('inscription') }}</p>
 
+        {% for articles in articles %}
+
         <div class="form-row row d-flex justify-content-center">
             <div class="form-group col-md-8">
                 <label for="inputName">Nom article*</label>
@@ -59,7 +61,7 @@
         </div>
 
         <div class="row d-flex justify-content-center mt-3 mb-4">
-            <img class="w-20 text-center" src="{{ articles.image }}">
+            <img class="img-fluid text-center" src="/{{ articles.image }}">
         </div>
 
         <div class="row d-flex justify-content-center form-group mt-3">
@@ -76,6 +78,8 @@
                 </label>
             </div>
         </div>
+
+        {% endfor %}
 
         <div class="row d-flex justify-content-center mt-5 mb-5">
             <button type="submit" class="btn btn-arrow-style btn-arrow">Send</button>

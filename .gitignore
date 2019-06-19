@@ -1,5 +1,6 @@
 app/config.php
 public/img/photoprofil
 public/img/photoarticle
+public/dist
 vendor/
 .idea/

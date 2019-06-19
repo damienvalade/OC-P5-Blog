@@ -77,7 +77,7 @@ class UsersController extends FrontController
                 }
         }
 
-        $this->data = $this->database->read('users', $id_user, 'id', true);
+        $this->data = $this->database->read('users', $id_user, 'id', false);
 
         $response = [ 'path' => 'AdminView/Pages/updateUsers.twig',
             'data' => ['users' => $this->data],

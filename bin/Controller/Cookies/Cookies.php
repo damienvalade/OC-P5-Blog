@@ -44,13 +44,13 @@ class Cookies
         }
     }
 
-    public function encodeJWT(int $id = null, string $name = null, string $email = null, string $image = null, int $level = null)
+    public function encodeJWT(int $id_user = null, string $name = null, string $email = null, string $image = null, int $level = null)
     {
 
         $key = JWT_KEY;
 
         $token = array(
-            'id' => $id,
+            'id' => $id_user,
             'name' => $name,
             'email' => $email,
             'image' => $image,

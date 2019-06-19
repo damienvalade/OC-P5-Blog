@@ -82,7 +82,7 @@ class TwigAdd extends AbstractExtension
 
         if($request !== null)
         {
-            $pathPost .= '/request/' . $request;
+            $pathPost .= '/' . $request;
         }
 
         if ($id_path !== null) {

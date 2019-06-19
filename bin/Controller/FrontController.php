@@ -37,7 +37,7 @@ class FrontController extends Controller
 
     public function rend()
     {
-        $loader = new \Twig\Loader\FilesystemLoader(dirname(dirname(__DIR__)) . '/src/View');
+        $loader = new \Twig\Loader\FilesystemLoader('../src/View');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
@@ -75,7 +75,7 @@ class FrontController extends Controller
         $this->controller = $this->rubric . 'Controller';
         $this->controller = self::CONST_PATH . $this->side . 'Controller\\' . $this->controller;
 
-        $this->rootLoader = dirname(dirname(__DIR__)) . '/src/Controller/' . $this->side . 'Controller/' . $this->rubric . 'Controller.php';
+        $this->rootLoader = '../src/Controller/' . $this->side . 'Controller/' . $this->rubric . 'Controller.php';
 
         if (file_exists($this->rootLoader)) {
             if (!class_exists($this->controller) || $this->side === '') {
@@ -107,12 +107,17 @@ class FrontController extends Controller
     {
         if (class_exists($this->controller)) {
             $this->controller = new $this->controller;
-            $response = call_user_func([$this->controller, $this->cruder]);
+            $response_function = call_user_func([$this->controller, $this->cruder]);
 
-            echo $this->twig->render($response['path'], $response['data']);
-        }else{
-            $this->notfound();
-            echo $this->twig->render($this->notfound());
+            $rendu =  $this->twig->render($response_function['path'], $response_function['data']);
         }
+
+        if(!isset($rendu)){
+            $this->notfound();
+            $rendu =  $this->twig->render($this->notfound());
+        }
+
+        echo $rendu;
+
     }
 }

@@ -42,7 +42,7 @@ class UsersController extends FrontController
                 if ($password === $passwordVerif) {
 
                     if ($image === null) {
-                        $image = 'img\photoprofil\default.png';
+                        $image = '\img\photoprofil\default.png';
                     }
 
                     $data = $this->cookies->encodeJWT($idUSer,
@@ -99,7 +99,7 @@ class UsersController extends FrontController
                         'username' => $username,
                         'password' => $password,
                         'email' => $eamail,
-                        'image' => 'img\\\\photoprofil\\\\' . $filename,
+                        'image' => '\\\\\\img\\\\photoprofil\\\\' . $filename,
                         'level_administration' => '3'
                     ];
 

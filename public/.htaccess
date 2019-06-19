@@ -23,7 +23,7 @@ RewriteRule ^([^/]*)/([^/]*)/auteur/([^/]*)$ /index.php?side=$1&rubric=$2&auteur
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteBase /
-RewriteRule ^([^/]*)/([^/]*)/request/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L]
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -34,6 +34,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteBase /
 RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L]
-
 
 </IfModule>

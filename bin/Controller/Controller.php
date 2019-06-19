@@ -48,19 +48,19 @@ class Controller
 
     public function upload($fileDir)
     {
-        $fileError = $_FILES['avatar']['error'];
+        $file = $_FILES;
 
-        if ($fileError > 0) {
+        if ($file['avatar']['error'] > 0) {
             htmlspecialchars(Session::setError('warning', 'Erreur lors du transfert du fichier...'));
         } else {
 
             $uniqid = str_replace( '.', '' , uniqid('', true));
-            $type = str_replace( 'image/', '' , $_FILES['avatar']['type']);
+            $type = str_replace( 'image/', '' , $file['avatar']['type']);
 
             $uniqname = $uniqid . '.' . $type;
 
-            $filePath = dirname(dirname(__DIR__)) . "/public/img/{$fileDir}/{$uniqname}";
-            $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $filePath);
+            $filePath = "img/{$fileDir}/{$uniqname}";
+            $result = move_uploaded_file($file['avatar']['tmp_name'], $filePath);
             if ($result) {
                 htmlspecialchars($this->cookies->setCookies('fichier', 'Fichier bien transferer'));
             }

@@ -27,10 +27,6 @@ class Controller
         header($this->redirect);
     }
 
-    protected function redirectError($error){
-        header('HTTP/1.0 ' . $error);
-    }
-
     protected function unauthorized()
     {
         self::redirect('401 Unauthorized', true);

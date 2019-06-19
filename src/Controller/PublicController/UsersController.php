@@ -57,11 +57,11 @@ class UsersController extends FrontController
 
                 } else {
                     $this->cookies->setCookies('login', 'Mauvais Password');
-                    $this->redirect('/public/users/request/login');
+                    $this->redirect('/public/users/login');
                 }
             } else {
                 $this->cookies->setCookies('login', 'Mauvais Login');
-                $this->redirect('/public/users/request/login');
+                $this->redirect('/public/users/login');
             }
         }
 
@@ -106,15 +106,15 @@ class UsersController extends FrontController
                     $this->database->create('users', $data);
 
                     $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
-                    $this->redirect('/public/users/request/login/subcribe');
+                    $this->redirect('/public/users/login/subcribe');
 
                 } else {
                     $this->cookies->setCookies('inscription', 'Mot de passe différent !');
-                    $this->redirect('/public/users/request/login/subcribe');
+                    $this->redirect('/public/users/login/subcribe');
                 }
             } else {
                 $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé !');
-                $this->redirect('/public/users/request/login/subcribe');
+                $this->redirect('/public/users/login/subcribe');
             }
         }
 

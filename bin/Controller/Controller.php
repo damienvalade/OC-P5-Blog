@@ -7,15 +7,24 @@ use Core\Controller\Cookies\Cookies;
 class Controller
 {
     protected $cookies;
+    protected $redirect;
 
     public function __construct()
     {
         $this->cookies = new Cookies();
     }
 
-    protected function redirect($page){
-        header('Location: ' . $page);
-        exit;
+    protected function redirect($redirect, $error = false){
+
+        if($error === true){
+            $this->redirect = 'HTTP/1.0 ' . $redirect;
+        }
+
+        if($error === false){
+            $this->redirect = 'Location: ' . $redirect;
+        }
+
+        header($this->redirect);
     }
 
     protected function redirectError($error){
@@ -24,25 +33,25 @@ class Controller
 
     protected function unauthorized()
     {
-        self::redirectError('401 Unauthorized');
+        self::redirect('401 Unauthorized', true);
         return 'ErrorsView/401.twig';
     }
 
     protected function forbidden()
     {
-        self::redirectError('403 Forbidden');
+        self::redirect('403 Forbidden', true);
         return 'ErrorsView/403.twig';
     }
 
     protected function notfound()
     {
-        self::redirectError('404 Not Found');
+        self::redirect('404 Not Found', true);
         return 'ErrorsView/404.twig';
     }
 
     protected function serverError()
     {
-        self::redirectError('500 Internal Server Error');
+        self::redirect('500 Internal Server Error', true);
         return 'ErrorsView/500.twig';
     }
 
@@ -50,10 +59,7 @@ class Controller
     {
         $file = $_FILES;
 
-        if ($file['avatar']['error'] > 0) {
-            htmlspecialchars(Session::setError('warning', 'Erreur lors du transfert du fichier...'));
-        } else {
-
+        if ($file['avatar']['error'] === 0) {
             $uniqid = str_replace( '.', '' , uniqid('', true));
             $type = str_replace( 'image/', '' , $file['avatar']['type']);
 
@@ -61,10 +67,13 @@ class Controller
 
             $filePath = "img/{$fileDir}/{$uniqname}";
             $result = move_uploaded_file($file['avatar']['tmp_name'], $filePath);
+
             if ($result) {
                 htmlspecialchars($this->cookies->setCookies('fichier', 'Fichier bien transferer'));
             }
+
             return $uniqname;
         }
+        htmlspecialchars($this->cookies->setCookies('files', 'Erreur lors du transfert du fichier...'));
     }
 }

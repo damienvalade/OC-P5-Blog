@@ -26,7 +26,7 @@
                             <p class="card-text">
                                 <small class="text-muted">{{ articles.dateMaj }}</small>
                             </p>
-                            <a href="/public/articles/view/{{ articles.id }}"
+                            <a href="/public/articles/view/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"
                                class="btn btn-emerauld text-center">Voir Plus</a>
                         </div>
                     </div>

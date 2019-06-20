@@ -16,7 +16,7 @@ class Model extends MysqlDatabase
         return $this->query($query);
     }
 
-    public function read(string $table,string $value = null, string $key = null, $one = true, $exotic = false)
+    public function read(string $table,string $value = null, string $key = null, $one = true, $exotic = false, $and = false, array $andValue = [])
     {
 
         if(!$one){
@@ -29,8 +29,16 @@ class Model extends MysqlDatabase
             return $this->prepare($query, [$value], $one);
         }else{
 
+
             if($exotic){
                 $query = "SELECT $value FROM $table GROUP BY $value";
+                return $this->query($query);
+            }
+
+            if($and === true){
+                $keys = implode(" AND ", $andValue);
+                $query = "SELECT $value FROM $table WHERE $keys";
+
                 return $this->query($query);
             }
 

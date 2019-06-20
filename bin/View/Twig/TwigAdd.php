@@ -30,6 +30,7 @@ class TwigAdd extends AbstractExtension
             new TwigFunction('userLevel', array($this, 'userLevel')),
             new TwigFunction('validate', array($this, 'validate')),
             new TwigFunction('authorized', array($this, 'authorized')),
+            new TwigFunction('spaceReplace', array($this, 'spaceReplace'))
         );
     }
 
@@ -148,4 +149,12 @@ class TwigAdd extends AbstractExtension
         return $this->cookies->dataJWT('user','level') !== false ? ucfirst($this->cookies->dataJWT('user','level')) : '';
     }
 
+
+    public function spaceReplace(string $toReplace){
+        if(isset($toReplace)){
+            $return = str_replace('-','_',$toReplace);
+            $return = str_replace(' ','_',$return);
+            return $return ;
+        }
+    }
 }

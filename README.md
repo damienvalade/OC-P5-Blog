@@ -10,7 +10,7 @@ Projet de la formation ***Développeur d'application - PHP / Symfony***.
 
 ## Modéle MVC
 
-Utilisation du modéle MVC d'un de mes projet personnel :
+Utilisation du modéle MVC d'un de mes projets personnels :
 
 **Damien Valade** - *Eitri* - [Projet](https://github.com/damienvalade/Eitri)
 

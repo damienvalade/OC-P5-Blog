@@ -42,7 +42,7 @@ class UsersController extends FrontController
                 if ($password === $passwordVerif) {
 
                     if ($image === null) {
-                        $image = 'img\photoprofil\default.png';
+                        $image = '\img\photoprofil\default.png';
                     }
 
                     $data = $this->cookies->encodeJWT($idUSer,
@@ -57,11 +57,11 @@ class UsersController extends FrontController
 
                 } else {
                     $this->cookies->setCookies('login', 'Mauvais Password');
-                    $this->redirect('/public/users/request/login');
+                    $this->redirect('/public/users/login');
                 }
             } else {
                 $this->cookies->setCookies('login', 'Mauvais Login');
-                $this->redirect('/public/users/request/login');
+                $this->redirect('/public/users/login');
             }
         }
 
@@ -99,22 +99,22 @@ class UsersController extends FrontController
                         'username' => $username,
                         'password' => $password,
                         'email' => $eamail,
-                        'image' => 'img\\\\photoprofil\\\\' . $filename,
+                        'image' => '\\\\\\img\\\\photoprofil\\\\' . $filename,
                         'level_administration' => '3'
                     ];
 
                     $this->database->create('users', $data);
 
                     $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
-                    $this->redirect('/public/users/request/login/subcribe');
+                    $this->redirect('/public/users/login/subcribe');
 
                 } else {
                     $this->cookies->setCookies('inscription', 'Mot de passe différent !');
-                    $this->redirect('/public/users/request/login/subcribe');
+                    $this->redirect('/public/users/login/subcribe');
                 }
             } else {
                 $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé !');
-                $this->redirect('/public/users/request/login/subcribe');
+                $this->redirect('/public/users/login/subcribe');
             }
         }
 

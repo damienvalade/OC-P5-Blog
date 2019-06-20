@@ -64,7 +64,7 @@ class UsersController extends FrontController
                         'username' => $username,
                         'password' => $password,
                         'email' => $eamail,
-                        'image' => 'img\\\\photoprofil\\\\' . $filename,
+                        'image' => '\\\\img\\\\photoprofil\\\\' . $filename,
                         'level_administration' => '3'
                     ];
 
@@ -111,7 +111,7 @@ class UsersController extends FrontController
                             'username' => $username,
                             'password' => $password,
                             'email' => $eamail,
-                            'image' => 'img\\\\photoprofil\\\\' . $filename,
+                            'image' => '\\\\\\img\\\\photoprofil\\\\' . $filename,
                             'level_administration' => '3'
                         ];
 

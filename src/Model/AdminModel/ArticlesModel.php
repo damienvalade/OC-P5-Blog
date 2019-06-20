@@ -14,6 +14,6 @@ class ArticlesModel extends Model
                     FROM articles
                     JOIN categories ON articles.id_categories = categories.id';
 
-        return $this->query($querry);
+        return $this->queryMD($querry);
     }
 }

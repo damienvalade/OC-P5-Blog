@@ -18,7 +18,7 @@ class AdministrationController
     public function indexAction()
     {
 
-        $this->data = $this->database->query('SELECT * FROM view');
+        $this->data = $this->database->queryMD('SELECT * FROM view');
 
         $response = [ 'path' => 'AdminView/Pages/administration.twig',
             'data' => ['view' => $this->data]

@@ -28,7 +28,7 @@ RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3 [L
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteBase /
-RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)$ /index.php?side=$1&rubric=$2&request=$3&id=$4 [L]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)-([^/]*)$ /index.php?side=$1&rubric=$2&request=$3&name=$4&id=$5 [L]
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f

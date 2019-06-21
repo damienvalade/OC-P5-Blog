@@ -9,6 +9,7 @@ class Model extends MysqlDatabase
 
     public function create(string $table, array $data)
     {
+
         $keys = implode(', ', array_keys($data));
         $values = implode('", "', $data);
         $query = 'INSERT INTO ' . $table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';

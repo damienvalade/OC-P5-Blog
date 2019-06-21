@@ -15,6 +15,6 @@ class CommentariesModel extends Model
                     JOIN articles ON commentaire.id_article = articles.id
                     JOIN users ON commentaire.id_auteur = users.id';
 
-        return $this->query($querry);
+        return $this->queryMD($querry);
     }
 }

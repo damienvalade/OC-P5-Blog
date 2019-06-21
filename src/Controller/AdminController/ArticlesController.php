@@ -20,7 +20,7 @@ class ArticlesController extends FrontController
     public function __construct()
     {
         $this->database = new ArticlesModel();
-        $this->session = new Cookies();
+        $this->cookies = new Cookies();
     }
 
     public function indexAction()
@@ -52,7 +52,7 @@ class ArticlesController extends FrontController
             $data = [
                 'nomArticle' => $inputName,
                 'chapoArticle' => $inputChapo,
-                'auteurArticle' => $this->session->userName(),
+                'auteurArticle' => $this->cookies->dataJWT('user','name'),
                 'id_categories' => $inputType,
                 'contenueArticle' => $inputContenue,
                 'image' => 'img\\\\photoarticle\\\\' . $filename,
@@ -61,7 +61,7 @@ class ArticlesController extends FrontController
 
             $this->database->update('articles', $id_article, $data, 'id');
 
-            $this->session->setValidate('inscription', 'Article mis à jour');
+            $this->cookies->setCookies('inscription', 'Article mis à jour');
         }
 
         $this->data = $this->database->read('articles', $id_article, 'id', false);
@@ -93,7 +93,7 @@ class ArticlesController extends FrontController
             $data = [
                 'nomArticle' => $inputName,
                 'chapoArticle' => $inputChapo,
-                'auteurArticle' => $this->session->userName(),
+                'auteurArticle' => $this->cookies->dataJWT('user','name'),
                 'id_categories' => $inputType,
                 'contenueArticle' => $inputContenue,
                 'image' => 'img\\\\photoarticle\\\\' . $filename,
@@ -102,7 +102,7 @@ class ArticlesController extends FrontController
 
             $this->database->create('articles', $data);
 
-            $this->session->setValidate('inscription', 'Article mis en ligne');
+            $this->cookies->setCookies('inscription', 'Article mis en ligne');
         }
 
 

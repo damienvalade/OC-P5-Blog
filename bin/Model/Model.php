@@ -9,11 +9,12 @@ class Model extends MysqlDatabase
 
     public function create(string $table, array $data)
     {
+
         $keys = implode(', ', array_keys($data));
         $values = implode('", "', $data);
         $query = 'INSERT INTO ' . $table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';
 
-        return $this->query($query);
+        return $this->queryMD($query);
     }
 
     public function read(string $table,string $value = null, string $key = null, $one = true, $exotic = false, $and = false, array $andValue = [])
@@ -26,25 +27,25 @@ class Model extends MysqlDatabase
                 $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
             }
 
-            return $this->prepare($query, [$value], $one);
+            return $this->prepareMD($query, [$value], $one);
         }else{
 
 
             if($exotic){
                 $query = "SELECT $value FROM $table GROUP BY $value";
-                return $this->query($query);
+                return $this->queryMD($query);
             }
 
             if($and === true){
                 $keys = implode(" AND ", $andValue);
                 $query = "SELECT $value FROM $table WHERE $keys";
 
-                return $this->query($query);
+                return $this->queryMD($query);
             }
 
             $query = 'SELECT * FROM ' . $table;
 
-            return $this->query($query);
+            return $this->queryMD($query);
 
         }
 
@@ -66,7 +67,7 @@ class Model extends MysqlDatabase
             $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE id = ?';
         }
 
-        return $this->prepare($query, [$value]);
+        return $this->prepareMD($query, [$value]);
     }
 
     public function delete(string $value, string $key = null)
@@ -76,7 +77,7 @@ class Model extends MysqlDatabase
         } else {
             $query = 'DELETE FROM ' . $this->table . ' WHERE id = ?';
         }
-        return $this->query($query, [$value]);
+        return $this->queryMD($query, [$value]);
     }
 
 }

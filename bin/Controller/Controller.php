@@ -62,14 +62,9 @@ class Controller
             $uniqname = $uniqid . '.' . $type;
 
             $filePath = "img/{$fileDir}/{$uniqname}";
-            $result = move_uploaded_file($file['avatar']['tmp_name'], $filePath);
-
-            if ($result) {
-                htmlspecialchars($this->cookies->setCookies('fichier', 'Fichier bien transferer'));
-            }
+            move_uploaded_file($file['avatar']['tmp_name'], $filePath);
 
             return $uniqname;
         }
-        htmlspecialchars($this->cookies->setCookies('files', 'Erreur lors du transfert du fichier...'));
-    }
+       }
 }

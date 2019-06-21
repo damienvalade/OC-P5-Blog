@@ -20,7 +20,7 @@ class MysqlDatabase extends Database
         return $this->pdo;
     }
 
-    public function query(string $statement,$one = Null)
+    public function queryMD(string $statement,$one = Null)
     {
 
         $req = self::getPDO()->query($statement);
@@ -43,7 +43,7 @@ class MysqlDatabase extends Database
         return $data;
     }
 
-    public function prepare(string $statement,array $attributes = [],$one = false)
+    public function prepareMD(string $statement,array $attributes = [],$one = false)
     {
         $req = self::getPDO()->prepare($statement);
 

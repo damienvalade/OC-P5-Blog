@@ -73,7 +73,7 @@ class UsersController extends FrontController
                     $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
 
                 } else {
-                    $this->session->setError('inscription', 'Mot de passe différent');
+                    $this->cookies->setCookies('inscription', 'Mot de passe différent');
                 }
         }
 
@@ -117,12 +117,13 @@ class UsersController extends FrontController
 
                         $this->database->create('users', $data);
 
-                        $this->session->setValidate('inscription', 'Bravo vous êtes bien inscrit !');
+                        $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
 
                     } else {
-                        $this->session->setError('inscription', 'Mot de passe différent');
+                        $this->cookies->setCookies('inscription', 'Mot de passe différent');
+
                     }
-                }else{ $this->session->setError('inscription', 'Adresse Email déjà utilisé'); }
+                }else{ $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé');}
             }
 
         $response = [ 'path' => 'AdminView/Pages/createUsers.twig',

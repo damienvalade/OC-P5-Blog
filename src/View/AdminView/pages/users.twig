@@ -37,7 +37,7 @@
                 <td>{{ users.type }}</td>
                 <td>{{ users.articles }}</td>
                 <td>
-                    <a class="fa-text" href="/admin/users/update/{{ users.id }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="fa-text" href="/admin/users/update/{{ spaceReplace( users.username ) }}-{{ users.id }}"><i class="fa fa-pencil-square-o"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
                     <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
                 </td>

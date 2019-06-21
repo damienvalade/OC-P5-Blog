@@ -10,13 +10,18 @@
 {% block main %}
 
     <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>dministration</h2>
-
-    <div class="row">
-
-    <canvas id="myChart" style="position: relative; height:30vh !important; width:60vw !important;"></canvas>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas id="myChart"
+                        style="position: relative; height:30vh !important; width:60vw !important;"></canvas>
+            </div>
+            <div class="col-sm-6">
+                <canvas id="myChart2"
+                        style="position: relative; height:30vh !important; width:60vw !important;"></canvas>
+            </div>
+        </div>
     </div>
-
 {% endblock %}
 
 {% block script %}
@@ -24,55 +29,137 @@
     <script>
 
 
-    view = [];
-    page = [];
+        view = [];
+        page = [];
 
-    {% for view in view %}
+        {% for view in view %}
 
-    view.push('{{ view.nb_view }}');
-    page.push('{{ view.page }}');
+        view.push('{{ view.nb_view }}');
+        page.push('{{ view.url }}');
 
-    {% endfor %}
+        {% endfor %}
 
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: page,
-            datasets: [{
-                label: '# of Visites',
-                data: view,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        view2 = [];
+        page2 = [];
+
+        {% for view2 in view2 %}
+
+        view2.push('{{ view2.nb_view }}');
+        page2.push('{{ view2.page }}');
+
+        {% endfor %}
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: page,
+                datasets: [{
+                    label: 'Nombre de visites',
+                    data: view,
+                    backgroundColor: [
+                        'rgb(31, 166, 122)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: 'rgb(31, 166, 122)'
+                        },
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'rgb(31, 166, 122)'
+                        },
+                    }]
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(31, 166, 122)'
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Nombres de vues page articles',
+                    fontColor: 'rgb(31, 166, 122)'
+                }
             }
-        }
-    });
+        });
+
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: page2,
+                datasets: [{
+                    label: 'Nombre de visites',
+                    data: view2,
+                    backgroundColor: [
+                        'rgb(31, 166, 122)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: 'rgb(31, 166, 122)'
+                        },
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'rgb(31, 166, 122)'
+                        },
+                    }]
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'rgb(31, 166, 122)'
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Nombres de vues générale',
+                    fontColor: 'rgb(31, 166, 122)'
+                }
+            }
+        });
 
 
-</script>
+    </script>
 
 {% endblock %}

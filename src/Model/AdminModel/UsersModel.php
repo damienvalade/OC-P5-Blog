@@ -12,6 +12,6 @@ class UsersModel extends Model
                     FROM users
                     JOIN administration_type ON users.level_administration = administration_type.id';
 
-        return $this->query($querry);
+        return $this->queryMD($querry);
     }
 }

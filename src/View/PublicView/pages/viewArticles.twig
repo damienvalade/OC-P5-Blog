@@ -9,21 +9,69 @@
 
 {% block main %}
 
-    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
-    {% for articles in articles %}
-    <div class="card m-5">
-        <img class="card-img-top" src="/{{ articles.image }}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{ articles.nomArticle }}</h5>
-            <p class="card-text">
-                <small class="text-muted">{{ articles.auteurArticle }}</small>
-            </p>
-            <p class="card-text">{{ articles.contenueArticle }}</p>
-            <p class="card-text">
-                <small class="text-muted">{{ articles.dateMaj }}</small>
-            </p>
+    <div class="container">
+
+        <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">A</span>rticles</h2>
+        {% for articles in articles %}
+            <div class="col-sm-12">
+                <div class="card mb-5">
+                    <img class="card-img-top" src="/{{ articles.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ articles.nomArticle }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">{{ articles.auteurArticle }}</small>
+                        </p>
+                        <p class="card-text">{{ articles.contenueArticle }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">{{ articles.dateMaj }}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+        {% for commentaires in commentaires %}
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="{{ commentaires.image }}" class="img img-rounded img-fluid"/>
+                                <p class="text-secondary text-center m-0">{{ commentaires.dateCreation }}</p>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="clearfix"></div>
+                                <p>{{ commentaires.commentaire }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+        <div class="col-sm-12">
+            <form class="mt-5 write-white" action="{{ pathPost() }}" method="post">
+
+                <h5 class="d-flex justify-content-center mt-5 mb-5">Soumettre un commentaire</h5>
+                {% if isLoged('toVisible') == '' %}
+                    <div>
+                        <div class="row d-flex justify-content-center form-group">
+                            <textarea id="story" name="story" rows="5" cols="33"> Commentaire </textarea>
+                        </div>
+                        <div class="row d-flex justify-content-center mt-5 mb-5">
+                            <button type="submit" class="btn-arrow">Send</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row d-flex justify-content-center form-group">
+                        <label for="story">Pour écrire un commentaire vous devez être connecté.</label>
+                    </div>
+                {% endif %}
+            </form>
         </div>
+
     </div>
-    {% endfor %}
 
 {% endblock %}

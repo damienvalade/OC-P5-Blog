@@ -13,6 +13,7 @@
     <section class="container mt-5 mb-5 write-white">
 
         <h2 class="text-center mb-5"><span class="underline">C</span>ontact</h2>
+        <p id="error" class="row d-flex justify-content-center error-text">{{ errors('mail') }}</p>
 
         <div class="row">
 
@@ -31,7 +32,7 @@
             </div>
 
             <div class="col-md-6">
-                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                <form id="contact-form" name="contact-form" action="{{ pathPost() }}" method="post">
 
 
                     <div class="row">
@@ -39,7 +40,7 @@
 
                         <div class="col-md-6">
                             <div class="md-form mb-2">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nom*">
+                                <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom*">
                             </div>
                         </div>
 
@@ -56,7 +57,7 @@
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <div class="md-form mb-0">
-                                <input type="text" id="subject" name="subject" class="form-control"
+                                <input type="text" id="sujet" name="sujet" class="form-control"
                                        placeholder="Sujet*">
                             </div>
                         </div>

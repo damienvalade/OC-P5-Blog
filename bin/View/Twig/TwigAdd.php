@@ -71,6 +71,7 @@ class TwigAdd extends AbstractExtension
         $rubric = filter_input(INPUT_GET, 'rubric');
         $request = filter_input(INPUT_GET, 'request');
         $id_path = filter_input(INPUT_GET, 'id');
+        $name_path = filter_input(INPUT_GET, 'name');
 
         if ($side !== null) {
             $pathPost = '/' . $side;
@@ -86,7 +87,9 @@ class TwigAdd extends AbstractExtension
             $pathPost .= '/' . $request;
         }
 
-        if ($id_path !== null) {
+        if ($name_path !== null) {
+            $pathPost .= '/' . $name_path .'-'.$id_path;
+        }elseif ($id_path !== null) {
             $pathPost .= '/' . $id_path;
         }
 

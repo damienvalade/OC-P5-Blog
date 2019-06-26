@@ -55,8 +55,20 @@ class ArticlesController extends FrontController
 
         $this->data = $this->database->read('articles', $id_article, 'id', false);
 
+        $value = 'commentaire.commentaire, commentaire.dateCreation, users.username, users.image';
+
+        $array = [
+            'users.id = commentaire.id_auteur',
+            'commentaire.id_article =' . $id_article
+        ];
+
+        $this->data2 = $this->database->read('commentaire, users',$value, null,true,false,true,$array);
+
         $response = ['path' => 'PublicView/Pages/viewArticles.twig',
-            'data' => ['articles' => $this->data],
+            'data' => [
+                'articles' => $this->data,
+                'commentaires' => $this->data2
+                ],
         ];
 
         return $response;

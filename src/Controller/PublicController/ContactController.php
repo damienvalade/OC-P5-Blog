@@ -35,6 +35,7 @@ class ContactController extends FrontController
             ];
 
             $this->mail->mailTo($data);
+            $this->redirect('/public/contact');
 
         }
         $response = [ 'path' => 'PublicView/Pages/contact.twig',

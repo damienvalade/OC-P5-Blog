@@ -55,18 +55,20 @@
             <form class="mt-5 write-white" action="{{ pathPost() }}" method="post">
 
                 <h5 class="d-flex justify-content-center mt-5 mb-5">Soumettre un commentaire</h5>
-
-                <div class="row d-flex justify-content-center form-group">
-                    <label for="story">Pour écrire un commentaire vous devez être connecté.</label>
-                </div>
-                <div {{ isLoged('toVisible') }}>
+                {% if isLoged('toVisible') == '' %}
+                    <div>
+                        <div class="row d-flex justify-content-center form-group">
+                            <textarea id="story" name="story" rows="5" cols="33"> Commentaire </textarea>
+                        </div>
+                        <div class="row d-flex justify-content-center mt-5 mb-5">
+                            <button type="submit" class="btn-arrow">Send</button>
+                        </div>
+                    </div>
+                {% else %}
                     <div class="row d-flex justify-content-center form-group">
-                        <textarea id="story" name="story" rows="5" cols="33"> Commentaire </textarea>
+                        <label for="story">Pour écrire un commentaire vous devez être connecté.</label>
                     </div>
-                    <div class="row d-flex justify-content-center mt-5 mb-5">
-                        <button type="submit" class="btn-arrow">Send</button>
-                    </div>
-                </div>
+                {% endif %}
             </form>
         </div>
 

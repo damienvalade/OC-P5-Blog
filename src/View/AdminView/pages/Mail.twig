@@ -1,0 +1,41 @@
+{# **************** #}
+{# *** Settings *** #}
+{# **************** #}
+
+{% extends "/AdminView/layout/layoutAdmin.twig" %}
+
+{% block titre %}Options utilisateur{% endblock %}
+
+
+{% block main %}
+
+    <h2 class="text-center mb-5 mt-5 write-white"><span class="underline">M</span>ails</h2>
+
+    <table class="table table-striped-emerald">
+        <thead class="thead-emerald">
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Date Création</th>
+            <th scope="col">Date modification</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mail in mail %}
+            <tr>
+                <th scope="row">{{ mail.nom }}</th>
+                <td>{{ mail.email }}</td>
+                <td>{{ mail.objet }}</td>
+                <td>{{ mail.message }}</td>
+                <td>{{ mail.date }}</td>
+                <td>
+                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

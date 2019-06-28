@@ -87,8 +87,6 @@ class ArticlesController extends FrontController
         $nomAuteur = $this->cookies->dataJWT('user','name');
         $id_auteur = $this->database->read('users', $nomAuteur, 'username', false);
 
-        var_dump($id_auteur);
-
         if ($inputName !== null && $inputChapo !== null
             && $inputType !== null && $inputContenue !== null) {
 

@@ -37,8 +37,8 @@
                 <td>{{ articles.titre }}</td>
                 <td>
                     <a class="fa-text" href="/admin/articles/update/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"><i class="fa fa-pencil-square-o"></i></a>
-                    <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
-                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                    <a class="fa-text" href="/public/articles/view/{{ spaceReplace(articles.nomArticle) }}-{{ spaceReplace(articles.id) }}"><i class="fa fa-eye"></i></a>
+                    <a class="fa-text" href="/admin/articles/delete/{{ articles.id }}"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
         {% endfor %}

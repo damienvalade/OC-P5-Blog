@@ -26,4 +26,13 @@ class CommentariesController
 
         return $response;
     }
+
+    public function deleteAction()
+    {
+        $id_commentary = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $this->database->delete('commentaire', $id_commentary);
+
+        return self::indexAction();
+    }
 }

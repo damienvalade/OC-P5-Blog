@@ -29,8 +29,8 @@
                 <td>{{ commentaire.firstname }}</td>
                 <td>{{ commentaire.dateCreation }}</td>
                 <td>
-                    <a class="fa-text" href="#"><i class="fa fa-eye"></i></a>
-                    <a class="fa-text" href="#"><i class="fa fa-times"></i></a>
+                    <a class="fa-text" href="/public/articles/view/{{ spaceReplace(commentaire.nomArticle) }}-{{ spaceReplace(commentaire.id_article) }}"><i class="fa fa-eye"></i></a>
+                    <a class="fa-text" href="/admin/commentaries/delete/{{ commentaire.id }}"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
         {% endfor %}

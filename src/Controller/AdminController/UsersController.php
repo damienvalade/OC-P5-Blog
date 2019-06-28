@@ -132,4 +132,25 @@ class UsersController extends FrontController
 
         return $response; ;
     }
+
+    public function deleteAction(){
+
+        $id_users = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $article = $this->database->read('articles',$id_users,'id_auteur', false);
+        $commentaire = $this->database->read('commentaire',$id_users,'id_auteur', false);
+
+        foreach ( $commentaire as $commentaire){
+            $this->database->delete('commentaire', $commentaire['id']);
+        }
+
+        foreach ( $article as $article){
+            $this->database->delete('commentaire', $article['id'],'id_article');
+            $this->database->delete('articles', $article['id']);
+        }
+
+        $this->database->delete('users', $id_users);
+
+        return self::indexAction();
+    }
 }

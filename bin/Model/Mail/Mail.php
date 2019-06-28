@@ -5,15 +5,22 @@ namespace Core\Model\Mail;
 
 
 use Core\Controller\Cookies\Cookies;
+use Core\Model\Model;
 
 class Mail
 {
 
+    protected $database;
     protected $coockie;
+    protected $date;
 
     public function __construct()
     {
         $this->coockie = new Cookies();
+        $this->database = new Model();
+
+        date_default_timezone_set('Europe/Paris');
+        $this->date = date('Y-m-d H:i:s');
     }
 
     public function send($destinataire, $objet, $message, $headers)
@@ -41,8 +48,20 @@ class Mail
         $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
 
         if (self::send($destinataire, $objet, $message, $headers)) {
+
+            $request = [
+                'email' => $expediteur,
+                'nom' => $nomExpediteur,
+                'objet' => $objet,
+                'message' => $data['message'],
+                'date' => $this->date
+            ];
+
+            $this->database->create('mail',$request);
+
             $data['objet'] = 'Message : ' . $data['objet'] . '. A bien été envoyer';
             $data['message'] = 'Rappel du message : ' . $data['message'];
+
             return self::mailCC($data);
         }
 

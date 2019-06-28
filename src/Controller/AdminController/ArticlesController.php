@@ -84,6 +84,10 @@ class ArticlesController extends FrontController
         $inputChapo = filter_input(INPUT_POST, 'inputChapo', FILTER_SANITIZE_STRING);
         $inputType = filter_input(INPUT_POST, 'inputType', FILTER_SANITIZE_STRING);
         $inputContenue = filter_input(INPUT_POST, 'inputContenue', FILTER_SANITIZE_SPECIAL_CHARS);
+        $nomAuteur = $this->cookies->dataJWT('user','name');
+        $id_auteur = $this->database->read('users', $nomAuteur, 'username', false);
+
+        var_dump($id_auteur);
 
         if ($inputName !== null && $inputChapo !== null
             && $inputType !== null && $inputContenue !== null) {
@@ -94,6 +98,7 @@ class ArticlesController extends FrontController
                 'nomArticle' => $inputName,
                 'chapoArticle' => $inputChapo,
                 'auteurArticle' => $this->cookies->dataJWT('user','name'),
+                'id_auteur' => $id_auteur[0]['id'],
                 'id_categories' => $inputType,
                 'contenueArticle' => $inputContenue,
                 'image' => 'img\\\\photoarticle\\\\' . $filename,
@@ -111,6 +116,20 @@ class ArticlesController extends FrontController
         ];
 
         return $response;
+    }
+
+    public function deleteAction()
+    {
+        $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $id_commentaire = $this->database->read('commentaire', $id_article, 'id_article', false);
+
+        foreach ( $id_commentaire as $todelete){
+            $this->database->delete('commentaire', $todelete['id']);
+        }
+            $this->database->delete('articles', $id_article);
+
+        return self::indexAction();
     }
 
 }

@@ -13,40 +13,53 @@
         </div>
 
         <div class="sidebar-heading text-center">
-        <a href="/admin/settings" id="navbardrop">
-            <img class="radius-50 icon-pp" src="{{ userImage() }}" alt="">
-        </a>
+            <a href="/admin/settings" id="navbardrop">
+                <img class="radius-50 icon-pp" src="{{ userImage() }}" alt="">
+            </a>
         </div>
 
         <ul class="list-group list-group-flush">
 
             <li class="m-0 p-0">
-                <a href="/admin/users" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=users') }}">
+                <a href="/admin/users"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=users') }}">
                     <i class="fa fa-user"></i>
                     <span class="arrow-hide">Utilisateur</span>
                 </a>
             </li>
 
             <li class="m-0 p-0">
-                <a href="/admin/settings" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=settings') }}">
+                <a href="/admin/mail/view"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=mail&request=view') }}">
+                <i class="fa fa-envelope-o"></i>
+                <span class="arrow-hide">Home</span>
+                </a>
+            </li>
+
+            <li class="m-0 p-0">
+                <a href="/admin/settings"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=settings') }}">
                     <i class="fa fa-sliders"></i>
                     <span class="arrow-hide">Administatrion</span>
                 </a>
             </li>
             <li class="m-0 p-0">
-                <a href="/admin/administration" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=administration') }}">
+                <a href="/admin/administration"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=administration') }}">
                     <i class="fa fa-bar-chart"></i>
                     <span class="arrow-hide">Dashboard</span>
                 </a>
             </li>
             <li class="m-0 p-0">
-                <a href="/admin/articles" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=articles') }}">
+                <a href="/admin/articles"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=articles') }}">
                     <i class="fa fa-files-o"></i>
                     <span class="arrow-hide">Articles</span>
                 </a>
             </li>
             <li class="m-0 p-0">
-                <a href="/admin/commentaries" class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=commentaries') }}">
+                <a href="/admin/commentaries"
+                   class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=commentaries') }}">
                     <i class="fa fa-comment"></i>
                     <span class="arrow-hide">Commentaires</span>
                 </a>

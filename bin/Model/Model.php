@@ -70,14 +70,14 @@ class Model extends MysqlDatabase
         return $this->prepareMD($query, [$value]);
     }
 
-    public function delete(string $value, string $key = null)
+    public function delete(string $table, string $value, string $key = null)
     {
         if (isset($key)) {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $key . ' = ?';
+            $query = 'DELETE FROM ' . $table. ' WHERE ' . $key . ' = ?';
         } else {
-            $query = 'DELETE FROM ' . $this->table . ' WHERE id = ?';
+            $query = 'DELETE FROM ' . $table . ' WHERE id = ?';
         }
-        return $this->queryMD($query, [$value]);
+        return $this->prepareMD($query, [$value]);
     }
 
 }

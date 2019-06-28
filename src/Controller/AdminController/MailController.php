@@ -17,10 +17,8 @@ class MailController extends FrontController
         $this->database = new Model();
     }
 
-    public function indexAction()
+    public function viewAction()
     {
-
-
         $data = $this->database->read('mail');
 
         $response = [ 'path' => 'AdminView/Pages/mail.twig',
@@ -28,6 +26,15 @@ class MailController extends FrontController
         ];
 
         return $response;
+    }
+
+    public function deleteAction()
+    {
+        $id_mail = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $this->database->delete('mail', $id_mail);
+
+        return self::viewAction();
     }
 
 }

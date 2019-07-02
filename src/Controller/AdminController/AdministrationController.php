@@ -15,14 +15,6 @@ class AdministrationController
      * @var Model
      */
     protected $database;
-    /**
-     * @var
-     */
-    protected $data;
-    /**
-     * @var
-     */
-    protected $data2;
 
     /**
      * AdministrationController constructor.
@@ -38,17 +30,16 @@ class AdministrationController
     public function indexAction()
     {
 
-
         date_default_timezone_set('Europe/Paris');
         $date = date('Y-m-d');
 
-        $this->data = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and page = 'articles'");
-        $this->data2 = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and url = 'home'");
+        $page_articles = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and page = 'articles'");
+        $page_all = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and url = 'home'");
 
         $response = [ 'path' => 'AdminView/Pages/administration.twig',
             'data' => [
-                'view' => $this->data,
-                'view2' => $this->data2
+                'view' => $page_articles,
+                'view2' => $page_all
             ]
         ];
 

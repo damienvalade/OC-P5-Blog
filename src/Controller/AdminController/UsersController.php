@@ -47,12 +47,12 @@ class UsersController extends FrontController
             'data' => [],
         ];
 
-        $this->data = $this->database->innerjoin();
+        $users = $this->database->innerjoin();
 
         if( $this->cookies->dataJWT('user','id') !== false )
         {
             $response = [ 'path' => 'AdminView/Pages/users.twig',
-                'data' => ['users' => $this->data]
+                'data' => ['users' => $users]
             ];
 
         }
@@ -99,10 +99,10 @@ class UsersController extends FrontController
                 }
         }
 
-        $this->data = $this->database->read('users', $id_user, 'id', false);
+        $users = $this->database->read('users', $id_user, 'id', false);
 
         $response = [ 'path' => 'AdminView/Pages/updateUsers.twig',
-            'data' => ['users' => $this->data],
+            'data' => ['users' => $users],
         ];
 
         return $response;
@@ -152,7 +152,7 @@ class UsersController extends FrontController
             }
 
         $response = [ 'path' => 'AdminView/Pages/createUsers.twig',
-            'data' => ['users' => $this->data],
+            'data' => [],
         ];
 
         return $response; ;

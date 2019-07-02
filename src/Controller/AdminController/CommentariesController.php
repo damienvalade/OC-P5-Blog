@@ -12,10 +12,7 @@ use App\Model\AdminModel\CommentariesModel;
  */
 class CommentariesController
 {
-    /**
-     * @var
-     */
-    protected $data;
+
     /**
      * @var CommentariesModel
      */
@@ -34,10 +31,10 @@ class CommentariesController
      */
     public function indexAction()
     {
-        $this->data = $this->database->innerJoin();
+        $articles_commentaries = $this->database->innerJoin();
 
         $response = [ 'path' => 'AdminView/Pages/commentaries.twig',
-            'data' => ['commentaire' => $this->data],
+            'data' => ['commentaire' => $articles_commentaries],
         ];
 
         return $response;

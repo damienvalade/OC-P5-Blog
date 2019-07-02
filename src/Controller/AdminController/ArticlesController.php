@@ -19,20 +19,11 @@ class ArticlesController extends FrontController
     /**
      * @var
      */
-    protected $data;
-    /**
-     * @var
-     */
     protected $session;
-    /**
-     * @var
-     */
-    protected $data2;
     /**
      * @var ArticlesModel
      */
     protected $database;
-
     /**
      * ArticlesController constructor.
      */
@@ -47,10 +38,10 @@ class ArticlesController extends FrontController
      */
     public function indexAction()
     {
-        $this->data = $this->database->innerJoin();
+        $articles_categories = $this->database->innerJoin();
 
         $response = [ 'path' => 'AdminView/Pages/articles.twig',
-            'data' => ['articles' => $this->data],
+            'data' => ['articles' => $articles_categories],
         ];
 
         return $response;
@@ -89,12 +80,12 @@ class ArticlesController extends FrontController
             $this->cookies->setCookies('inscription', 'Article mis à jour');
         }
 
-        $this->data = $this->database->read('articles', $id_article, 'id', false);
-        $this->data2 = $this->database->read('categories');
+        $articles = $this->database->read('articles', $id_article, 'id', false);
+        $categories = $this->database->read('categories');
 
         $response = [ 'path' => 'AdminView/Pages/updateArticles.twig',
-            'data' => ['articles' => $this->data,
-                'types' => $this->data2],
+            'data' => ['articles' => $articles,
+                'types' => $categories],
         ];
 
         return $response;
@@ -106,7 +97,7 @@ class ArticlesController extends FrontController
     public function createAction()
     {
 
-        $this->data2 = $this->database->read('categories');
+        $categories = $this->database->read('categories');
 
         $inputName = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_STRING);
         $inputChapo = filter_input(INPUT_POST, 'inputChapo', FILTER_SANITIZE_STRING);
@@ -138,7 +129,7 @@ class ArticlesController extends FrontController
 
 
         $response = [ 'path' => 'AdminView/Pages/createArticles.twig',
-            'data' => ['types' => $this->data2]
+            'data' => ['types' => $categories]
         ];
 
         return $response;

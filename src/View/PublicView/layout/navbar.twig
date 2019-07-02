@@ -23,10 +23,7 @@
                 <a class="nav-link {{ currentUrl('side=public&rubric=contact') }}" href="/public/contact">Contact</a>
             </li>
 
-            {% if isLoged('toVisible') == '' %}
-
-
-
+            {% if isLogged() == '' %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <img class="radius-50 icon-pp" src="{{ userImage() }}" alt="">
@@ -38,7 +35,6 @@
                         <a class="dropdown-item mb-2" href="/public/users/disconnect">Déconnexion</a>
                     </div>
                 </li>
-
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link {{ currentUrl('side=public&rubric=users&request=login') }}"
@@ -50,6 +46,7 @@
                        href="/public/users/subcribe"><i class="fa fa-user-plus"></i></a>
                 </li>
             {% endif %}
+
         </ul>
     </div>
 </nav>

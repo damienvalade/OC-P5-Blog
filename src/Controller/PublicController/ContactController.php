@@ -6,11 +6,24 @@ use Core\Controller\FrontController;
 use Core\Model\Mail\Mail;
 use Core\Model\View\View;
 
+/**
+ * Class ContactController
+ * @package App\Controller\PublicController
+ */
 class ContactController extends FrontController
 {
+    /**
+     * @var View
+     */
     protected $view;
+    /**
+     * @var Mail
+     */
     protected $mail;
 
+    /**
+     * ContactController constructor.
+     */
     public function __construct()
     {
         $this->view = new View();
@@ -18,6 +31,9 @@ class ContactController extends FrontController
         $this->view->addView();
     }
 
+    /**
+     * @return array
+     */
     public function indexAction()
     {
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);

@@ -4,9 +4,18 @@ namespace Core\Model;
 
 use Core\Model\Database\MysqlDatabase;
 
+/**
+ * Class Model
+ * @package Core\Model
+ */
 class Model extends MysqlDatabase
 {
 
+    /**
+     * @param string $table
+     * @param array $data
+     * @return array|false|mixed|\PDOStatement
+     */
     public function create(string $table, array $data)
     {
 
@@ -17,7 +26,17 @@ class Model extends MysqlDatabase
         return $this->queryMD($query);
     }
 
-    public function read(string $table,string $value = null, string $key = null, $one = true, $exotic = false, $and = false, array $andValue = [])
+    /**
+     * @param string $table
+     * @param string|null $value
+     * @param string|null $key
+     * @param bool $one
+     * @param bool $exotic
+     * @param bool $and
+     * @param array $andValue
+     * @return array|bool|false|mixed|\PDOStatement
+     */
+    public function read(string $table, string $value = null, string $key = null, $one = true, $exotic = false, $and = false, array $andValue = [])
     {
 
         if(!$one){
@@ -48,11 +67,15 @@ class Model extends MysqlDatabase
             return $this->queryMD($query);
 
         }
-
-
-
     }
 
+    /**
+     * @param string $table
+     * @param string $value
+     * @param array $data
+     * @param string|null $key
+     * @return array|bool|mixed
+     */
     public function update(string $table, string $value, array $data, string $key = null)
     {
         $set = null;
@@ -70,6 +93,12 @@ class Model extends MysqlDatabase
         return $this->prepareMD($query, [$value]);
     }
 
+    /**
+     * @param string $table
+     * @param string $value
+     * @param string|null $key
+     * @return array|bool|mixed
+     */
     public function delete(string $table, string $value, string $key = null)
     {
         if (isset($key)) {

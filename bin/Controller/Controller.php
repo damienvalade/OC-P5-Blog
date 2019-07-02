@@ -9,12 +9,19 @@ class Controller
     protected $cookies;
     protected $redirect;
 
+    /**
+     * Controller constructor.
+     */
     public function __construct()
     {
         $this->cookies = new Cookies();
     }
 
-    protected function redirect($redirect, $error = false){
+    /**
+     * @param string $redirect
+     * @param bool $error
+     */
+    protected function redirect(string $redirect, $error = false){
 
         if($error === true){
             $this->redirect = 'HTTP/1.0 ' . $redirect;
@@ -27,31 +34,48 @@ class Controller
         header($this->redirect);
     }
 
+
+    /**
+     * @return string
+     */
     protected function unauthorized()
     {
         self::redirect('401 Unauthorized', true);
         return 'ErrorsView/401.twig';
     }
 
+    /**
+     * @return string
+     */
     protected function forbidden()
     {
         self::redirect('403 Forbidden', true);
         return 'ErrorsView/403.twig';
     }
 
+    /**
+     * @return string
+     */
     protected function notfound()
     {
         self::redirect('404 Not Found', true);
         return 'ErrorsView/404.twig';
     }
 
+    /**
+     * @return string
+     */
     protected function serverError()
     {
         self::redirect('500 Internal Server Error', true);
         return 'ErrorsView/500.twig';
     }
 
-    public function upload($fileDir)
+    /**
+     * @param string $fileDir
+     * @return string
+     */
+    public function upload(string $fileDir)
     {
         $file = $_FILES;
 

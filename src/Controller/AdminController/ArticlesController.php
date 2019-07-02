@@ -9,20 +9,42 @@ use Core\Controller\FrontController;
 
 use \date;
 
+/**
+ * Class ArticlesController
+ * @package App\Controller\AdminController
+ */
 class ArticlesController extends FrontController
 {
 
+    /**
+     * @var
+     */
     protected $data;
+    /**
+     * @var
+     */
     protected $session;
+    /**
+     * @var
+     */
     protected $data2;
+    /**
+     * @var ArticlesModel
+     */
     protected $database;
 
+    /**
+     * ArticlesController constructor.
+     */
     public function __construct()
     {
         $this->database = new ArticlesModel();
         $this->cookies = new Cookies();
     }
 
+    /**
+     * @return array
+     */
     public function indexAction()
     {
         $this->data = $this->database->innerJoin();
@@ -34,6 +56,9 @@ class ArticlesController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function updateAction()
     {
 
@@ -75,6 +100,9 @@ class ArticlesController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function createAction()
     {
 
@@ -116,6 +144,9 @@ class ArticlesController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function deleteAction()
     {
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);

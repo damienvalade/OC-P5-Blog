@@ -5,17 +5,36 @@ namespace App\Controller\AdminController;
 
 use Core\Model\Model;
 
+/**
+ * Class AdministrationController
+ * @package App\Controller\AdminController
+ */
 class AdministrationController
 {
+    /**
+     * @var Model
+     */
     protected $database;
+    /**
+     * @var
+     */
     protected $data;
+    /**
+     * @var
+     */
     protected $data2;
 
+    /**
+     * AdministrationController constructor.
+     */
     public function __construct()
     {
         $this->database = new Model();
     }
 
+    /**
+     * @return array
+     */
     public function indexAction()
     {
 

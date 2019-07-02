@@ -5,8 +5,15 @@ namespace App\Controller\ErrorsController;
 
 use Core\Controller\FrontController;
 
+/**
+ * Class ErrorsController
+ * @package App\Controller\ErrorsController
+ */
 class ErrorsController extends FrontController
 {
+    /**
+     * @return array
+     */
     public function errorsAction(){
 
         $error = filter_input(INPUT_GET,'type',FILTER_SANITIZE_NUMBER_INT);

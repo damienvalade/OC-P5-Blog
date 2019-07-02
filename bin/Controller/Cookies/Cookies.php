@@ -12,12 +12,21 @@ class Cookies
 
     protected $jwt;
 
+
+    /**
+     * Cookies constructor.
+     */
     public function __construct()
     {
         $this->jwt = new JWT();
     }
 
-    public function setCookies($name, $value, $time = null)
+    /**
+     * @param string $name
+     * @param string $value
+     * @param string|null $time
+     */
+    public function setCookies(string $name, string $value, string $time = null)
     {
         if($time === null){
             $time = time() + 3600;
@@ -25,7 +34,11 @@ class Cookies
         setcookie($name, $value, $time, '/');
     }
 
-    public function getCookies($name)
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getCookies(string $name)
     {
 
         $return = filter_input(INPUT_COOKIE, $name, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -33,7 +46,11 @@ class Cookies
         return $return;
     }
 
-    public function unsetCookies($name)
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function unsetCookies(string $name)
     {
         $unset = filter_input(INPUT_COOKIE, $name, FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -44,6 +61,14 @@ class Cookies
         }
     }
 
+    /**
+     * @param int|null $id_user
+     * @param string|null $name
+     * @param string|null $email
+     * @param string|null $image
+     * @param int|null $level
+     * @return string
+     */
     public function encodeJWT(int $id_user = null, string $name = null, string $email = null, string $image = null, int $level = null)
     {
 
@@ -63,6 +88,10 @@ class Cookies
         return $jwt;
     }
 
+    /**
+     * @param $token
+     * @return array|bool
+     */
     public function decodeJWT($token)
     {
         if($token !== null){
@@ -72,7 +101,12 @@ class Cookies
         }return false;
     }
 
-    public function dataJWT($name, $value){
+    /**
+     * @param string $name
+     * @param string $value
+     * @return bool|string|mixed
+     */
+    public function dataJWT(string $name, string $value){
 
         $data = self::decodeJWT(self::getCookies($name));
 

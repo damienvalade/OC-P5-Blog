@@ -2,7 +2,9 @@
 
 namespace App\Model\AdminModel;
 
-class HomeModel
+use Core\Model\Model;
+
+class HomeModel extends Model
 {
 
 }

@@ -2,7 +2,9 @@
 
 namespace App\Model\PublicModel;
 
-class ArticlesModel
+use Core\Model\Model;
+
+class ArticlesModel extends Model
 {
 
 }

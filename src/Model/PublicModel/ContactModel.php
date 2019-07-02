@@ -2,7 +2,9 @@
 
 namespace App\Model\PublicModel;
 
-class ContactModel
+use Core\Model\Model;
+
+class ContactModel extends Model
 {
 
 }

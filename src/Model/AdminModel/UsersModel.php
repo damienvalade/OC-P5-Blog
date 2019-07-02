@@ -8,7 +8,7 @@ class UsersModel extends Model
 {
     public function innerJoin()
     {
-        $querry = 'SELECT users.id, users.name, users.Firstname, users.username, users.email, users.image,  administration_type.type
+        $querry = 'SELECT users.id, users.name, users.firstname, users.username, users.email, users.image,  administration_type.type
                     FROM users
                     JOIN administration_type ON users.level_administration = administration_type.id';
 

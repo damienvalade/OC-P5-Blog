@@ -4,11 +4,13 @@
 namespace App\Controller\AdminController;
 
 
+use Core\Controller\FrontController;
+
 /**
  * Class SettingsController
  * @package App\Controller\AdminController
  */
-class SettingsController
+class SettingsController extends FrontController
 {
 
     /**

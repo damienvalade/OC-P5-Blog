@@ -30,17 +30,17 @@
             <tbody>
             {% for articles in articles %}
                 <tr>
-                    <th scope="row">{{ articles.nomArticle }}</th>
-                    <td>{{ articles.auteurArticle }}</td>
-                    <td>{{ articles.dateCreation }}</td>
-                    <td>{{ articles.dateMaj }}</td>
+                    <th scope="row">{{ articles.nom_article }}</th>
+                    <td>{{ articles.auteur_article }}</td>
+                    <td>{{ articles.date_creation }}</td>
+                    <td>{{ articles.date_maj }}</td>
                     <td>{{ articles.titre }}</td>
                     <td>
                         <a class="fa-text"
-                           href="/admin/articles/update/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"><i
+                           href="/admin/articles/update/{{ spaceReplace( articles.nom_article ) }}-{{ articles.id }}"><i
                                     class="fa fa-pencil-square-o"></i></a>
                         <a class="fa-text"
-                           href="/public/articles/view/{{ spaceReplace(articles.nomArticle) }}-{{ spaceReplace(articles.id) }}"><i
+                           href="/public/articles/view/{{ spaceReplace(articles.nom_article) }}-{{ spaceReplace(articles.id) }}"><i
                                     class="fa fa-eye"></i></a>
                         <a class="fa-text" href="/admin/articles/delete/{{ articles.id }}"><i
                                     class="fa fa-times"></i></a>

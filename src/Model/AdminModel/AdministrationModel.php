@@ -4,7 +4,9 @@
 namespace App\Model\AdminModel;
 
 
-class AdministrationModel
+use Core\Model\Model;
+
+class AdministrationModel extends Model
 {
 
 }

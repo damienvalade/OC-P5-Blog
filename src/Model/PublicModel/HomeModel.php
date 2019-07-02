@@ -2,7 +2,9 @@
 
 namespace App\Model\PublicModel;
 
-class HomeModel
+use Core\Model\Model;
+
+class HomeModel extends Model
 {
 
 }

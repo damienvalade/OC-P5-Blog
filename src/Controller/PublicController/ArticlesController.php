@@ -53,14 +53,14 @@ class ArticlesController extends FrontController
         $id_auteur = filter_input(INPUT_GET, 'auteur', FILTER_SANITIZE_STRING);
 
         if ($id_auteur !== null) {
-            $this->data = $this->database->read('articles', $id_auteur, 'auteurArticle', false);
+            $this->data = $this->database->read('articles', $id_auteur, 'auteur_article', false);
         } elseif ($id_type !== null) {
             $this->data = $this->database->read('articles', $id_type, 'id_categories', false);
         } else {
             $this->data = $this->database->read('articles');
         }
 
-        $this->data3 = $this->database->read('articles', 'auteurArticle', null, true, true);
+        $this->data3 = $this->database->read('articles', 'auteur_article', null, true, true);
 
         $this->data2 = $this->database->read('categories');
 
@@ -83,7 +83,7 @@ class ArticlesController extends FrontController
 
         $this->data = $this->database->read('articles', $id_article, 'id', false);
 
-        $value = 'commentaire.commentaire, commentaire.dateCreation, users.username, users.image';
+        $value = 'commentaire.commentaire, commentaire.date_creation, users.username, users.image';
 
         $array = [
             'users.id = commentaire.id_auteur',

@@ -6,14 +6,36 @@ use Core\Controller\FrontController;
 use Core\Model\Model;
 use Core\Model\View\View;
 
+/**
+ * Class ArticlesController
+ * @package App\Controller\PublicController
+ */
 class ArticlesController extends FrontController
 {
+    /**
+     * @var
+     */
     protected $data;
+    /**
+     * @var
+     */
     protected $data2;
+    /**
+     * @var
+     */
     protected $data3;
+    /**
+     * @var Model
+     */
     protected $database;
+    /**
+     * @var View
+     */
     protected $view;
 
+    /**
+     * ArticlesController constructor.
+     */
     public function __construct()
     {
         $this->database = new Model();
@@ -22,6 +44,9 @@ class ArticlesController extends FrontController
         $this->view->addView();
     }
 
+    /**
+     * @return array
+     */
     public function indexAction()
     {
         $id_type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_NUMBER_INT);
@@ -48,6 +73,9 @@ class ArticlesController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function viewAction()
     {
 

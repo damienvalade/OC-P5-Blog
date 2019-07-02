@@ -7,13 +7,29 @@ namespace Core\Model\Mail;
 use Core\Controller\Cookies\Cookies;
 use Core\Model\Model;
 
+/**
+ * Class Mail
+ * @package Core\Model\Mail
+ */
 class Mail
 {
 
+    /**
+     * @var Model
+     */
     protected $database;
+    /**
+     * @var Cookies
+     */
     protected $coockie;
+    /**
+     * @var false|string
+     */
     protected $date;
 
+    /**
+     * Mail constructor.
+     */
     public function __construct()
     {
         $this->coockie = new Cookies();
@@ -23,7 +39,14 @@ class Mail
         $this->date = date('Y-m-d H:i:s');
     }
 
-    public function send($destinataire, $objet, $message, $headers)
+    /**
+     * @param string $destinataire
+     * @param string $objet
+     * @param string $message
+     * @param string $headers
+     * @return bool
+     */
+    public function send(string $destinataire, string $objet, string $message, string $headers)
     {
         if (mail($destinataire, $objet, $message, $headers)) {
             return true;
@@ -31,6 +54,9 @@ class Mail
         return false;
     }
 
+    /**
+     * @param array $data
+     */
     public function mailTo(array $data)
     {
 
@@ -69,6 +95,9 @@ class Mail
 
     }
 
+    /**
+     * @param array $data
+     */
     public function mailCC(array $data)
     {
 
@@ -90,7 +119,13 @@ class Mail
 
     }
 
-    public function designMail($nomExpediteur, $message)
+
+    /**
+     * @param string $nomExpediteur
+     * @param string $message
+     * @return string|string
+     */
+    public function designMail(string $nomExpediteur, string $message)
     {
         $message = '
                 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

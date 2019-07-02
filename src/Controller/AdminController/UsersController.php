@@ -8,19 +8,38 @@ use App\Model\AdminModel\UsersModel;
 use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
+/**
+ * Class UsersController
+ * @package App\Controller\AdminController
+ */
 class UsersController extends FrontController
 {
 
+    /**
+     * @var
+     */
     protected $data;
+    /**
+     * @var UsersModel
+     */
     protected $database;
+    /**
+     * @var Cookies
+     */
     protected $cookies;
 
+    /**
+     * UsersController constructor.
+     */
     public function __construct()
     {
         $this->database = new UsersModel();
         $this->cookies = new Cookies();
     }
 
+    /**
+     * @return array
+     */
     public function indexAction()
     {
 
@@ -41,6 +60,9 @@ class UsersController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function updateAction(){
 
         $id_user = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -86,6 +108,9 @@ class UsersController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function createAction(){
 
             $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -133,6 +158,9 @@ class UsersController extends FrontController
         return $response; ;
     }
 
+    /**
+     * @return array
+     */
     public function deleteAction(){
 
         $id_users = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);

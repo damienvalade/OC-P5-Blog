@@ -6,19 +6,38 @@ use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 use Core\Model\Model;
 
+/**
+ * Class UsersController
+ * @package App\Controller\PublicController
+ */
 class UsersController extends FrontController
 {
 
+    /**
+     * @var
+     */
     protected $users;
+    /**
+     * @var Model
+     */
     protected $database;
+    /**
+     * @var Cookies
+     */
     protected $cookies;
 
+    /**
+     * UsersController constructor.
+     */
     public function __construct()
     {
         $this->database = new Model();
         $this->cookies = new Cookies();
     }
 
+    /**
+     * @return array
+     */
     public function loginAction()
     {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -73,6 +92,9 @@ class UsersController extends FrontController
     }
 
 
+    /**
+     * @return array
+     */
     public function subcribeAction()
     {
 
@@ -125,6 +147,9 @@ class UsersController extends FrontController
         return $response;
     }
 
+    /**
+     * @return array
+     */
     public function disconnectAction()
     {
 

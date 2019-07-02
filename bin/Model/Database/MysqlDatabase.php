@@ -5,11 +5,21 @@ namespace Core\Model\Database;
 use \pdo;
 
 
+/**
+ * Class MysqlDatabase
+ * @package Core\Model\Database
+ */
 class MysqlDatabase extends Database
 {
 
+    /**
+     * @var
+     */
     private $pdo;
 
+    /**
+     * @return pdo
+     */
     private function getPDO()
     {
         if ($this->pdo === null) {
@@ -20,7 +30,12 @@ class MysqlDatabase extends Database
         return $this->pdo;
     }
 
-    public function queryMD(string $statement,$one = Null)
+    /**
+     * @param string $statement
+     * @param null $one
+     * @return array|false|mixed|\PDOStatement
+     */
+    public function queryMD(string $statement, $one = Null)
     {
 
         $req = self::getPDO()->query($statement);
@@ -43,7 +58,13 @@ class MysqlDatabase extends Database
         return $data;
     }
 
-    public function prepareMD(string $statement,array $attributes = [],$one = false)
+    /**
+     * @param string $statement
+     * @param array $attributes
+     * @param bool $one
+     * @return array|bool|mixed
+     */
+    public function prepareMD(string $statement, array $attributes = [], $one = false)
     {
         $req = self::getPDO()->prepare($statement);
 
@@ -66,6 +87,9 @@ class MysqlDatabase extends Database
         return $data;
     }
 
+    /**
+     * @return string
+     */
     public function lasInsertId()
     {
         return $this->getPDO()->lastInsertId();

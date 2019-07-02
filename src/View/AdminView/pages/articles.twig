@@ -15,35 +15,40 @@
         <a href="/admin/articles/create" class="btn btn-emerauld text-center">Ajouter</a>
     </div>
 
-
-    <table class="table table-striped-emerald">
-        <thead class="thead-emerald">
-        <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Auteur</th>
-            <th scope="col">Date Création</th>
-            <th scope="col">Date modification</th>
-            <th scope="col">Catégorie</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for articles in articles %}
+    <div class="table-responsive-lg">
+        <table class="table table-striped-emerald">
+            <thead class="thead-emerald">
             <tr>
-                <th scope="row">{{ articles.nomArticle }}</th>
-                <td>{{ articles.auteurArticle }}</td>
-                <td>{{ articles.dateCreation }}</td>
-                <td>{{ articles.dateMaj }}</td>
-                <td>{{ articles.titre }}</td>
-                <td>
-                    <a class="fa-text" href="/admin/articles/update/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"><i class="fa fa-pencil-square-o"></i></a>
-                    <a class="fa-text" href="/public/articles/view/{{ spaceReplace(articles.nomArticle) }}-{{ spaceReplace(articles.id) }}"><i class="fa fa-eye"></i></a>
-                    <a class="fa-text" href="/admin/articles/delete/{{ articles.id }}"><i class="fa fa-times"></i></a>
-                </td>
+                <th scope="col">Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Date Création</th>
+                <th scope="col">Date modification</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Action</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+            {% for articles in articles %}
+                <tr>
+                    <th scope="row">{{ articles.nomArticle }}</th>
+                    <td>{{ articles.auteurArticle }}</td>
+                    <td>{{ articles.dateCreation }}</td>
+                    <td>{{ articles.dateMaj }}</td>
+                    <td>{{ articles.titre }}</td>
+                    <td>
+                        <a class="fa-text"
+                           href="/admin/articles/update/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"><i
+                                    class="fa fa-pencil-square-o"></i></a>
+                        <a class="fa-text"
+                           href="/public/articles/view/{{ spaceReplace(articles.nomArticle) }}-{{ spaceReplace(articles.id) }}"><i
+                                    class="fa fa-eye"></i></a>
+                        <a class="fa-text" href="/admin/articles/delete/{{ articles.id }}"><i
+                                    class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

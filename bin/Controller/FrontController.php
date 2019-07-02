@@ -4,29 +4,43 @@ namespace Core\Controller;
 
 use Core\View\Twig\TwigAdd;
 
+/**
+ * Class FrontController
+ * @package Core\Controller
+ */
 class FrontController extends Controller
 {
 
+    /**
+     * @var
+     */
     protected $side;
+    /**
+     * @var
+     */
     protected $rubric;
+    /**
+     * @var
+     */
     protected $request;
 
-    protected $isError = false;
-    protected $typeError;
-
-    protected $rootLoader;
-    protected $route;
+    /**
+     * @var
+     */
     protected $twig;
-    protected $url;
 
-    protected $action;
+    /**
+     * @var
+     */
     protected $controller;
+    /**
+     * @var
+     */
     protected $cruder;
 
-    protected $test;
-
-    const CONST_PATH = '\App\Controller\\';
-
+    /**
+     * FrontController constructor.
+     */
     public function __construct()
     {
         $this->rend();
@@ -35,6 +49,9 @@ class FrontController extends Controller
         $this->execAction();
     }
 
+    /**
+     *
+     */
     public function rend()
     {
         $loader = new \Twig\Loader\FilesystemLoader('../src/View');
@@ -48,6 +65,9 @@ class FrontController extends Controller
         $this->twig = $twig;
     }
 
+    /**
+     *
+     */
     public function urlParser()
     {
         if (filter_input(INPUT_GET, 'side') !== null) {
@@ -67,29 +87,29 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * @return string
+     */
     public function execController()
     {
         $this->side = ucfirst(strtolower($this->side));
         $this->rubric = ucfirst(strtolower($this->rubric));
 
         $this->controller = $this->rubric . 'Controller';
-        $this->controller = self::CONST_PATH . $this->side . 'Controller\\' . $this->controller;
+        $this->controller = '\App\Controller\\' . $this->side . 'Controller\\' . $this->controller;
 
-        $this->rootLoader = '../src/Controller/' . $this->side . 'Controller/' . $this->rubric . 'Controller.php';
+        $rootLoader = '../src/Controller/' . $this->side . 'Controller/' . $this->rubric . 'Controller.php';
 
-        if (file_exists($this->rootLoader)) {
+        if (file_exists($rootLoader)) {
             if (!class_exists($this->controller) || $this->side === '') {
-                $this->typeError = 'notfound';
-                $this->isError = true;
-            } else {
-                $this->route = $this->side . 'View/Pages/' . $this->rubric . '.twig';
+                return $this->notfound();
             }
-        } else {
-            $this->typeError = 'notfound';
-            $this->isError = true;
         }
     }
 
+    /**
+     *
+     */
     public function execAction()
     {
         if ($this->request === null) {
@@ -103,6 +123,9 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function run()
     {
         if (class_exists($this->controller)) {

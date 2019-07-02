@@ -5,17 +5,33 @@ namespace Core\Model\View;
 
 use Core\Model\Model;
 
+/**
+ * Class View
+ * @package Core\Model\View
+ */
 class View
 {
 
+    /**
+     * @var
+     */
     protected $data;
+    /**
+     * @var Model
+     */
     protected $database;
 
+    /**
+     * View constructor.
+     */
     public function __construct()
     {
         $this->database = new Model();
     }
 
+    /**
+     *
+     */
     public function addView(){
 
         $pageName = filter_input(INPUT_GET, 'rubric', FILTER_SANITIZE_STRING);

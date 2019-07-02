@@ -15,8 +15,9 @@
         <a href="/admin/users/create" class="btn btn-emerauld text-center">Ajouter</a>
     </div>
 
-    <table class="table table-striped-emerald">
-        <thead class="thead-emerald">
+    <div class="table-responsive-lg">
+        <table class="table table-striped-emerald">
+            <thead class="thead-emerald">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Identifiant</th>
@@ -26,23 +27,26 @@
                 <th scope="col">Articles</th>
                 <th scope="col">Action</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for users in users %}
-            <tr>
-                <th scope="row">{{ users.id }}</th>
-                <td><img class="icon-pp mr-4" src="{{ users.image }}">{{ users.username }}</td>
-                <td>{{ users.firstname }}</td>
-                <td>{{ users.email }}</td>
-                <td>{{ users.type }}</td>
-                <td>{{ users.articles }}</td>
-                <td>
-                    <a class="fa-text" href="/admin/users/update/{{ spaceReplace( users.username ) }}-{{ users.id }}"><i class="fa fa-pencil-square-o"></i></a>
-                    <a class="fa-text" href="/admin/users/delete/{{ users.id }}"><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for users in users %}
+                <tr>
+                    <th scope="row">{{ users.id }}</th>
+                    <td><img class="icon-pp mr-4" src="{{ users.image }}">{{ users.username }}</td>
+                    <td>{{ users.firstname }}</td>
+                    <td>{{ users.email }}</td>
+                    <td>{{ users.type }}</td>
+                    <td>{{ users.articles }}</td>
+                    <td>
+                        <a class="fa-text"
+                           href="/admin/users/update/{{ spaceReplace( users.username ) }}-{{ users.id }}"><i
+                                    class="fa fa-pencil-square-o"></i></a>
+                        <a class="fa-text" href="/admin/users/delete/{{ users.id }}"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

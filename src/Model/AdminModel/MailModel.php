@@ -4,7 +4,9 @@
 namespace App\Model\AdminModel;
 
 
-class MailModel
+use Core\Model\Model;
+
+class MailModel extends Model
 {
 
 }

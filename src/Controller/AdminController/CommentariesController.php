@@ -5,12 +5,13 @@ namespace App\Controller\AdminController;
 
 
 use App\Model\AdminModel\CommentariesModel;
+use Core\Controller\FrontController;
 
 /**
  * Class CommentariesController
  * @package App\Controller\AdminController
  */
-class CommentariesController
+class CommentariesController extends FrontController
 {
 
     /**

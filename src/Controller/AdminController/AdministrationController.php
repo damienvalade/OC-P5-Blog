@@ -3,13 +3,14 @@
 
 namespace App\Controller\AdminController;
 
+use Core\Controller\FrontController;
 use Core\Model\Model;
 
 /**
  * Class AdministrationController
  * @package App\Controller\AdminController
  */
-class AdministrationController
+class AdministrationController extends FrontController
 {
     /**
      * @var Model

@@ -4,7 +4,9 @@
 namespace App\Model\AdminModel;
 
 
-class SettingsController
+use Core\Model\Model;
+
+class SettingsController extends Model
 {
 
 }

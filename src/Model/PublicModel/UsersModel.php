@@ -2,7 +2,9 @@
 
 namespace App\Model\PublicModel;
 
-class UsersModel
+use Core\Model\Model;
+
+class UsersModel extends Model
 {
 
 }

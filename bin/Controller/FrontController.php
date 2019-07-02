@@ -114,7 +114,9 @@ class FrontController extends Controller
     {
         if ($this->request === null) {
             $this->cruder = $this->rubric . 'Action';
-        } else {
+        }
+
+        if($this->request !== null) {
             $this->cruder = $this->request . 'Action';
         }
 

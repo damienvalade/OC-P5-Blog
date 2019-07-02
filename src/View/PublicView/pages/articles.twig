@@ -18,15 +18,15 @@
                     <div class="card m-5">
                         <img class="card-img-top" src="\{{ articles.image }}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ articles.nomArticle }}</h5>
+                            <h5 class="card-title">{{ articles.nom_article }}</h5>
                             <p class="card-text">
-                                <small class="text-muted">{{ articles.auteurArticle }}</small>
+                                <small class="text-muted">{{ articles.auteur_article }}</small>
                             </p>
-                            <p class="card-text">{{ articles.contenueArticle }}</p>
+                            <p class="card-text">{{ articles.contenue_article }}</p>
                             <p class="card-text">
-                                <small class="text-muted">{{ articles.dateMaj }}</small>
+                                <small class="text-muted">{{ articles.date_maj }}</small>
                             </p>
-                            <a href="/public/articles/view/{{ spaceReplace( articles.nomArticle ) }}-{{ articles.id }}"
+                            <a href="/public/articles/view/{{ spaceReplace( articles.nom_article ) }}-{{ articles.id }}"
                                class="btn btn-emerauld text-center">Voir Plus</a>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                     <h3 class="text-center write-white mt-5 mb-5"><span class="underline">A</span>uteur</h3>
                     <ul>
                         {% for auteur in auteur %}
-                            <li class="pb-3"><a href="/public/articles/auteur/{{ auteur.auteurArticle }}">
-                                    {{ auteur.auteurArticle }}</a></li><hr>
+                            <li class="pb-3"><a href="/public/articles/auteur/{{ auteur.auteur_article }}">
+                                    {{ auteur.auteur_article }}</a></li><hr>
                         {% endfor %}
                     </ul>
                 </div>

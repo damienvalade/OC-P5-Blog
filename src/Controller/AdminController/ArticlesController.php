@@ -66,13 +66,13 @@ class ArticlesController extends FrontController
             $filename = $this->upload('photoarticle');
 
             $data = [
-                'nomArticle' => $inputName,
-                'chapoArticle' => $inputChapo,
-                'auteurArticle' => $this->cookies->dataJWT('user','name'),
+                'nom_article' => $inputName,
+                'chapo_article' => $inputChapo,
+                'auteur_article' => $this->cookies->dataJWT('user','name'),
                 'id_categories' => $inputType,
-                'contenueArticle' => $inputContenue,
+                'contenue_article' => $inputContenue,
                 'image' => 'img\\\\photoarticle\\\\' . $filename,
-                'dateCreation' => date("Y-m-d H:i:s")
+                'date_maj' => date("Y-m-d H:i:s")
             ];
 
             $this->database->update('articles', $id_article, $data, 'id');
@@ -112,14 +112,14 @@ class ArticlesController extends FrontController
             $filename = $this->upload('photoarticle');
 
             $data = [
-                'nomArticle' => $inputName,
-                'chapoArticle' => $inputChapo,
-                'auteurArticle' => $this->cookies->dataJWT('user','name'),
+                'nom_article' => $inputName,
+                'chapo_article' => $inputChapo,
+                'auteur_article' => $this->cookies->dataJWT('user','name'),
                 'id_auteur' => $id_auteur[0]['id'],
                 'id_categories' => $inputType,
-                'contenueArticle' => $inputContenue,
+                'contenue_article' => $inputContenue,
                 'image' => 'img\\\\photoarticle\\\\' . $filename,
-                'dateCreation' => date('Y-m-d H:i:s')
+                'date_creation' => date('Y-m-d H:i:s')
             ];
 
             $this->database->create('articles', $data);

@@ -21,4 +21,4 @@ Utilisation du modéle MVC d'un de mes projets personnels :
 ## Badge du projet
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54225064ae2148ecb5ada07ba78b3d41)](https://app.codacy.com/app/damienvalade/OC-P5-Blog?utm_source=github.com&utm_medium=referral&utm_content=damienvalade/OC-P5-Blog&utm_campaign=Badge_Grade_Dashboard)
-[![SymfonyInsight](https://insight.symfony.com/projects/72e34789-136e-4b61-b77a-01f036820995/mini.svg)](https://insight.symfony.com/projects/72e34789-136e-4b61-b77a-01f036820995)
+[![SymfonyInsight](https://insight.symfony.com/projects/b2f418a8-54ed-4882-9b68-39a3ec4b9fa1/mini.svg)](https://insight.symfony.com/projects/b2f418a8-54ed-4882-9b68-39a3ec4b9fa1)

@@ -53,3 +53,4 @@ class CommentariesController extends FrontController
         return self::indexAction();
     }
 }
+

@@ -40,3 +40,4 @@ class ErrorsController extends FrontController
         return $response;
     }
 }
+

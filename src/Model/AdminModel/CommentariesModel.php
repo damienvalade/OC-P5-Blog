@@ -18,3 +18,4 @@ class CommentariesModel extends Model
         return $this->queryMD($querry);
     }
 }
+

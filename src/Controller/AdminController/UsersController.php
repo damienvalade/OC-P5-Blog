@@ -182,3 +182,4 @@ class UsersController extends FrontController
         return self::indexAction();
     }
 }
+

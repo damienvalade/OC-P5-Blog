@@ -153,3 +153,4 @@ class ArticlesController extends FrontController
     }
 
 }
+

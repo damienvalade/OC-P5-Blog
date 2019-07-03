@@ -47,3 +47,4 @@ class AdministrationController extends FrontController
         return $response;
     }
 }
+

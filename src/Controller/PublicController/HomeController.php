@@ -38,3 +38,4 @@ class HomeController extends FrontController
         return $response;
     }
 }
+

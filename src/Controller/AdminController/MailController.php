@@ -53,3 +53,4 @@ class MailController extends FrontController
         return self::viewAction();
     }
 }
+

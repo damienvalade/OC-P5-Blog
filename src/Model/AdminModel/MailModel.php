@@ -9,4 +9,3 @@ class MailModel extends Model
 {
 
 }
-

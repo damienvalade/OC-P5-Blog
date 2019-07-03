@@ -164,4 +164,3 @@ class UsersController extends FrontController
     }
 
 }
-

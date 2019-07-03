@@ -110,4 +110,3 @@ class ArticlesController extends FrontController
         return $response;
     }
 }
-

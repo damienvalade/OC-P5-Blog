@@ -9,4 +9,3 @@ class SettingsController extends Model
 {
 
 }
-

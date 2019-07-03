@@ -9,4 +9,3 @@ class AdministrationModel extends Model
 {
 
 }
-

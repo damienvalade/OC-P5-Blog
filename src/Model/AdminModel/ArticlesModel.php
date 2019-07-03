@@ -17,4 +17,3 @@ class ArticlesModel extends Model
         return $this->queryMD($querry);
     }
 }
-

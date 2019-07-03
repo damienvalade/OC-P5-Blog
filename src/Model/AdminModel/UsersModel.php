@@ -15,4 +15,3 @@ class UsersModel extends Model
         return $this->queryMD($querry);
     }
 }
-

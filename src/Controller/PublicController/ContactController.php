@@ -61,4 +61,3 @@ class ContactController extends FrontController
         return $response;
     }
 }
-

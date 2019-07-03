@@ -4,9 +4,19 @@ namespace Core\Controller;
 
 use Core\Controller\Cookies\Cookies;
 
+/**
+ * Class Controller
+ * @package Core\Controller
+ */
 class Controller
 {
+    /**
+     * @var Cookies
+     */
     protected $cookies;
+    /**
+     * @var
+     */
     protected $redirect;
 
     /**

@@ -7,9 +7,16 @@ use Firebase\JWT\JWT;
 
 include_once '../app/config.php';
 
+/**
+ * Class Cookies
+ * @package Core\Controller\Cookies
+ */
 class Cookies
 {
 
+    /**
+     * @var JWT
+     */
     protected $jwt;
 
 

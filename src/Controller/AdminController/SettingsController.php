@@ -14,8 +14,14 @@ use Core\Model\Model;
 class SettingsController extends FrontController
 {
 
+    /**
+     * @var Model
+     */
     protected $database;
 
+    /**
+     * SettingsController constructor.
+     */
     public function __construct()
     {
         $this->database = new Model();

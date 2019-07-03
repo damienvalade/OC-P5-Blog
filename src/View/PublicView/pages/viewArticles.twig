@@ -58,7 +58,7 @@
                 {% if isLogged() == '' %}
                     <div>
                         <div class="row d-flex justify-content-center form-group">
-                            <textarea id="story" name="story" rows="5" cols="33"> Commentaire </textarea>
+                            <textarea id="commentaire" name="commentaire" rows="5" cols="33"> Commentaire </textarea>
                         </div>
                         <div class="row d-flex justify-content-center mt-5 mb-5">
                             <button type="submit" class="btn-arrow">Send</button>
@@ -66,7 +66,7 @@
                     </div>
                 {% else %}
                     <div class="row d-flex justify-content-center form-group">
-                        <label for="story">Pour écrire un commentaire vous devez être connecté.</label>
+                        <label for="commentaire">Pour écrire un commentaire vous devez être connecté.</label>
                     </div>
                 {% endif %}
             </form>

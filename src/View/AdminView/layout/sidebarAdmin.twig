@@ -13,7 +13,7 @@
         </div>
 
         <div class="sidebar-heading text-center">
-            <a href="/admin/settings" id="navbardrop">
+            <a href="/admin/settings/{{ userId() }}" id="navbardrop">
                 <img class="radius-50 icon-pp" src="{{ userImage() }}" alt="">
             </a>
         </div>
@@ -37,7 +37,7 @@
             </li>
 
             <li class="m-0 p-0">
-                <a href="/admin/settings"
+                <a href="/admin/settings/{{ userId() }}"
                    class="list-group-item list-group-item-action bg-light {{ currentUrl('side=admin&rubric=settings') }}">
                     <i class="fa fa-sliders"></i>
                     <span class="arrow-hide">Administatrion</span>

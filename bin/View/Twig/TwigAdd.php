@@ -4,6 +4,8 @@ namespace Core\View\Twig;
 
 use Core\Controller\Cookies\Cookies;
 use Core\Controller\Session\Session;
+use Core\Model\Database\Database;
+use Core\Model\Model;
 use http\Cookie;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -41,6 +43,7 @@ class TwigAdd extends AbstractExtension
             new TwigFunction('userName', array($this, 'userName')),
             new TwigFunction('userImage', array($this, 'userImage')),
             new TwigFunction('userLevel', array($this, 'userLevel')),
+            new TwigFunction('userId', array($this, 'userId')),
             new TwigFunction('validate', array($this, 'validate')),
             new TwigFunction('authorized', array($this, 'authorized')),
             new TwigFunction('spaceReplace', array($this, 'spaceReplace'))
@@ -177,6 +180,21 @@ class TwigAdd extends AbstractExtension
     public function userLevel()
     {
         return $this->cookies->dataJWT('user','level') !== false ? ucfirst($this->cookies->dataJWT('user','level')) : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function userId()
+    {
+        $user = $this->cookies->dataJWT('user','name');
+        $database = new Model();
+
+        $id_user = $database->read('users', $user, 'name', false);
+
+        if($id_user[0]['id'] !== null){
+            return $id_user[0]['id'];
+        }
     }
 
 

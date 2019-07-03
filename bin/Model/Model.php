@@ -21,7 +21,7 @@ class Model extends MysqlDatabase
 
         $keys = implode(', ', array_keys($data));
         $values = implode('", "', $data);
-        $query = 'INSERT INTO ' . $table . ' ( ' . $keys . ' ) VALUES ("' . $values . '")';
+        $query = 'INSERT INTO '. $table .' ( ' . $keys . ' ) VALUES ("' . $values . '")';
 
         return $this->queryMD($query);
     }
@@ -41,11 +41,10 @@ class Model extends MysqlDatabase
 
         if(!$one){
             if (isset($key)) {
-                $query = 'SELECT * FROM ' . $table . ' WHERE ' . $key . ' = ?';
+                $query = "SELECT * FROM $table WHERE $key  = ?";
             } else {
-                $query = 'SELECT * FROM ' . $table . ' WHERE id = ?';
+                $query = "SELECT * FROM  $table  WHERE id = ?";
             }
-
             return $this->prepareMD($query, [$value], $one);
         }else{
 
@@ -62,7 +61,7 @@ class Model extends MysqlDatabase
                 return $this->queryMD($query);
             }
 
-            $query = 'SELECT * FROM ' . $table;
+            $query = "SELECT * FROM  $table";
 
             return $this->queryMD($query);
 
@@ -83,11 +82,13 @@ class Model extends MysqlDatabase
         foreach ($data as $dataKey => $dataValue) {
             $set .= $dataKey . ' = "' . $dataValue . '", ';
         }
+
         $set = substr_replace($set, '', -2);
+
         if (isset($key)) {
-            $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE ' . $key . ' = ?';
+            $query = "UPDATE $table SET $set WHERE $key  = ?";
         } else {
-            $query = 'UPDATE ' . $table . ' SET ' . $set . ' WHERE id = ?';
+            $query = "UPDATE $table SET $set WHERE id = ?";
         }
 
         return $this->prepareMD($query, [$value]);
@@ -102,9 +103,9 @@ class Model extends MysqlDatabase
     public function delete(string $table, string $value, string $key = null)
     {
         if (isset($key)) {
-            $query = 'DELETE FROM ' . $table. ' WHERE ' . $key . ' = ?';
-        } else {
-            $query = 'DELETE FROM ' . $table . ' WHERE id = ?';
+            $query = "DELETE FROM $table WHERE $key .  = ?";
+        } else{
+            $query = "DELETE FROM $table WHERE id = ?";
         }
         return $this->prepareMD($query, [$value]);
     }

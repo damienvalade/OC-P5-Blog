@@ -2,6 +2,7 @@
 
 namespace App\Controller\PublicController;
 
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 use Core\Model\Model;
 use Core\Model\View\View;
@@ -12,18 +13,7 @@ use Core\Model\View\View;
  */
 class ArticlesController extends FrontController
 {
-    /**
-     * @var
-     */
-    protected $data;
-    /**
-     * @var
-     */
-    protected $data2;
-    /**
-     * @var
-     */
-    protected $data3;
+
     /**
      * @var Model
      */
@@ -32,12 +22,15 @@ class ArticlesController extends FrontController
      * @var View
      */
     protected $view;
+    protected $cookie;
 
     /**
      * ArticlesController constructor.
      */
     public function __construct()
     {
+
+        $this->cookie = new Cookies();
         $this->database = new Model();
         $this->view = new View();
 
@@ -53,21 +46,21 @@ class ArticlesController extends FrontController
         $id_auteur = filter_input(INPUT_GET, 'auteur', FILTER_SANITIZE_STRING);
 
         if ($id_auteur !== null) {
-            $this->data = $this->database->read('articles', $id_auteur, 'auteur_article', false);
+            $article = $this->database->read('articles', $id_auteur, 'auteur_article', false);
         } elseif ($id_type !== null) {
-            $this->data = $this->database->read('articles', $id_type, 'id_categories', false);
+            $article = $this->database->read('articles', $id_type, 'id_categories', false);
         } else {
-            $this->data = $this->database->read('articles');
+            $article = $this->database->read('articles');
         }
 
-        $this->data3 = $this->database->read('articles', 'auteur_article', null, true, true);
+        $author = $this->database->read('articles', 'auteur_article', null, true, true);
 
-        $this->data2 = $this->database->read('categories');
+        $commentary = $this->database->read('categories');
 
         $response = ['path' => 'PublicView/Pages/articles.twig',
-            'data' => ['articles' => $this->data,
-                'categories' => $this->data2,
-                'auteur' => $this->data3],
+            'data' => ['articles' => $article,
+                'categories' => $commentary,
+                'auteur' => $author],
         ];
 
         return $response;
@@ -80,8 +73,23 @@ class ArticlesController extends FrontController
     {
 
         $id_article = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $commentaire = filter_input(INPUT_POST, 'commentaire', FILTER_SANITIZE_STRING);
 
-        $this->data = $this->database->read('articles', $id_article, 'id', false);
+        if($commentaire !== null){
+
+            $id_user = $this->database->read('users' , $this->cookie->dataJWT('user','name'), 'name', false );
+
+            $array_commentary = [
+                'id_article' => $id_article,
+                'commentaire' => $commentaire,
+                'id_auteur' => $id_user[0]['id'],
+                'date_creation' => date("Y-m-d H:i:s")
+            ];
+
+            $this->database->create('commentaire', $array_commentary);
+        }
+
+        $article = $this->database->read('articles', $id_article, 'id', false);
 
         $value = 'commentaire.commentaire, commentaire.date_creation, users.username, users.image';
 
@@ -90,12 +98,12 @@ class ArticlesController extends FrontController
             'commentaire.id_article =' . $id_article
         ];
 
-        $this->data2 = $this->database->read('commentaire, users',$value, null,true,false,true,$array);
+        $commentary = $this->database->read('commentaire, users',$value, null,true,false,true,$array);
 
         $response = ['path' => 'PublicView/Pages/viewArticles.twig',
             'data' => [
-                'articles' => $this->data,
-                'commentaires' => $this->data2
+                'articles' => $article,
+                'commentaires' => $commentary
                 ],
         ];
 

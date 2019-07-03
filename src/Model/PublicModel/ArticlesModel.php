@@ -8,3 +8,4 @@ class ArticlesModel extends Model
 {
 
 }
+

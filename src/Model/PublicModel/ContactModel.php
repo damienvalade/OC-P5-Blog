@@ -8,3 +8,4 @@ class ContactModel extends Model
 {
 
 }
+

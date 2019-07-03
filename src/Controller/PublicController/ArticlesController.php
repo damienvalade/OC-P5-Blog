@@ -22,6 +22,9 @@ class ArticlesController extends FrontController
      * @var View
      */
     protected $view;
+    /**
+     * @var Cookies
+     */
     protected $cookie;
 
     /**

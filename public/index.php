@@ -11,6 +11,3 @@ Debugger::$strictMode = true;
 $test = new FrontController();
 
 $test->run();
-
-
-

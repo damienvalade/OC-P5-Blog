@@ -111,3 +111,4 @@ class Model extends MysqlDatabase
     }
 
 }
+

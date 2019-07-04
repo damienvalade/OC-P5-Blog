@@ -3,6 +3,8 @@
 
 namespace App\Controller\AdminController;
 
+use App\Controller\ErrorsController\ErrorsController;
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 use Core\Model\Model;
 
@@ -16,6 +18,8 @@ class AdministrationController extends FrontController
      * @var Model
      */
     protected $database;
+    protected $cookies;
+    protected $response;
 
     /**
      * AdministrationController constructor.
@@ -23,6 +27,14 @@ class AdministrationController extends FrontController
     public function __construct()
     {
         $this->database = new Model();
+        $this->cookies = new Cookies();
+        $errors = new ErrorsController();
+
+        if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {
+            $this->response = ['path' => $errors->unauthorized(),
+                'data' => []
+            ];
+        }
     }
 
     /**
@@ -30,20 +42,22 @@ class AdministrationController extends FrontController
      */
     public function indexAction()
     {
+        if (!isset($this->response)) {
 
-        date_default_timezone_set('Europe/Paris');
-        $date = date('Y-m-d');
+            date_default_timezone_set('Europe/Paris');
+            $date = date('Y-m-d');
 
-        $page_articles = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and page = 'articles'");
-        $page_all = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and url = 'home'");
+            $page_articles = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and page = 'articles'");
+            $page_all = $this->database->queryMD("SELECT * FROM view WHERE day = '$date' and url = 'home'");
 
-        $response = [ 'path' => 'AdminView/Pages/administration.twig',
-            'data' => [
-                'view' => $page_articles,
-                'view2' => $page_all
-            ]
-        ];
+            $this->response = ['path' => 'AdminView/Pages/administration.twig',
+                'data' => [
+                    'view' => $page_articles,
+                    'view2' => $page_all
+                ]
+            ];
+        }
 
-        return $response;
+        return $this->response;
     }
 }

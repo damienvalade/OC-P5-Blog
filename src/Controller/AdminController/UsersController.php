@@ -4,6 +4,7 @@
 namespace App\Controller\AdminController;
 
 
+use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\UsersModel;
 use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
@@ -28,6 +29,9 @@ class UsersController extends FrontController
      */
     protected $cookies;
 
+    protected $pathErrors;
+
+
     /**
      * UsersController constructor.
      */
@@ -35,6 +39,13 @@ class UsersController extends FrontController
     {
         $this->database = new UsersModel();
         $this->cookies = new Cookies();
+        $errors = new ErrorsController();
+
+        if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {
+            $this->response = ['path' => $errors->unauthorized(),
+                'data' => []
+            ];
+        }
     }
 
     /**
@@ -43,39 +54,36 @@ class UsersController extends FrontController
     public function indexAction()
     {
 
-        $response = [ 'path' => $this->unauthorized(),
-            'data' => [],
-        ];
+        if (!isset($this->response)) {
 
-        $users = $this->database->innerjoin();
+            $users = $this->database->innerjoin();
 
-        if( $this->cookies->dataJWT('user','id') !== false )
-        {
-            $response = [ 'path' => 'AdminView/Pages/users.twig',
+            $this->response = ['path' => 'AdminView/Pages/users.twig',
                 'data' => ['users' => $users]
             ];
 
         }
-
-        return $response;
+        return $this->response;
     }
 
     /**
      * @return array
      */
-    public function updateAction(){
+    public function updateAction()
+    {
+        if (!isset($this->response)) {
 
-        $id_user = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $id_user = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
-        $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
-        $password = filter_input(INPUT_POST, 'inputPassword1', FILTER_SANITIZE_STRING);
-        $passwordVerif = filter_input(INPUT_POST, 'inputPassword2', FILTER_SANITIZE_STRING);
-        $nom = filter_input(INPUT_POST, 'inputNom', FILTER_SANITIZE_SPECIAL_CHARS);
-        $prenom = filter_input(INPUT_POST, 'inputPrenom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
+            $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
+            $password = filter_input(INPUT_POST, 'inputPassword1', FILTER_SANITIZE_STRING);
+            $passwordVerif = filter_input(INPUT_POST, 'inputPassword2', FILTER_SANITIZE_STRING);
+            $nom = filter_input(INPUT_POST, 'inputNom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, 'inputPrenom', FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if ($username !== null && $eamail !== null
-            && $password !== null && $passwordVerif !== null) {
+            if ($username !== null && $eamail !== null
+                && $password !== null && $passwordVerif !== null) {
 
                 $filename = $this->upload('photoprofil', $username);
 
@@ -97,21 +105,25 @@ class UsersController extends FrontController
                 } else {
                     $this->cookies->setCookies('inscription', 'Mot de passe différent');
                 }
+            }
+
+            $users = $this->database->read('users', $id_user, 'id', false);
+
+            $this->response = ['path' => 'AdminView/Pages/updateUsers.twig',
+                'data' => ['users' => $users],
+            ];
         }
 
-        $users = $this->database->read('users', $id_user, 'id', false);
-
-        $response = [ 'path' => 'AdminView/Pages/updateUsers.twig',
-            'data' => ['users' => $users],
-        ];
-
-        return $response;
+        return $this->response;
     }
 
     /**
      * @return array
      */
-    public function createAction(){
+    public function createAction()
+    {
+
+        if (!isset($this->response)) {
 
             $username = filter_input(INPUT_POST, 'inputName', FILTER_SANITIZE_SPECIAL_CHARS);
             $eamail = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_EMAIL);
@@ -148,36 +160,44 @@ class UsersController extends FrontController
                         $this->cookies->setCookies('inscription', 'Mot de passe différent');
 
                     }
-                }else{ $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé');}
+                } else {
+                    $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé');
+                }
             }
 
-        $response = [ 'path' => 'AdminView/Pages/createUsers.twig',
-            'data' => [],
-        ];
+            $this->response = ['path' => 'AdminView/Pages/createUsers.twig',
+                'data' => [],
+            ];
+        }
 
-        return $response; ;
+        return $this->response;;
     }
 
     /**
      * @return array
      */
-    public function deleteAction(){
+    public function deleteAction()
+    {
 
-        $id_users = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        if (!isset($this->response)) {
 
-        $article = $this->database->read('articles',$id_users,'id_auteur', false);
-        $commentaire = $this->database->read('commentaire',$id_users,'id_auteur', false);
+            $id_users = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        foreach ( $commentaire as $commentaire){
-            $this->database->delete('commentaire', $commentaire['id']);
+            $article = $this->database->read('articles', $id_users, 'id_auteur', false);
+            $commentaire = $this->database->read('commentaire', $id_users, 'id_auteur', false);
+
+            foreach ($commentaire as $commentaire) {
+                $this->database->delete('commentaire', $commentaire['id']);
+            }
+
+            foreach ($article as $article) {
+                $this->database->delete('commentaire', $article['id'], 'id_article');
+                $this->database->delete('articles', $article['id']);
+            }
+
+            $this->database->delete('users', $id_users);
+
         }
-
-        foreach ( $article as $article){
-            $this->database->delete('commentaire', $article['id'],'id_article');
-            $this->database->delete('articles', $article['id']);
-        }
-
-        $this->database->delete('users', $id_users);
 
         return self::indexAction();
     }

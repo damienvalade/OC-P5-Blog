@@ -4,7 +4,9 @@
 namespace App\Controller\AdminController;
 
 
+use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\CommentariesModel;
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 /**
@@ -18,6 +20,8 @@ class CommentariesController extends FrontController
      * @var CommentariesModel
      */
     protected $database;
+    protected $cookies;
+    protected $response;
 
     /**
      * CommentariesController constructor.
@@ -25,6 +29,14 @@ class CommentariesController extends FrontController
     public function __construct()
     {
         $this->database = new CommentariesModel();
+        $this->cookies = new Cookies();
+        $errors = new ErrorsController();
+
+        if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {
+            $this->response = ['path' => $errors->unauthorized(),
+                'data' => []
+            ];
+        }
     }
 
     /**
@@ -32,13 +44,14 @@ class CommentariesController extends FrontController
      */
     public function indexAction()
     {
-        $articles_commentaries = $this->database->innerJoin();
+        if (!isset($this->response)) {
+            $articles_commentaries = $this->database->innerJoin();
 
-        $response = [ 'path' => 'AdminView/Pages/commentaries.twig',
-            'data' => ['commentaire' => $articles_commentaries],
-        ];
-
-        return $response;
+            $this->response = ['path' => 'AdminView/Pages/commentaries.twig',
+                'data' => ['commentaire' => $articles_commentaries],
+            ];
+        }
+        return $this->response;
     }
 
     /**
@@ -46,10 +59,13 @@ class CommentariesController extends FrontController
      */
     public function deleteAction()
     {
-        $id_commentary = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        if (!isset($this->response)) {
 
-        $this->database->delete('commentaire', $id_commentary);
+            $id_commentary = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+            $this->database->delete('commentaire', $id_commentary);
+
+        }
         return self::indexAction();
     }
 }

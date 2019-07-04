@@ -192,7 +192,7 @@ class TwigAdd extends AbstractExtension
 
         $id_user = $database->read('users', $user, 'name', false);
 
-        if($id_user[0]['id'] !== null){
+        if(isset($id_user[0]['id'])){
             return $id_user[0]['id'];
         }
     }

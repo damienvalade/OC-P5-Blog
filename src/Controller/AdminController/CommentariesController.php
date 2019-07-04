@@ -20,7 +20,13 @@ class CommentariesController extends FrontController
      * @var CommentariesModel
      */
     protected $database;
+    /**
+     * @var Cookies
+     */
     protected $cookies;
+    /**
+     * @var array
+     */
     protected $response;
 
     /**

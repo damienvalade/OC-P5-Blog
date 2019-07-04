@@ -25,7 +25,13 @@ class ArticlesController extends FrontController
      * @var ArticlesModel
      */
     protected $database;
+    /**
+     * @var Cookies
+     */
     protected $cookies;
+    /**
+     * @var array
+     */
     protected $response;
     /**
      * ArticlesController constructor.

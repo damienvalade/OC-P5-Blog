@@ -16,6 +16,9 @@ class HomeController extends FrontController
      * @var Cookies
      */
     protected $cookies;
+    /**
+     * @var array
+     */
     protected $response;
 
     /**

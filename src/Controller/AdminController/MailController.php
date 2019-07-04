@@ -20,7 +20,13 @@ class MailController extends FrontController
      * @var Model
      */
     protected $database;
+    /**
+     * @var array
+     */
     protected $response;
+    /**
+     * @var Cookies
+     */
     protected $cookies;
 
     /**

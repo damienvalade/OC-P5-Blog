@@ -29,6 +29,9 @@ class UsersController extends FrontController
      */
     protected $cookies;
 
+    /**
+     * @var
+     */
     protected $pathErrors;
 
 

@@ -4,8 +4,10 @@
 namespace App\Controller\AdminController;
 
 
+use App\Controller\ErrorsController\ErrorsController;
+use App\Model\AdminModel\MailModel;
+use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
-use Core\Model\Model;
 
 /**
  * Class MailController
@@ -17,28 +19,47 @@ class MailController extends FrontController
     /**
      * @var Model
      */
-    private $database;
+    protected $database;
+    /**
+     * @var array
+     */
+    protected $response;
+    /**
+     * @var Cookies
+     */
+    protected $cookies;
 
     /**
      * MailController constructor.
      */
     public function __construct()
     {
-        $this->database = new Model();
+        $this->database = new MailModel();
+        $this->cookies = new Cookies();
+        $errors = new ErrorsController();
+
+        if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {
+            $this->response = ['path' => $errors->unauthorized(),
+                'data' => []
+            ];
+        }
     }
 
     /**
      * @return array
      */
-    public function viewAction()
+    public function indexAction()
     {
-        $data = $this->database->read('mail');
+        if (!isset($this->response)) {
 
-        $response = [ 'path' => 'AdminView/Pages/mail.twig',
-            'data' => [ 'mail' => $data]
-        ];
+            $data = $this->database->read('mail');
 
-        return $response;
+            $this->response = ['path' => 'AdminView/Pages/mail.twig',
+                'data' => ['mail' => $data]
+            ];
+
+        }
+        return $this->response;
     }
 
     /**
@@ -46,10 +67,14 @@ class MailController extends FrontController
      */
     public function deleteAction()
     {
-        $id_mail = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        if (!isset($this->response)) {
 
-        $this->database->delete('mail', $id_mail);
+            $id_mail = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-        return self::viewAction();
+            $this->database->delete('mail', $id_mail);
+
+        }
+
+        return self::indexAction();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\AdminController;
 
+use App\Controller\ErrorsController\ErrorsController;
 use Core\Controller\FrontController;
 use Core\Controller\Cookies\Cookies;
 
@@ -15,13 +16,24 @@ class HomeController extends FrontController
      * @var Cookies
      */
     protected $cookies;
+    /**
+     * @var array
+     */
+    protected $response;
 
     /**
      * HomeController constructor.
      */
     public function __construct()
     {
-     $this->cookies = new Cookies();
+        $this->cookies = new Cookies();
+        $errors = new ErrorsController();
+
+        if ($this->cookies->dataJWT('user', 'level') === false) {
+            $this->response = ['path' => $errors->unauthorized(),
+                'data' => []
+            ];
+        }
     }
 
     /**
@@ -29,18 +41,12 @@ class HomeController extends FrontController
      */
     public function indexAction()
     {
-        $response = [ 'path' => $this->unauthorized(),
-            'data' => [],
-        ];
-
-        if( $this->cookies->dataJWT('user','id') !== false )
-        {
-                $response = [ 'path' => 'AdminView/Pages/home.twig',
+        if (!isset($this->response)) {
+            $this->response = [ 'path' => 'AdminView/Pages/home.twig',
                     'data' => [],
                 ];
-
         }
 
-        return $response;
+        return $this->response;
     }
 }

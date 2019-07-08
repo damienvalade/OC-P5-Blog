@@ -13,10 +13,6 @@ use Core\Model\View\View;
 class ContactController extends FrontController
 {
     /**
-     * @var View
-     */
-    protected $view;
-    /**
      * @var Mail
      */
     protected $mail;
@@ -28,7 +24,6 @@ class ContactController extends FrontController
     {
         parent::__construct();
 
-        $this->view = new View();
         $this->mail = new Mail();
         $this->view->addView();
     }

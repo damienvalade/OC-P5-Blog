@@ -3,6 +3,7 @@
 namespace Core\Controller;
 
 use Core\Controller\Cookies\Cookies;
+use Core\Model\View\View;
 
 /**
  * Class Controller
@@ -10,6 +11,8 @@ use Core\Controller\Cookies\Cookies;
  */
 class Controller
 {
+
+    protected $view;
     /**
      * @var Cookies
      */
@@ -27,7 +30,9 @@ class Controller
         if($this->cookies === null){
             $this->cookies = new Cookies();
         }
-
+        if($this->view === null){
+            $this->view = new View();
+        }
     }
 
     /**

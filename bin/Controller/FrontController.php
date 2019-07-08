@@ -3,6 +3,8 @@
 namespace Core\Controller;
 
 use Core\View\Twig\TwigAdd;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 /**
  * Class FrontController
@@ -56,8 +58,8 @@ class FrontController extends Controller
      */
     public function rend()
     {
-        $loader = new \Twig\Loader\FilesystemLoader('../src/View');
-        $twig = new \Twig\Environment($loader, [
+        $loader = new FilesystemLoader('../src/View');
+        $twig = new Environment($loader, [
             'cache' => false,
         ]);
 

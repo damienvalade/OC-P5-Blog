@@ -2,9 +2,8 @@
 
 namespace App\Controller\PublicController;
 
-use Core\Controller\Cookies\Cookies;
+use App\Model\PublicModel\UsersModel;
 use Core\Controller\FrontController;
-use Core\Model\Model;
 
 /**
  * Class UsersController
@@ -21,18 +20,15 @@ class UsersController extends FrontController
      * @var Model
      */
     protected $database;
-    /**
-     * @var Cookies
-     */
-    protected $cookies;
 
     /**
      * UsersController constructor.
      */
     public function __construct()
     {
-        $this->database = new Model();
-        $this->cookies = new Cookies();
+        parent::__construct();
+
+        $this->database = new UsersModel();
     }
 
     /**

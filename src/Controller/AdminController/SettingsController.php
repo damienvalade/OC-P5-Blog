@@ -5,9 +5,7 @@ namespace App\Controller\AdminController;
 
 
 use App\Controller\ErrorsController\ErrorsController;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
-use Core\Model\Model;
 
 /**
  * Class SettingsController
@@ -21,10 +19,6 @@ class SettingsController extends FrontController
      */
     protected $database;
     /**
-     * @var Cookies
-     */
-    protected $cookies;
-    /**
      * @var array
      */
     protected $response;
@@ -34,8 +28,9 @@ class SettingsController extends FrontController
      */
     public function __construct()
     {
-        $this->database = new Model();
-        $this->cookies = new Cookies();
+        parent::__construct();
+
+        $this->database = new SettingsModel();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') === false) {

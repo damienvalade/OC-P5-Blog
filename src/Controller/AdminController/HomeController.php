@@ -4,7 +4,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use Core\Controller\FrontController;
-use Core\Controller\Cookies\Cookies;
 
 /**
  * Class HomeController
@@ -12,10 +11,7 @@ use Core\Controller\Cookies\Cookies;
  */
 class HomeController extends FrontController
 {
-    /**
-     * @var Cookies
-     */
-    protected $cookies;
+
     /**
      * @var array
      */
@@ -26,7 +22,8 @@ class HomeController extends FrontController
      */
     public function __construct()
     {
-        $this->cookies = new Cookies();
+        parent::__construct();
+
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') === false) {

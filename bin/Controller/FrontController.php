@@ -43,6 +43,8 @@ class FrontController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->rend();
         $this->urlParser();
         $this->execController();

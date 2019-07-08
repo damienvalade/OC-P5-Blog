@@ -6,7 +6,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\UsersModel;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 /**
@@ -17,17 +16,9 @@ class UsersController extends FrontController
 {
 
     /**
-     * @var
-     */
-    protected $data;
-    /**
      * @var UsersModel
      */
     protected $database;
-    /**
-     * @var Cookies
-     */
-    protected $cookies;
 
     /**
      * @var
@@ -40,8 +31,9 @@ class UsersController extends FrontController
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->database = new UsersModel();
-        $this->cookies = new Cookies();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {

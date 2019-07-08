@@ -4,7 +4,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\ArticlesModel;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 
@@ -26,10 +25,6 @@ class ArticlesController extends FrontController
      */
     protected $database;
     /**
-     * @var Cookies
-     */
-    protected $cookies;
-    /**
      * @var array
      */
     protected $response;
@@ -38,8 +33,9 @@ class ArticlesController extends FrontController
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->database = new ArticlesModel();
-        $this->cookies = new Cookies();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') > 2 || $this->cookies->dataJWT('user', 'level') === false) {

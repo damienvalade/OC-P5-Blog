@@ -24,7 +24,10 @@ class Controller
      */
     public function __construct()
     {
-        $this->cookies = new Cookies();
+        if($this->cookies === null){
+            $this->cookies = new Cookies();
+        }
+
     }
 
     /**

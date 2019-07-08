@@ -6,7 +6,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\MailModel;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 /**
@@ -24,18 +23,16 @@ class MailController extends FrontController
      * @var array
      */
     protected $response;
-    /**
-     * @var Cookies
-     */
-    protected $cookies;
+
 
     /**
      * MailController constructor.
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->database = new MailModel();
-        $this->cookies = new Cookies();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {

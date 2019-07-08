@@ -4,7 +4,6 @@ namespace Core\View\Twig;
 
 use Core\Controller\Cookies\Cookies;
 use Core\Controller\Session\Session;
-use Core\Model\Database\Database;
 use Core\Model\Model;
 use http\Cookie;
 use Twig\Extension\AbstractExtension;
@@ -38,13 +37,13 @@ class TwigAdd extends AbstractExtension
         return array(
             new TwigFunction('currentUrl', array($this, 'currentUrl')),
             new TwigFunction('pathPost', array($this, 'pathPost')),
-            new TwigFunction('errors', array($this, 'errors')),
+            new TwigFunction('message', array($this, 'message')),
+            new TwigFunction('messageStyle', array($this, 'messageStyle')),
             new TwigFunction('isLogged', array($this, 'isLogged')),
             new TwigFunction('userName', array($this, 'userName')),
             new TwigFunction('userImage', array($this, 'userImage')),
             new TwigFunction('userLevel', array($this, 'userLevel')),
             new TwigFunction('userId', array($this, 'userId')),
-            new TwigFunction('validate', array($this, 'validate')),
             new TwigFunction('authorized', array($this, 'authorized')),
             new TwigFunction('spaceReplace', array($this, 'spaceReplace'))
         );
@@ -123,9 +122,12 @@ class TwigAdd extends AbstractExtension
      * @param $page
      * @return mixed
      */
-    public function errors($page)
+    public function message($page)
     {
         $error = $this->cookies->getCookies($page);
+
+        $error = str_replace('V - ', '',$error);
+        $error = str_replace('E - ', '',$error);
 
         if ($error !== false) {
             $this->cookies->unsetCookies($page);
@@ -133,17 +135,19 @@ class TwigAdd extends AbstractExtension
         }
     }
 
-    /**
-     * @param string $page
-     * @return mixed
-     */
-    public function validate(string $page)
+    public function messageStyle($page)
     {
-        $validate = $this->cookies->getCookies($page);
+        $message = $this->cookies->getCookies($page);
 
-        if ($validate !== false) {
-            $this->cookies->unsetCookies($page);
-            return $validate;
+        $validate = strpos($message, 'V - ');
+        $error = strpos($message, 'E - ');
+
+        if($error !== false ){
+            return 'error-text';
+        }
+
+        if($validate !== false ){
+            return 'validate-text';
         }
     }
 

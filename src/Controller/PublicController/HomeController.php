@@ -11,17 +11,13 @@ use Core\Model\View\View;
  */
 class HomeController extends FrontController
 {
-    /**
-     * @var View
-     */
-    protected $view;
 
     /**
      * HomeController constructor.
      */
     public function __construct()
     {
-        $this->view = new View();
+        parent::__construct();
 
         $this->view->addView();
     }

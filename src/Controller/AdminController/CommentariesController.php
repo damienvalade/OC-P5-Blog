@@ -6,7 +6,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\CommentariesModel;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 /**
@@ -21,10 +20,6 @@ class CommentariesController extends FrontController
      */
     protected $database;
     /**
-     * @var Cookies
-     */
-    protected $cookies;
-    /**
      * @var array
      */
     protected $response;
@@ -34,8 +29,9 @@ class CommentariesController extends FrontController
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->database = new CommentariesModel();
-        $this->cookies = new Cookies();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {

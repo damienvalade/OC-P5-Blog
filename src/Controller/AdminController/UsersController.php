@@ -6,7 +6,6 @@ namespace App\Controller\AdminController;
 
 use App\Controller\ErrorsController\ErrorsController;
 use App\Model\AdminModel\UsersModel;
-use Core\Controller\Cookies\Cookies;
 use Core\Controller\FrontController;
 
 /**
@@ -17,17 +16,9 @@ class UsersController extends FrontController
 {
 
     /**
-     * @var
-     */
-    protected $data;
-    /**
      * @var UsersModel
      */
     protected $database;
-    /**
-     * @var Cookies
-     */
-    protected $cookies;
 
     /**
      * @var
@@ -40,8 +31,9 @@ class UsersController extends FrontController
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->database = new UsersModel();
-        $this->cookies = new Cookies();
         $errors = new ErrorsController();
 
         if ($this->cookies->dataJWT('user', 'level') > 1 || $this->cookies->dataJWT('user', 'level') === false) {
@@ -103,10 +95,10 @@ class UsersController extends FrontController
 
                     $this->database->update('users', $id_user, $data, 'id');
 
-                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->cookies->setCookies('inscription', 'E -Bravo vous êtes bien inscrit !');
 
                 } else {
-                    $this->cookies->setCookies('inscription', 'Mot de passe différent');
+                    $this->cookies->setCookies('inscription', 'E -Mot de passe différent');
                 }
             }
 
@@ -138,9 +130,9 @@ class UsersController extends FrontController
             if ($username !== null && $eamail !== null
                 && $password !== null && $passwordVerif !== null) {
 
-                $this->users = $this->database->read('users', $eamail, 'email', true);
+                $this->users = $this->database->read('users', $eamail, 'email', false);
 
-                if ($this->users === '') {
+                if ($this->users === [] || !empty($this->users)) {
 
                     $filename = $this->upload('photoprofil', $username);
 
@@ -149,7 +141,7 @@ class UsersController extends FrontController
                             'firstname' => $prenom,
                             'name' => $nom,
                             'username' => $username,
-                            'password' => $password,
+                            'password' => password_hash($password,PASSWORD_DEFAULT),
                             'email' => $eamail,
                             'image' => '\\\\\\img\\\\photoprofil\\\\' . $filename,
                             'level_administration' => '3'
@@ -157,14 +149,15 @@ class UsersController extends FrontController
 
                         $this->database->create('users', $data);
 
-                        $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
+                        $this->cookies->setCookies('inscription', 'E - Utilisateur bien inscrit !');
 
                     } else {
-                        $this->cookies->setCookies('inscription', 'Mot de passe différent');
-
+                        $this->cookies->setCookies('inscription', 'E - Mot de passe différent !');
+                        $this->redirect('/public/users/subcribe');
                     }
                 } else {
-                    $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé');
+                    $this->cookies->setCookies('inscription', 'E - Adresse Email déjà utilisé !');
+                    $this->redirect('/public/users/subcribe');
                 }
             }
 

@@ -2,9 +2,9 @@
 
 namespace App\Controller\PublicController;
 
-use Core\Controller\Cookies\Cookies;
+use App\Model\PublicModel\ArticlesModel;
 use Core\Controller\FrontController;
-use Core\Model\Model;
+
 use Core\Model\View\View;
 
 /**
@@ -18,26 +18,16 @@ class ArticlesController extends FrontController
      * @var Model
      */
     protected $database;
-    /**
-     * @var View
-     */
-    protected $view;
-    /**
-     * @var Cookies
-     */
-    protected $cookie;
 
     /**
      * ArticlesController constructor.
      */
     public function __construct()
     {
+        parent::__construct();
 
-        $this->cookie = new Cookies();
-        $this->database = new Model();
-        $this->view = new View();
-
-        $this->view->addView();
+        $this->database = new ArticlesModel();
+        $this->view->addview();
     }
 
     /**

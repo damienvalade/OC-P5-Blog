@@ -10,12 +10,12 @@
 {% block main %}
 
     <!--Section: Contact v.2-->
-    <section class="container mt-5 mb-5 write-white">
+    <section class="container mt-5 mb-5">
 
         <h2 class="text-center mb-5"><span class="underline">C</span>ontact</h2>
-        <p id="error" class="row d-flex justify-content-center error-text">{{ errors('mail') }}</p>
+        <p id="error" class="row d-flex justify-content-center {{ messageStyle('mail') }}">{{ message('mail') }}</p>
 
-        <div class="row">
+        <div class="row write-white">
 
             <div class="col-md-6">
                 <!--Section heading-->

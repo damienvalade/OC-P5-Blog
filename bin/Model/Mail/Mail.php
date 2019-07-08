@@ -54,8 +54,10 @@ class Mail
         return false;
     }
 
+
     /**
      * @param array $data
+     * @return bool
      */
     public function mailTo(array $data)
     {
@@ -91,12 +93,14 @@ class Mail
             return self::mailCC($data);
         }
 
-        return $this->coockie->setCookies('mail', 'Problème d\\\'envoie du mail');
+        return false;
 
     }
 
+
     /**
      * @param array $data
+     * @return bool
      */
     public function mailCC(array $data)
     {
@@ -114,7 +118,7 @@ class Mail
         $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
 
         if (self::send($destinataire, $objet, $message, $headers)) {
-            return $this->coockie->setCookies('mail', 'Mail envoyer');
+            return true;
         }
 
     }

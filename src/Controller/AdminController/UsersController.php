@@ -95,10 +95,10 @@ class UsersController extends FrontController
 
                     $this->database->update('users', $id_user, $data, 'id');
 
-                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->cookies->setCookies('inscription', 'E -Bravo vous êtes bien inscrit !');
 
                 } else {
-                    $this->cookies->setCookies('inscription', 'Mot de passe différent');
+                    $this->cookies->setCookies('inscription', 'E -Mot de passe différent');
                 }
             }
 
@@ -149,14 +149,14 @@ class UsersController extends FrontController
 
                         $this->database->create('users', $data);
 
-                        $this->cookies->setCookies('inscription', 'Utilisateur bien inscrit !');
+                        $this->cookies->setCookies('inscription', 'E - Utilisateur bien inscrit !');
 
                     } else {
-                        $this->cookies->setCookies('inscription', 'Mot de passe différent !');
+                        $this->cookies->setCookies('inscription', 'E - Mot de passe différent !');
                         $this->redirect('/public/users/subcribe');
                     }
                 } else {
-                    $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé !');
+                    $this->cookies->setCookies('inscription', 'E - Adresse Email déjà utilisé !');
                     $this->redirect('/public/users/subcribe');
                 }
             }

@@ -26,6 +26,8 @@ class ContactController extends FrontController
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->view = new View();
         $this->mail = new Mail();
         $this->view->addView();
@@ -50,7 +52,12 @@ class ContactController extends FrontController
                 'message' => $message
             ];
 
-            $this->mail->mailTo($data);
+            if($this->mail->mailTo($data) === true){
+                $this->cookies->setCookies('mail', 'V - Message envoyer');
+            }else{
+                $this->cookies->setCookies('mail', 'E - Problème d\\\'envoie du mail');
+            }
+
             $this->redirect('/public/contact');
 
         }

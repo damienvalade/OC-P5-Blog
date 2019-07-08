@@ -74,11 +74,11 @@ class UsersController extends FrontController
                     $this->redirect('/admin/home');
 
                 } else {
-                    $this->cookies->setCookies('login', 'Mauvais Password');
+                    $this->cookies->setCookies('login', 'E - Mauvais Password');
                     $this->redirect('/public/users/login');
                 }
             } else {
-                $this->cookies->setCookies('login', 'Mauvais Login');
+                $this->cookies->setCookies('login', 'E - Mauvais Login');
                 $this->redirect('/public/users/login');
             }
         }
@@ -109,7 +109,7 @@ class UsersController extends FrontController
 
             $this->users = $this->database->read('users', $eamail, 'email', false);
 
-            if ($this->users === [] || !empty($this->users)) {
+            if (empty($this->users) === true) {
 
                 $filename = $this->upload('photoprofil', $username);
 
@@ -126,14 +126,16 @@ class UsersController extends FrontController
 
                     $this->database->create('users', $data);
 
-                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
+                    $this->cookies->setCookies('login', 'V - Bravo vous êtes bien inscrit !');
+                    $this->redirect('/public/users/login');
 
                 } else {
-                    $this->cookies->setCookies('inscription', 'Mot de passe différent !');
+                    $this->cookies->setCookies('inscription', 'E - Mot de passe différent !');
                     $this->redirect('/public/users/subcribe');
                 }
+
             } else {
-                $this->cookies->setCookies('inscription', 'Adresse Email déjà utilisé !');
+                $this->cookies->setCookies('inscription', 'E - Adresse Email déjà utilisé !');
                 $this->redirect('/public/users/subcribe');
             }
         }

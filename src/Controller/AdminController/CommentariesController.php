@@ -67,6 +67,9 @@ class CommentariesController extends FrontController
 
             $this->database->delete('commentaire', $id_commentary);
 
+            $this->cookies->setCookies('commentaire', 'V - Commentaire supprimer !');
+            $this->redirect('/admin/commentaries/');
+
         }
         return self::indexAction();
     }

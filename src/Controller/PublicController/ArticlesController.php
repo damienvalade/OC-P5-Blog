@@ -70,7 +70,7 @@ class ArticlesController extends FrontController
 
         if($commentaire !== null){
 
-            $id_user = $this->database->read('users' , $this->cookie->dataJWT('user','name'), 'name', false );
+            $id_user = $this->database->read('users' , $this->cookies->dataJWT('user','name'), 'name', false );
 
             $array_commentary = [
                 'id_article' => $id_article,

@@ -70,6 +70,9 @@ class MailController extends FrontController
 
             $this->database->delete('mail', $id_mail);
 
+            $this->cookies->setCookies('mail', 'V - Mail supprimer !');
+            $this->redirect('/admin/mail/view');
+
         }
 
         return self::indexAction();

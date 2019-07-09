@@ -92,7 +92,8 @@ class ArticlesController extends FrontController
 
                 $this->database->update('articles', $id_article, $data, 'id');
 
-                $this->cookies->setCookies('inscription', 'Article mis à jour');
+                $this->cookies->setCookies('articles', 'V - Article mis à jour');
+                $this->redirect('/admin/articles');
             }
 
             $articles = $this->database->read('articles', $id_article, 'id', false);
@@ -139,7 +140,8 @@ class ArticlesController extends FrontController
 
                 $this->database->create('articles', $data);
 
-                $this->cookies->setCookies('inscription', 'Article mis en ligne');
+                $this->cookies->setCookies('articles', 'V - Article mis en ligne !');
+                $this->redirect('/admin/articles');
             }
 
 
@@ -165,6 +167,10 @@ class ArticlesController extends FrontController
             }
             $this->database->delete('articles', $id_article);
         }
+
+        $this->cookies->setCookies('articles', 'V - Article supprimer !');
+        $this->redirect('/admin/articles');
+
         return self::indexAction();
     }
 

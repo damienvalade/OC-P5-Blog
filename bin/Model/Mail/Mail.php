@@ -66,7 +66,7 @@ class Mail
         $expediteur = $data['expediteur'];
         $nomExpediteur = $data['nom-expediteur'];
         $objet = $data['objet'];
-        $message = self::designMail($nomExpediteur, $data['message']);
+        $message = self::designMail($nomExpediteur, $data['message'], $expediteur);
 
 
         $headers = 'MIME-Version: 1.0' . "\n"; // Version MIME
@@ -100,7 +100,7 @@ class Mail
      * @param string $message
      * @return string|string
      */
-    public function designMail(string $nomExpediteur, string $message)
+    public function designMail(string $nomExpediteur, string $message, string $expediteur)
     {
         $message = '
                 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -185,6 +185,7 @@ class Mail
 		<table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 3rem; margin-bottom: 3rem">
 			<tr><td>
         Message de : ' . $nomExpediteur . '<br/>
+        Adresse Mail de : ' . $expediteur . '<br/>
 		'. $message .'<br/>
 			</td></tr>
 		</table>

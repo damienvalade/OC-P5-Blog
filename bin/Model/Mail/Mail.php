@@ -90,36 +90,10 @@ class Mail
             $data['objet'] = 'Message : ' . $data['objet'] . '. A bien été envoyer';
             $data['message'] = 'Rappel du message : ' . $data['message'];
 
-            return self::mailCC($data);
+            return true;
         }
 
         return false;
-
-    }
-
-
-    /**
-     * @param array $data
-     * @return bool
-     */
-    public function mailCC(array $data)
-    {
-
-        $destinataire = $data['expediteur'];
-        $nomExpediteur = 'Damien Valade';
-        $expediteur = 'fireteam87@gmail.com';
-        $objet = $data['objet'];
-        $message = self::designMail($nomExpediteur, $data['message']);
-
-        $headers = 'MIME-Version: 1.0' . "\n"; // Version MIME
-        $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\n"; // l'en-tete Content-type pour le format HTML
-        $headers .= 'Reply-To: ' . $expediteur . "\n"; // Mail de reponse
-        $headers .= 'From: <' . $nomExpediteur . '>' . "\n"; // Expediteur
-        $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
-
-        if (self::send($destinataire, $objet, $message, $headers)) {
-            return true;
-        }
 
     }
 

@@ -87,9 +87,6 @@ class Mail
 
             $this->database->create('mail',$request);
 
-            $data['objet'] = 'Message : ' . $data['objet'] . '. A bien été envoyer';
-            $data['message'] = 'Rappel du message : ' . $data['message'];
-
             return true;
         }
 

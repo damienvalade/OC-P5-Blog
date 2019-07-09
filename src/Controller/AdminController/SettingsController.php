@@ -5,6 +5,7 @@ namespace App\Controller\AdminController;
 
 
 use App\Controller\ErrorsController\ErrorsController;
+use App\Model\AdminModel\SettingsModel;
 use Core\Controller\FrontController;
 
 /**
@@ -61,6 +62,10 @@ class SettingsController extends FrontController
 
                 $filename = $this->upload('photoprofil', $username);
 
+                $nameReplace = str_replace('-','_',$username);
+                $nameReplace = str_replace(' ','_',$nameReplace);
+
+
                 if ($password === $passwordVerif) {
                     $data = [
                         'firstname' => $prenom,
@@ -74,10 +79,11 @@ class SettingsController extends FrontController
 
                     $this->database->update('users', $id_user, $data, 'id');
 
-                    $this->cookies->setCookies('inscription', 'Bravo vous êtes bien inscrit !');
-
+                    $this->cookies->setCookies('settings', 'V - Profil mis à jour !');
+                    $this->redirect("/admin/users/update/$nameReplace-$id_user");
                 } else {
-                    $this->cookies->setCookies('inscription', 'Mot de passe différent');
+                    $this->cookies->setCookies('settings', 'E - Mot de passe différent');
+                    $this->redirect("/admin/users/update/$nameReplace-$id_user");
                 }
             }
 

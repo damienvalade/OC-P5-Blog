@@ -26,7 +26,9 @@ class View
      */
     public function __construct()
     {
-        $this->database = new Model();
+        if($this->database === null){
+            $this->database = new Model();
+        }
     }
 
     /**
@@ -51,19 +53,6 @@ class View
         date_default_timezone_set('Europe/Paris');
         $date = date('Y-m-d');
 
-        if ($view === []) {
-
-            $details = [
-                'page' => $pageName,
-                'url' => $pageNickname,
-                'nb_view' => 0.5,
-                'day' => $date
-            ];
-
-            $this->data = $this->database->create('view', $details);
-
-        }
-
         if (isset($view[0])) {
             if ($view[0]['day'] !== $date) {
                 $details = [
@@ -81,6 +70,19 @@ class View
                 $this->data = $this->database->update('view', $view[0]['id'], $details);
             }
         }
+
+        if ($view === []) {
+
+            $details = [
+                'page' => $pageName,
+                'url' => $pageNickname,
+                'nb_view' => 0.5,
+                'day' => $date
+            ];
+
+            $this->data = $this->database->create('view', $details);
+        }
+
     }
 
 }

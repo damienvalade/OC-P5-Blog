@@ -3,7 +3,6 @@
 namespace App\Controller\PublicController;
 
 use Core\Controller\FrontController;
-use Core\Model\View\View;
 
 /**
  * Class HomeController

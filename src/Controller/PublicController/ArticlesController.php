@@ -76,6 +76,7 @@ class ArticlesController extends FrontController
                 'id_article' => $id_article,
                 'commentaire' => $commentaire,
                 'id_auteur' => $id_user[0]['id'],
+                'is_valide' => 1,
                 'date_creation' => date("Y-m-d H:i:s")
             ];
 
@@ -88,7 +89,8 @@ class ArticlesController extends FrontController
 
         $array = [
             'users.id = commentaire.id_auteur',
-            'commentaire.id_article =' . $id_article
+            'commentaire.id_article =' . $id_article,
+            'is_valide = 0',
         ];
 
         $commentary = $this->database->read('commentaire, users',$value, null,true,false,true,$array);

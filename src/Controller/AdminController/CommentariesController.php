@@ -56,6 +56,25 @@ class CommentariesController extends FrontController
         return $this->response;
     }
 
+    public function valideAction()
+    {
+        if (!isset($this->response)) {
+
+            $id_commentary = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+            $data=[
+              'is_valide' => '0'
+            ];
+
+            $this->database->update('commentaire', $id_commentary, $data, 'id');
+
+            $this->cookies->setCookies('commentaire', 'V - Commentaire valider !');
+            $this->redirect('/admin/commentaries/');
+
+        }
+        return self::indexAction();
+    }
+
     /**
      * @return array
      */

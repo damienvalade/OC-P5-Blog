@@ -66,7 +66,7 @@ class Mail
         $expediteur = $data['expediteur'];
         $nomExpediteur = $data['nom-expediteur'];
         $objet = $data['objet'];
-        $message = self::designMail($nomExpediteur, $data['message']);
+        $message = self::designMail($nomExpediteur, $data['message'], $expediteur);
 
 
         $headers = 'MIME-Version: 1.0' . "\n"; // Version MIME
@@ -87,39 +87,10 @@ class Mail
 
             $this->database->create('mail',$request);
 
-            $data['objet'] = 'Message : ' . $data['objet'] . '. A bien été envoyer';
-            $data['message'] = 'Rappel du message : ' . $data['message'];
-
-            return self::mailCC($data);
+            return true;
         }
 
         return false;
-
-    }
-
-
-    /**
-     * @param array $data
-     * @return bool
-     */
-    public function mailCC(array $data)
-    {
-
-        $destinataire = $data['expediteur'];
-        $nomExpediteur = 'Damien Valade';
-        $expediteur = 'fireteam87@gmail.com';
-        $objet = $data['objet'];
-        $message = self::designMail($nomExpediteur, $data['message']);
-
-        $headers = 'MIME-Version: 1.0' . "\n"; // Version MIME
-        $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\n"; // l'en-tete Content-type pour le format HTML
-        $headers .= 'Reply-To: ' . $expediteur . "\n"; // Mail de reponse
-        $headers .= 'From: <' . $nomExpediteur . '>' . "\n"; // Expediteur
-        $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
-
-        if (self::send($destinataire, $objet, $message, $headers)) {
-            return true;
-        }
 
     }
 
@@ -129,7 +100,7 @@ class Mail
      * @param string $message
      * @return string|string
      */
-    public function designMail(string $nomExpediteur, string $message)
+    public function designMail(string $nomExpediteur, string $message, string $expediteur)
     {
         $message = '
                 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -214,6 +185,7 @@ class Mail
 		<table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 3rem; margin-bottom: 3rem">
 			<tr><td>
         Message de : ' . $nomExpediteur . '<br/>
+        Adresse Mail de : ' . $expediteur . '<br/>
 		'. $message .'<br/>
 			</td></tr>
 		</table>

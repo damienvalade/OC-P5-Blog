@@ -71,19 +71,18 @@ class SettingsController extends FrontController
                         'firstname' => $prenom,
                         'name' => $nom,
                         'username' => $username,
-                        'password' => $password,
+                        'password' => password_hash($password,PASSWORD_DEFAULT),
                         'email' => $eamail,
                         'image' => '\\\\img\\\\photoprofil\\\\' . $filename,
-                        'level_administration' => '3'
                     ];
 
                     $this->database->update('users', $id_user, $data, 'id');
 
                     $this->cookies->setCookies('settings', 'V - Profil mis à jour !');
-                    $this->redirect("/admin/users/update/$nameReplace-$id_user");
+                    $this->redirect("/admin/settings/$id_user");
                 } else {
                     $this->cookies->setCookies('settings', 'E - Mot de passe différent');
-                    $this->redirect("/admin/users/update/$nameReplace-$id_user");
+                    $this->redirect("/admin/settings/$id_user");
                 }
             }
 

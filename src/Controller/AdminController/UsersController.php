@@ -93,7 +93,6 @@ class UsersController extends FrontController
                         'password' => $password,
                         'email' => $eamail,
                         'image' => '\\\\img\\\\photoprofil\\\\' . $filename,
-                        'level_administration' => '3'
                     ];
 
                     $this->database->update('users', $id_user, $data, 'id');

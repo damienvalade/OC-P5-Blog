@@ -24,7 +24,11 @@
                             </p>
                             <p class="card-text">{{ articles.contenue_article }}</p>
                             <p class="card-text">
-                                <small class="text-muted">{{ articles.date_maj }}</small>
+                                {% if articles.date_maj == null %}
+                                    <small class="text-muted">Date de création : {{ articles.date_creation }}</small>
+                                {% else %}
+                                    <small class="text-muted">Date dernière modification : {{ articles.date_maj }}</small>
+                                {% endif %}
                             </p>
                             <a href="/public/articles/view/{{ spaceReplace( articles.nom_article ) }}-{{ articles.id }}"
                                class="btn btn-emerauld text-center">Voir Plus</a>
@@ -40,7 +44,8 @@
                     <ul>
                         {% for categories in categories %}
                             <li class="pb-3"><a href="/public/articles/type/{{ categories.id }}">
-                                    {{ categories.titre }}</a></li><hr>
+                                    {{ categories.titre }}</a></li>
+                            <hr>
                         {% endfor %}
                     </ul>
                 </div>
@@ -50,7 +55,8 @@
                     <ul>
                         {% for auteur in auteur %}
                             <li class="pb-3"><a href="/public/articles/auteur/{{ auteur.auteur_article }}">
-                                    {{ auteur.auteur_article }}</a></li><hr>
+                                    {{ auteur.auteur_article }}</a></li>
+                            <hr>
                         {% endfor %}
                     </ul>
                 </div>

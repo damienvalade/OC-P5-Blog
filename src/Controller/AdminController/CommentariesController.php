@@ -72,7 +72,7 @@ class CommentariesController extends FrontController
             $this->redirect('/admin/commentaries/');
 
         }
-        return self::indexAction();
+        return $this->indexAction();
     }
 
     /**
@@ -90,6 +90,6 @@ class CommentariesController extends FrontController
             $this->redirect('/admin/commentaries/');
 
         }
-        return self::indexAction();
+        return $this->indexAction();
     }
 }

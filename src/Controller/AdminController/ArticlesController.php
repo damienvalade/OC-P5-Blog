@@ -171,7 +171,7 @@ class ArticlesController extends FrontController
         $this->cookies->setCookies('articles', 'V - Article supprimer !');
         $this->redirect('/admin/articles');
 
-        return self::indexAction();
+        return $this->indexAction();
     }
 
 }

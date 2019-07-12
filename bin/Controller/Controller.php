@@ -58,7 +58,7 @@ class Controller
      */
     protected function unauthorized()
     {
-        self::redirect('401 Unauthorized', true);
+        $this->redirect('401 Unauthorized', true);
         return 'ErrorsView/401.twig';
     }
 
@@ -67,7 +67,7 @@ class Controller
      */
     protected function forbidden()
     {
-        self::redirect('403 Forbidden', true);
+        $this->redirect('403 Forbidden', true);
         return 'ErrorsView/403.twig';
     }
 
@@ -76,7 +76,7 @@ class Controller
      */
     protected function notfound()
     {
-        self::redirect('404 Not Found', true);
+        $this->redirect('404 Not Found', true);
         return 'ErrorsView/404.twig';
     }
 
@@ -85,7 +85,7 @@ class Controller
      */
     protected function serverError()
     {
-        self::redirect('500 Internal Server Error', true);
+        $this->redirect('500 Internal Server Error', true);
         return 'ErrorsView/500.twig';
     }
 

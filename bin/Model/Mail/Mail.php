@@ -66,7 +66,7 @@ class Mail
         $expediteur = $data['expediteur'];
         $nomExpediteur = $data['nom-expediteur'];
         $objet = $data['objet'];
-        $message = self::designMail($nomExpediteur, $data['message'], $expediteur);
+        $message = $this->designMail($nomExpediteur, $data['message'], $expediteur);
 
 
         $headers = 'MIME-Version: 1.0' . "\n"; // Version MIME
@@ -75,7 +75,7 @@ class Mail
         $headers .= 'From: <' . $nomExpediteur . '>' . "\n"; // Expediteur
         $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
 
-        if (self::send($destinataire, $objet, $message, $headers)) {
+        if ($this->send($destinataire, $objet, $message, $headers)) {
 
             $request = [
                 'email' => $expediteur,

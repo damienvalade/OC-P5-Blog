@@ -63,7 +63,7 @@ class Cookies
 
         if($unset !== null){
             unset($unset);
-            self::setCookies($name,'',time() - 3600);
+            $this->setCookies($name,'',time() - 3600);
             return true;
         }
     }
@@ -115,7 +115,7 @@ class Cookies
      */
     public function dataJWT(string $name, string $value){
 
-        $data = self::decodeJWT(self::getCookies($name));
+        $data = $this->decodeJWT($this->getCookies($name));
 
         if(is_array($data)){
             if(isset($data[$value])){

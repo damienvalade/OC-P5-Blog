@@ -203,6 +203,6 @@ class UsersController extends FrontController
         $this->cookies->setCookies('users', 'V - Utilisateur bien supprimer !');
         $this->redirect('/admin/users');
 
-        return self::indexAction();
+        return $this->indexAction();
     }
 }

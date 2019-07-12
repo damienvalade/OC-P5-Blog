@@ -62,9 +62,6 @@ class SettingsController extends FrontController
 
                 $filename = $this->upload('photoprofil', $username);
 
-                $nameReplace = str_replace('-','_',$username);
-                $nameReplace = str_replace(' ','_',$nameReplace);
-
 
                 if ($password === $passwordVerif) {
                     $data = [

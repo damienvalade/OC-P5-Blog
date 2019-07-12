@@ -75,6 +75,6 @@ class MailController extends FrontController
 
         }
 
-        return self::indexAction();
+        return $this->indexAction();
     }
 }

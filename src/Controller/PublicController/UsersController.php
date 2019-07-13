@@ -41,7 +41,7 @@ class UsersController extends FrontController
 
         if ($username !== null && $password !== null) {
 
-            $this->users = $this->database->read('users', $username, 'username', false);
+            $this->users = $this->database->read('users', $username, 'email', false);
 
             if ($this->users !== '' && !empty($this->users)) {
 

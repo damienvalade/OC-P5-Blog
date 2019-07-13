@@ -59,6 +59,9 @@ Sur la page présentant le détail d’un blog post, il faut afficher les inform
     *   Jquery
     *   Chart.Js
     *   Progressbar.js
+*   Installer les différentes dependances 
+    *   JWT/firebase
+    *   Twig
 *   Inscrivez-vous, passer vos droits d'administration à 1. And enjoy it !
 
 ## Modéle MVC

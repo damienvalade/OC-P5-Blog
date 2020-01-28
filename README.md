@@ -1,5 +1,7 @@
 # Blog open Classrooms
 
+![alt text](https://portfolio.damienvalade.fr/img/projects/Portfolio.jpg)
+
 Projet Open Classrooms de blog 
 
 ## Information du projet 
